@@ -22,18 +22,32 @@
 		</developer>
 	</developers>
 
+    <licenses>
+        <license>
+            <name>LGPLv3</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
 	<properties>
 		<project.custom.sourceEncoding>UTF-8</project.custom.sourceEncoding>
 		<project.custom.groovy.version>1.8.0</project.custom.groovy.version>
 		<project.custom.gmaven.version>1.3</project.custom.gmaven.version>
-        <project.custom.source.source>1.6</project.custom.source.source>
-        <project.custom.source.target>1.6</project.custom.source.target>
+		<project.custom.source.source>1.6</project.custom.source.source>
+		<project.custom.source.target>1.6</project.custom.source.target>
 	</properties>
 
 	<modules>
 		<module>../globalpom-groovy</module>
 	</modules>
-	
+
+	<scm>
+		<connection>scm:git:${gitpublic.repository.root}globalpom.git</connection>
+		<developerConnection>scm:git:${gitpublic.repository.root}globalpom.git</developerConnection>
+		<url>scm:git:${gitpublic.repository.root}globalpom.git</url>
+	</scm>
+
 	<dependencies>
 
 		<!-- logging dependencies -->
@@ -59,6 +73,17 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>globalscaling.com-public</id>
+            <url>${archiva.repository.root}/repository/globalscaling.com-public/</url>
+        </repository>
+        <snapshotRepository>
+            <id>globalscaling.com-public-snapshots</id>
+            <url>${archiva.repository.root}/repository/globalscaling.com-public-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 	<dependencyManagement>
 		<dependencies>
