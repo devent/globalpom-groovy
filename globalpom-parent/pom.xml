@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Global POM</name>
-	<description>Global parent POM for Fracsoftware projects. Here I will declare all dependencies and all maven plugins needed for a Fracsoftware project.</description>
+	<description>Global parent POM for Fracsoftware projects. Here we will declare all dependencies and all maven plugins needed for a Fracsoftware project.</description>
 
 	<developers>
 		<developer>
