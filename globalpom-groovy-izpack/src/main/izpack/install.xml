@@ -6,7 +6,7 @@
 		<appname>${project.description}</appname>
 		<appversion>${project.version}</appversion>
 		<appsubpath>${project.artifactId}</appsubpath>
-		<url>${project.organization.url}</url>
+		<url>${project.custom.organization.url}</url>
 		<authors>
 			<author name="${project.custom.author.name}" email="${project.custom.author.email}" />
 		</authors>
