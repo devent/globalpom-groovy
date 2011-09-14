@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.fracsoftware.globalpom</groupId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 
