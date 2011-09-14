@@ -84,30 +84,6 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.izpack</groupId>
-				<artifactId>izpack-maven-plugin</artifactId>
-				<version>1.0-alpha-5</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>izpack</goal>
-						</goals>
-						<configuration>
-							<izpackBasedir>${project.custom.staging.dir}</izpackBasedir>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.izpack</groupId>
-						<artifactId>izpack-standalone-compiler</artifactId>
-						<version>${project.custom.izpack.standalone.compiler.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-
 			<!-- prepare dependencies so that izpack jar tag to pickup at compile 
 				time -->
 			<plugin>
@@ -166,5 +142,38 @@
 		</pluginManagement>
 
 	</build>
+
+	<profiles>
+		<profile>
+			<id>compile-izpack</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.izpack</groupId>
+						<artifactId>izpack-maven-plugin</artifactId>
+						<version>1.0-alpha-5</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>izpack</goal>
+								</goals>
+								<configuration>
+									<izpackBasedir>${project.custom.staging.dir}</izpackBasedir>
+								</configuration>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>org.codehaus.izpack</groupId>
+								<artifactId>izpack-standalone-compiler</artifactId>
+								<version>${project.custom.izpack.standalone.compiler.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
