@@ -180,11 +180,11 @@
 				<artifactId>prefdialog-dialog</artifactId>
 				<version>1.8</version>
 			</dependency>
-            <dependency>
-                <groupId>com.globalscalingsoftware.nativeloader</groupId>
-                <artifactId>nativeloader-api</artifactId>
-                <version>1.0</version>
-            </dependency>
+			<dependency>
+				<groupId>com.globalscalingsoftware.nativeloader</groupId>
+				<artifactId>nativeloader-api</artifactId>
+				<version>1.0</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -194,7 +194,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.1</version>
 				<configuration>
 					<source>${project.custom.source.source}</source>
 					<target>${project.custom.source.target}</target>
@@ -205,7 +204,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.4.3</version>
 				<configuration>
 					<encoding>${project.custom.sourceEncoding}</encoding>
 				</configuration>
@@ -237,6 +235,31 @@
 			</plugin>
 
 		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 
 	</build>
 
