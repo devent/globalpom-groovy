@@ -216,6 +216,37 @@
                 <version>3.0.1</version>
             </dependency>
 
+            <!-- noiseread -->
+            <dependency>
+                <groupId>com.globalscalingsoftware.noiseread</groupId>
+                <artifactId>noiseread-devices</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.globalscalingsoftware.noiseread</groupId>
+                <artifactId>noiseread-server</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.globalscalingsoftware.noiseread</groupId>
+                <artifactId>noiseread-client</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.globalscalingsoftware.noiseread</groupId>
+                <artifactId>noiseread-logger</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.globalscalingsoftware.noiseread</groupId>
+                <artifactId>noiseread-thread</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.globalscalingsoftware.noiseread</groupId>
+                <artifactId>noiseread-testutils</artifactId>
+                <version>1.4</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 
