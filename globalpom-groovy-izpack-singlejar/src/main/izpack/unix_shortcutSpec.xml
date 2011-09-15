@@ -1,0 +1,71 @@
+<shortcuts>
+    <skipIfNotSupported />
+    <programGroup defaultName="${project.name}"
+        location="startMenu" />
+    <shortcut
+       name="Start ${project.name}"
+     programGroup="yes"
+     desktop="yes"
+     applications="no"
+     startMenu="yes"
+     startup="no"
+     target="$INSTALL_PATH/bin/linux/run.sh"
+     commandLine=""
+     workingDirectory="$INSTALL_PATH/bin/linux"
+     description="Start ${project.name}. ${project.description}"
+     type="Application"
+     encoding="UTF-8"
+     terminal="false"
+     KdeSubstUID="false"
+     initialState="normal">
+        <createForPack name="Linux run files" />
+    </shortcut>
+    <shortcut
+       name="Debug ${project.name}"
+     programGroup="yes"
+     desktop="yes"
+     applications="no"
+     startMenu="yes"
+     startup="no"
+     target="$INSTALL_PATH/bin/linux/debug-run.sh"
+     commandLine=""
+     workingDirectory="$INSTALL_PATH/bin/linux"
+     description="Start debug mode of ${project.name}. ${project.description}"
+     type="Application"
+     encoding="UTF-8"
+     terminal="true"
+     KdeSubstUID="false"
+     initialState="normal">
+        <createForPack name="Linux run files" />
+    </shortcut>
+    <shortcut
+       name="Readme file"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="yes"
+     startup="no"
+     target="$INSTALL_PATH/doc/readme-en.txt"
+     commandLine=""
+     workingDirectory="$INSTALL_PATH/doc"
+     description="${project.name} readme file"
+     type="Link"
+     encoding="UTF-8">
+        <createForPack name="Doc-English" />
+    </shortcut>
+    <shortcut
+       name="Liemich Datei"
+     programGroup="yes"
+     desktop="no"
+     applications="no"
+     startMenu="yes"
+     startup="no"
+     target="$INSTALL_PATH/doc/readme-en.txt"
+     commandLine=""
+     workingDirectory="$INSTALL_PATH/doc"
+     description="${project.name} liesmich Datei"
+     type="Link"
+     encoding="UTF-8">
+        <createForPack name="Doc-Deutsch" />
+    </shortcut>
+</shortcuts>
