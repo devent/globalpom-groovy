@@ -56,7 +56,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<encoding>${project.custom.sourceEncoding}</encoding>
+							<encoding>${project.build.sourceEncoding}</encoding>
 							<outputDirectory>${project.custom.staging.dir}</outputDirectory>
 							<escapeString>\</escapeString>
 							<resources>
