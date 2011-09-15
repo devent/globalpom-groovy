@@ -40,10 +40,9 @@
 	<packs>
 		<pack name="Required" required="yes" installGroups="Required Files">
 			<description>Required files to run the application.</description>
-			<file src="../${project.artifactId}-${project.version}.jar" targetdir="$INSTALL_PATH/lib/" />
-            <file src="lib/" targetdir="$INSTALL_PATH" />
+            <file src="../${project.artifactId}-${project.version}-jar-with-dependencies.jar"
+                targetdir="$INSTALL_PATH/lib/" />
             <file src="etc/" targetdir="$INSTALL_PATH" />
-            <file src="bootstrap/" targetdir="$INSTALL_PATH" />
 		</pack>
 		<pack name="Linux run files" required="no" preselected="yes" os="unix"
 			installGroups="Linux noarch">
