@@ -220,32 +220,32 @@
             <dependency>
                 <groupId>com.globalscalingsoftware.noiseread</groupId>
                 <artifactId>noiseread-devices</artifactId>
-                <version>1.4</version>
+                <version>2.0</version>
             </dependency>
             <dependency>
                 <groupId>com.globalscalingsoftware.noiseread</groupId>
                 <artifactId>noiseread-server</artifactId>
-                <version>1.4</version>
+                <version>2.0</version>
             </dependency>
             <dependency>
                 <groupId>com.globalscalingsoftware.noiseread</groupId>
                 <artifactId>noiseread-client</artifactId>
-                <version>1.4</version>
+                <version>2.0</version>
             </dependency>
             <dependency>
                 <groupId>com.globalscalingsoftware.noiseread</groupId>
                 <artifactId>noiseread-logger</artifactId>
-                <version>1.4</version>
+                <version>2.0</version>
             </dependency>
             <dependency>
                 <groupId>com.globalscalingsoftware.noiseread</groupId>
                 <artifactId>noiseread-thread</artifactId>
-                <version>1.4</version>
+                <version>2.0</version>
             </dependency>
             <dependency>
                 <groupId>com.globalscalingsoftware.noiseread</groupId>
                 <artifactId>noiseread-testutils</artifactId>
-                <version>1.4</version>
+                <version>2.0</version>
             </dependency>
 		</dependencies>
 	</dependencyManagement>
