@@ -125,6 +125,7 @@
 								</goals>
 								<configuration>
 									<izpackBasedir>${project.custom.staging.dir}</izpackBasedir>
+									<descriptorEncoding>${project.build.sourceEncoding}</descriptorEncoding>
 								</configuration>
 							</execution>
 						</executions>
