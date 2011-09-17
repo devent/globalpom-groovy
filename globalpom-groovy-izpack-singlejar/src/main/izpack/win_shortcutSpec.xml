@@ -1,6 +1,6 @@
 <shortcuts>
     <skipIfNotSupported />
-    <programGroup defaultName="${project.name}"
+    <programGroup defaultName="${project.name} ${project.version}"
         location="startMenu" />
     <shortcut
        name="Start ${project.name}"

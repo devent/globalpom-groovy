@@ -3,9 +3,9 @@
 <installation version="1.0">
 
 	<info>
-		<appname>${project.description}</appname>
+		<appname>${project.name}</appname>
 		<appversion>${project.version}</appversion>
-		<appsubpath>${project.artifactId}</appsubpath>
+		<appsubpath>${project.artifactId}/${project.artifactId}-${project.version}</appsubpath>
 		<url>${project.custom.organization.url}</url>
 		<authors>
 			<author name="${project.custom.author.name}" email="${project.custom.author.email}" />
