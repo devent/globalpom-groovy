@@ -60,7 +60,7 @@
      applications="no"
      startMenu="yes"
      startup="no"
-     target="$INSTALL_PATH\doc\readme-en.txt"
+     target="$INSTALL_PATH\doc\readme-de.txt"
      commandLine=""
      workingDirectory="$INSTALL_PATH\doc"
      description="${project.name} liesmich Datei"
