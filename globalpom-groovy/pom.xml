@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.fracsoftware.globalpom</groupId>
-		<version>1.4</version>
+		<version>1.5-SNAPSHOT</version>
 		<relativePath>../globalpom-parent</relativePath>
 	</parent>
 
