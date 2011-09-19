@@ -204,12 +204,12 @@
 			<dependency>
 				<groupId>com.globalscalingsoftware.rsscon</groupId>
 				<artifactId>rssconjava-api</artifactId>
-				<version>3.1</version>
+				<version>3.2-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.globalscalingsoftware.rsscon</groupId>
 				<artifactId>rssconjava-native</artifactId>
-				<version>3.1</version>
+				<version>3.2-SNAPSHOT</version>
 			</dependency>
 
 			<!-- noisedriver -->
