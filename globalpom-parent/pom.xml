@@ -244,6 +244,13 @@
 				<version>3.1-SNAPSHOT</version>
 			</dependency>
 
+            <!-- qhdriver -->
+            <dependency>
+                <groupId>com.globalscalingsoftware.qhdriver</groupId>
+                <artifactId>qhdriver-native</artifactId>
+                <version>2.0</version>
+            </dependency>
+
 			<!-- noiseread -->
 			<dependency>
 				<groupId>com.globalscalingsoftware.noiseread</groupId>
