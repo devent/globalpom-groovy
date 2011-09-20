@@ -184,6 +184,13 @@
 				<version>1.4.1</version>
 			</dependency>
 
+			<!-- javacsv -->
+			<dependency>
+				<groupId>net.sourceforge.javacsv</groupId>
+				<artifactId>javacsv</artifactId>
+				<version>2.0</version>
+			</dependency>
+
 			<!-- own libraries -->
 			<dependency>
 				<groupId>com.globalscalingsoftware.xmlstorage</groupId>
