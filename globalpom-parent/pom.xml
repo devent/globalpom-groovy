@@ -4,7 +4,7 @@
 
 	<groupId>com.fracsoftware.globalpom</groupId>
 	<artifactId>globalpom-parent</artifactId>
-	<version>1.8</version>
+	<version>1.9-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Global POM</name>
 	<description>Global parent POM for Fracsoftware projects. Here we will declare all dependencies and all maven plugins needed for a Fracsoftware project.</description>
