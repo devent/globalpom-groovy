@@ -3,7 +3,7 @@
 <installation version="1.0">
 
 	<info>
-		<appname>${project.description}</appname>
+		<appname>${project.name}</appname>
 		<appversion>${project.version}</appversion>
 		<appsubpath>${project.artifactId}</appsubpath>
 		<url>${project.custom.organization.url}</url>
