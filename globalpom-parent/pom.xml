@@ -196,7 +196,15 @@
 				<version>2.1</version>
 			</dependency>
 
+			<!-- jasypt -->
+			<dependency>
+				<groupId>org.jasypt</groupId>
+				<artifactId>jasypt</artifactId>
+				<version>1.7</version>
+			</dependency>
+
 			<!-- own libraries -->
+			<!-- xmlstorage -->
 			<dependency>
 				<groupId>com.globalscalingsoftware.xmlstorage</groupId>
 				<artifactId>xmlstorage-base</artifactId>
