@@ -45,9 +45,9 @@
      applications="no"
      startMenu="yes"
      startup="no"
-     target="$INSTALL_PATH\doc\readme-en.txt"
+     target="$INSTALL_PATH\doc\en\readme.txt"
      commandLine=""
-     workingDirectory="$INSTALL_PATH\doc"
+     workingDirectory="$INSTALL_PATH\doc\en"
      description="${project.name} readme file"
      type="Link"
      encoding="UTF-8">
@@ -60,9 +60,9 @@
      applications="no"
      startMenu="yes"
      startup="no"
-     target="$INSTALL_PATH\doc\readme-en.txt"
+     target="$INSTALL_PATH\doc\de\readme.txt"
      commandLine=""
-     workingDirectory="$INSTALL_PATH\doc"
+     workingDirectory="$INSTALL_PATH\doc\de"
      description="${project.name} liesmich Datei"
      type="Link"
      encoding="UTF-8">

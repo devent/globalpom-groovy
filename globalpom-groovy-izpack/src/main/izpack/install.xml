@@ -21,7 +21,7 @@
 	</locale>
 
 	<resources>
-		<res id="InfoPanel.info" src="doc/readme-en.txt" />
+        <res id="InfoPanel.info" src="doc/en/readme.txt" />
         <res src="win_shortcutSpec.xml" id="Win_shortcutSpec.xml" />
         <res src="unix_shortcutSpec.xml" id="Unix_shortcutSpec.xml" />
 	</resources>
@@ -62,12 +62,12 @@
 		<pack name="Doc-English" required="no" preselected="yes"
 			installGroups="Documentation">
 			<description>English Documentation.</description>
-			<file src="doc/readme-en.txt" targetdir="$INSTALL_PATH/doc/" />
+			<file src="doc/en/" targetdir="$INSTALL_PATH" />
 		</pack>
         <pack name="Doc-Deutsch" required="no" preselected="yes"
             installGroups="Documentation">
             <description>Deutsche Dokumentation.</description>
-            <file src="doc/readme-de.txt" targetdir="$INSTALL_PATH/doc/" />
+            <file src="doc/de/" targetdir="$INSTALL_PATH" />
         </pack>
 	</packs>
 
