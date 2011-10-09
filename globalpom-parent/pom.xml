@@ -209,6 +209,13 @@
 				<version>1.07.00</version>
 			</dependency>
 
+            <!-- hazelcast -->
+            <dependency>
+                <groupId>com.hazelcast</groupId>
+                <artifactId>hazelcast-all</artifactId>
+                <version>1.9.1</version>
+            </dependency>
+
 			<!-- own libraries -->
 			<!-- xmlstorage -->
 			<dependency>
@@ -238,12 +245,12 @@
 			<dependency>
 				<groupId>com.globalscalingsoftware.rsscon</groupId>
 				<artifactId>rssconjava-api</artifactId>
-				<version>3.2</version>
+				<version>3.2.1</version>
 			</dependency>
 			<dependency>
 				<groupId>com.globalscalingsoftware.rsscon</groupId>
 				<artifactId>rssconjava-native</artifactId>
-				<version>3.2</version>
+				<version>3.2.1</version>
 			</dependency>
 
 			<!-- noisedriver -->
