@@ -4,7 +4,7 @@
 
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
-		<groupId>com.fracsoftware.globalpom</groupId>
+		<groupId>com.anrinstitute.globalpom</groupId>
 		<version>1.12-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
@@ -19,7 +19,7 @@
 		<project.custom.izpack.standalone.compiler.version>4.3.4</project.custom.izpack.standalone.compiler.version>
 		<project.custom.bootstrap.version>1.3</project.custom.bootstrap.version>
 		<project.custom.bootstrap.mainclass />
-		<project.custom.organization.url>http://www.fracsoftware.com</project.custom.organization.url>
+		<project.custom.organization.url>http://www.anr-institute.com</project.custom.organization.url>
 		<project.custom.author.name />
 		<project.custom.author.email />
 	</properties>
