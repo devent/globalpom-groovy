@@ -9,12 +9,12 @@ import com.google.common.io.Resources
 import com.google.common.testing.SerializableTester
 
 /**
- * Various utilities to simplify the worker tests.
+ * Various utilities to simplify the groovy tests.
  * 
  * @author Erwin Mueller, erwin.mueller@deventm.org
- * @since 1.0
+ * @since 1.12
  */
-class CoreTestUtils {
+class TestUtils {
 
 	/**
 	 * Set default to-string style.
