@@ -41,6 +41,7 @@
 
 	<modules>
 		<module>../globalpom-groovy</module>
+		<module>../globalpom-testutils</module>
 	</modules>
 
 	<scm>
@@ -88,6 +89,13 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+            <!-- own modules -->
+			<dependency>
+				<groupId>com.anrisoftware.globalpom</groupId>
+				<artifactId>globalpom-groovy-testutils</artifactId>
+				<version>1.12-SNAPSHOT</version>
+			</dependency>
 
 			<!-- logging dependencies -->
 			<dependency>
