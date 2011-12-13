@@ -4,7 +4,7 @@
 
 	<groupId>com.anrisoftware.globalpom</groupId>
 	<artifactId>globalpom-parent</artifactId>
-	<version>1.12</version>
+	<version>1.13-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Global POM</name>
 	<description>Global parent POM for ANRI GmbH projects. Here we will declare all dependencies and all maven plugins needed for a Fracsoftware project.</description>
@@ -92,7 +92,7 @@
 			<dependency>
 				<groupId>com.anrisoftware.globalpom</groupId>
 				<artifactId>globalpom-groovy-testutils</artifactId>
-				<version>1.12</version>
+				<version>1.13-SNAPSHOT</version>
 			</dependency>
 
 			<!-- logging dependencies -->
