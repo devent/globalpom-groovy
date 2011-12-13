@@ -25,6 +25,14 @@
         <module>../globalpom-groovy-testutils</module>
 	</modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+        </dependency>
+    </dependencies>
+
+	
 	<dependencyManagement>
 		<dependencies>
 
