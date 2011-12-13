@@ -39,14 +39,14 @@ class TestUtils {
 	/**
 	 * Assert that the file content equals the given string.
 	 */
-	def assertFileContent(def file, def string) {
+	def assertFileContent(File file, def string) {
 		assert fileToString(file) == string
 	}
 
 	/**
 	 * Read the content of the file.
 	 */
-	def fileToString(def file) {
+	def fileToString(File file) {
 		Files.toString(file, charset)
 	}
 
@@ -55,6 +55,13 @@ class TestUtils {
 	 */
 	def resourceToString(def resourceName) {
 		Resources.toString Resources.getResource(this.class, resourceName), charset
+	}
+
+	/**
+	 * Opens the stream of the resource with the given name.
+	 */
+	def openResourceStream(def resourceName) {
+		Resources.getResource(this.class, resourceName).openStream()
 	}
 
 	/**
@@ -87,5 +94,28 @@ class TestUtils {
 	 */
 	def reserialize(def object) {
 		SerializableTester.reserialize(object)
+	}
+
+	/**
+	 * Copy the resource to a target file.
+	 */
+	def copyResourceToFile(String resourceName, File target) {
+		def source = resourceToString(resourceName)
+		Files.write source, target, charset
+	}
+
+	/**
+	 * Copy the resource to a target file and make the file executable.
+	 */
+	def copyResourceToCommand(String resourceName, File target) {
+		copyResourceToFile(resourceName, target)
+		target.setExecutable true, false
+	}
+
+	/**
+	 * Create a new directory. It creates the parent directories automatically.
+	 */
+	def makeDirectory(File directory) {
+		new File(it).mkdirs()
 	}
 }
