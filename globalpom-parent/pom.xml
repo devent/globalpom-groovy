@@ -41,13 +41,12 @@
 
 	<modules>
 		<module>../globalpom-groovy</module>
-		<module>../globalpom-testutils</module>
 	</modules>
 
 	<scm>
-		<connection>scm:git:${gitpublic.repository.root}globalpom.git</connection>
-		<developerConnection>scm:git:${gitpublic.repository.root}globalpom.git</developerConnection>
-		<url>scm:git:${gitpublic.repository.root}globalpom.git</url>
+		<connection>scm:git:${custom.gitpublic.url}globalpom.git</connection>
+		<developerConnection>scm:git:${custom.gitpublic.url}globalpom.git</developerConnection>
+		<url>scm:git:${custom.gitpublic.url}globalpom.git</url>
 	</scm>
 
 	<dependencies>
@@ -78,12 +77,12 @@
 
 	<distributionManagement>
 		<repository>
-			<id>globalscaling.com-public</id>
-			<url>${archiva.repository.root}/repository/globalscaling.com-public/</url>
+			<id>${custom.repository.anrispublic.id}</id>
+			<url>${custom.repository.root}${custom.repository.anrispublic.path}</url>
 		</repository>
 		<snapshotRepository>
-			<id>globalscaling.com-public-snapshots</id>
-			<url>${archiva.repository.root}/repository/globalscaling.com-public-snapshots/</url>
+			<id>${custom.repository.anrispublicsnapshots.id}</id>
+            <url>${custom.repository.root}${custom.repository.anrispublicsnapshots.path}</url>
 		</snapshotRepository>
 	</distributionManagement>
 
