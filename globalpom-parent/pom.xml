@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.anrisoftware.globalpom</groupId>
 	<artifactId>globalpom-parent</artifactId>
-	<version>1.12-SNAPSHOT</version>
+	<version>1.12</version>
 	<packaging>pom</packaging>
 	<name>Global POM</name>
 	<description>Global parent POM for ANRI GmbH projects. Here we will declare all dependencies and all maven plugins needed for a Fracsoftware project.</description>
@@ -93,7 +92,7 @@
 			<dependency>
 				<groupId>com.anrisoftware.globalpom</groupId>
 				<artifactId>globalpom-groovy-testutils</artifactId>
-				<version>1.12-SNAPSHOT</version>
+				<version>1.12</version>
 			</dependency>
 
 			<!-- logging dependencies -->
