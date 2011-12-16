@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -40,7 +41,7 @@
 
 	<modules>
 		<module>../globalpom-groovy</module>
-        <module>../globalpom-log</module>
+		<module>../globalpom-log</module>
 	</modules>
 
 	<scm>
@@ -82,24 +83,24 @@
 		</repository>
 		<snapshotRepository>
 			<id>${custom.repository.anrispublicsnapshots.id}</id>
-            <url>${custom.repository.root}${custom.repository.anrispublicsnapshots.path}</url>
+			<url>${custom.repository.root}${custom.repository.anrispublicsnapshots.path}</url>
 		</snapshotRepository>
 	</distributionManagement>
 
 	<dependencyManagement>
 		<dependencies>
 
-            <!-- own modules -->
+			<!-- own modules -->
 			<dependency>
 				<groupId>com.anrisoftware.globalpom</groupId>
 				<artifactId>globalpom-groovy-testutils</artifactId>
 				<version>1.13-SNAPSHOT</version>
 			</dependency>
-            <dependency>
-                <groupId>com.anrisoftware.globalpom</groupId>
-                <artifactId>globalpom-log</artifactId>
-                <version>1.13-SNAPSHOT</version>
-            </dependency>
+			<dependency>
+				<groupId>com.anrisoftware.globalpom</groupId>
+				<artifactId>globalpom-log</artifactId>
+				<version>1.13-SNAPSHOT</version>
+			</dependency>
 
 			<!-- logging dependencies -->
 			<dependency>
@@ -118,11 +119,18 @@
 				<version>1.2.16</version>
 			</dependency>
 
-			<!-- test dependencies -->
+			<!-- junit -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.8.1</version>
+			</dependency>
+
+			<!-- easytesting fest -->
+			<dependency>
+				<groupId>org.easytesting</groupId>
+				<artifactId>fest-reflect</artifactId>
+				<version>1.2</version>
 			</dependency>
 			<dependency>
 				<groupId>org.easytesting</groupId>
@@ -135,12 +143,12 @@
 				<version>1.1.6</version>
 			</dependency>
 
-            <!-- groovy -->
-            <dependency>
-                <groupId>org.codehaus.groovy</groupId>
-                <artifactId>groovy-all</artifactId>
-                <version>1.8.4</version>
-            </dependency>
+			<!-- groovy -->
+			<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-all</artifactId>
+				<version>1.8.4</version>
+			</dependency>
 
 			<!-- apache commons -->
 			<dependency>
@@ -381,30 +389,30 @@
 				<artifactId>fdsanalysis-datasource</artifactId>
 				<version>2.3.1</version>
 			</dependency>
-            <dependency>
-                <groupId>com.anrisoftware.fdsanalysis</groupId>
-                <artifactId>fdsanalysis-datasource-csv</artifactId>
-                <version>2.3.1</version>
-            </dependency>
-            <dependency>
-                <groupId>com.anrisoftware.fdsanalysis</groupId>
-                <artifactId>fdsanalysis-datasource-noise</artifactId>
-                <version>2.3.1</version>
-            </dependency>
-            <dependency>
-                <groupId>com.anrisoftware.fdsanalysis</groupId>
-                <artifactId>fdsanalysis-datasource-qh</artifactId>
-                <version>2.3.1</version>
-            </dependency>
 			<dependency>
-                <groupId>com.anrisoftware.fdsanalysis</groupId>
-				<artifactId>fdsanalysis-sync</artifactId>
-                <version>2.3.1</version>
+				<groupId>com.anrisoftware.fdsanalysis</groupId>
+				<artifactId>fdsanalysis-datasource-csv</artifactId>
+				<version>2.3.1</version>
 			</dependency>
 			<dependency>
-                <groupId>com.anrisoftware.fdsanalysis</groupId>
+				<groupId>com.anrisoftware.fdsanalysis</groupId>
+				<artifactId>fdsanalysis-datasource-noise</artifactId>
+				<version>2.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anrisoftware.fdsanalysis</groupId>
+				<artifactId>fdsanalysis-datasource-qh</artifactId>
+				<version>2.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anrisoftware.fdsanalysis</groupId>
+				<artifactId>fdsanalysis-sync</artifactId>
+				<version>2.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anrisoftware.fdsanalysis</groupId>
 				<artifactId>fdsanalysis-core</artifactId>
-                <version>2.3.1</version>
+				<version>2.3.1</version>
 			</dependency>
 
 		</dependencies>
