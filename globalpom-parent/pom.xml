@@ -135,6 +135,13 @@
 				<version>1.1.6</version>
 			</dependency>
 
+            <!-- groovy -->
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>1.8.4</version>
+            </dependency>
+
 			<!-- apache commons -->
 			<dependency>
 				<groupId>commons-lang</groupId>
