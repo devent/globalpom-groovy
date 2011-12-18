@@ -1,5 +1,8 @@
 package com.anrisoftware.globalpom.utils
 
+import java.io.File
+import java.net.URL
+
 import org.apache.commons.lang.builder.ToStringBuilder
 import org.apache.commons.lang.builder.ToStringStyle
 
@@ -34,6 +37,32 @@ class TestUtils {
 		Files.write text.toString(), tmpFile, charset
 		tmpFile.deleteOnExit()
 		return tmpFile
+	}
+
+	/**
+	 * Create a temporary directory.
+	 * 
+	 * @param files
+	 * 		closure that is called with the created directory.
+	 */
+	def createTempDirectory(def files= {}) {
+		def dir = Files.createTempDir()
+		files(dir)
+		return dir
+	}
+
+	/**
+	 * Returns the URL from the parent directory of the file.
+	 */
+	URL parentFileToURL(File file) {
+		fileToURL file.parentFile
+	}
+
+	/**
+	 * Returns the URL from the file.
+	 */
+	URL fileToURL(File file) {
+		file.toURI().toURL()
 	}
 
 	/**
