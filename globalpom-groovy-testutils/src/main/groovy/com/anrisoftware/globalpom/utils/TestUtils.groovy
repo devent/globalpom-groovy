@@ -128,9 +128,23 @@ class TestUtils {
 	/**
 	 * Copy the resource to a target file.
 	 */
+	def copyResourceToFileName(String resourceName, String targetName) {
+		copyResourceToFile(resourceName, new File(targetName))
+	}
+
+	/**
+	 * Copy the resource to a target file.
+	 */
 	def copyResourceToFile(String resourceName, File target) {
 		def source = resourceToString(resourceName)
 		Files.write source, target, charset
+	}
+
+	/**
+	 * Copy the resource to a target file and make the file executable.
+	 */
+	def copyResourceToCommandName(String resourceName, String targetName) {
+		copyResourceToCommand(resourceName, new File(targetName))
 	}
 
 	/**
@@ -144,7 +158,14 @@ class TestUtils {
 	/**
 	 * Create a new directory. It creates the parent directories automatically.
 	 */
+	def makeDirectoryName(String name) {
+		makeDirectory(new File(name))
+	}
+
+	/**
+	 * Create a new directory. It creates the parent directories automatically.
+	 */
 	def makeDirectory(File directory) {
-		new File(it).mkdirs()
+		directory.mkdirs()
 	}
 }
