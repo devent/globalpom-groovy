@@ -91,7 +91,14 @@ class TestUtils {
 	 * Opens the stream of the resource with the given name.
 	 */
 	InputStream openResourceStream(String resourceName) {
-		Resources.getResource(this.class, resourceName).openStream()
+		resourceURL(resourceName).openStream()
+	}
+
+	/**
+	 * Returns the resource URL with the given name.
+	 */
+	URL resourceURL(String resourceName) {
+		Resources.getResource(this.class, resourceName)
 	}
 
 	/**
