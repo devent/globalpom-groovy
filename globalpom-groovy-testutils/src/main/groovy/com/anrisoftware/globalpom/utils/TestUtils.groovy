@@ -2,6 +2,7 @@ package com.anrisoftware.globalpom.utils
 
 import java.io.File
 import java.net.URL
+import java.nio.charset.Charset
 
 import org.apache.commons.lang.builder.ToStringBuilder
 import org.apache.commons.lang.builder.ToStringStyle
@@ -27,12 +28,12 @@ class TestUtils {
 	/**
 	 * The default {@link Charset} for the tests.
 	 */
-	def charset = Charsets.UTF_8
+	Charset charset = Charsets.UTF_8
 
 	/**
 	 * Create a temp file with an optional content.
 	 */
-	def createTempFile(def text="") {
+	File createTempFile(String text="") {
 		def tmpFile = File.createTempFile(this.getClass().name, null)
 		Files.write text.toString(), tmpFile, charset
 		tmpFile.deleteOnExit()
@@ -45,7 +46,7 @@ class TestUtils {
 	 * @param files
 	 * 		closure that is called with the created directory.
 	 */
-	def createTempDirectory(def files= {}) {
+	File createTempDirectory(def files= {}) {
 		def dir = Files.createTempDir()
 		files(dir)
 		return dir
@@ -68,35 +69,35 @@ class TestUtils {
 	/**
 	 * Assert that the file content equals the given string.
 	 */
-	def assertFileContent(File file, def string) {
+	void assertFileContent(File file, String string) {
 		assert fileToString(file) == string
 	}
 
 	/**
 	 * Read the content of the file.
 	 */
-	def fileToString(File file) {
+	String fileToString(File file) {
 		Files.toString(file, charset)
 	}
 
 	/**
 	 * Loads the resource with the given name as a string.
 	 */
-	def resourceToString(def resourceName) {
+	String resourceToString(String resourceName) {
 		Resources.toString Resources.getResource(this.class, resourceName), charset
 	}
 
 	/**
 	 * Opens the stream of the resource with the given name.
 	 */
-	def openResourceStream(def resourceName) {
+	InputStream openResourceStream(String resourceName) {
 		Resources.getResource(this.class, resourceName).openStream()
 	}
 
 	/**
 	 * Test if a closure is throwing the expected exception class.
 	 */
-	def shouldFailWith(Class exceptionClass, Closure closure) {
+	void shouldFailWith(Class exceptionClass, Closure closure) {
 		try {
 			closure()
 			assert false : "An expected exception was not thrown: $exceptionClass"
@@ -109,7 +110,7 @@ class TestUtils {
 	 * Test if a closure is throwing the expected exception class as the 
 	 * cause of the current exception.
 	 */
-	def shouldFailWithCause(Class exceptionClass, Closure closure) {
+	void shouldFailWithCause(Class exceptionClass, Closure closure) {
 		try {
 			closure()
 			assert false : "The expected cause was not thrown: $exceptionClass"
@@ -128,7 +129,7 @@ class TestUtils {
 	/**
 	 * Copy the resource to a target file.
 	 */
-	def copyResourceToFile(String resourceName, File target) {
+	void copyResourceToFile(String resourceName, File target) {
 		def source = resourceToString(resourceName)
 		Files.write source, target, charset
 	}
@@ -136,7 +137,7 @@ class TestUtils {
 	/**
 	 * Copy the resource to a target file and make the file executable.
 	 */
-	def copyResourceToCommand(String resourceName, File target) {
+	void copyResourceToCommand(String resourceName, File target) {
 		copyResourceToFile(resourceName, target)
 		target.setExecutable true, false
 	}
@@ -144,7 +145,7 @@ class TestUtils {
 	/**
 	 * Create a new directory. It creates the parent directories automatically.
 	 */
-	def makeDirectory(File directory) {
+	void makeDirectory(File directory) {
 		directory.mkdirs()
 	}
 }
