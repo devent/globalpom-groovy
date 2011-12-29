@@ -74,6 +74,13 @@ class TestUtils {
 	}
 
 	/**
+	 * Assert that the file is a directory.
+	 */
+	void assertFileIsDirectory(File file) {
+		assert file.isDirectory()
+	}
+
+	/**
 	 * Read the content of the file.
 	 */
 	String fileToString(File file) {
