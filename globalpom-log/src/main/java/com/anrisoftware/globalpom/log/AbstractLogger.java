@@ -16,7 +16,7 @@ public abstract class AbstractLogger {
 	/**
 	 * Creates a new {@link Logger} for the given context {@link Class}.
 	 */
-	protected AbstractLogger(Class<?> contextClass) {
+	protected AbstractLogger(@SuppressWarnings("rawtypes") Class contextClass) {
 		this.log = LoggerFactory.getLogger(contextClass);
 	}
 
