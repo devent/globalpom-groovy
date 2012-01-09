@@ -157,6 +157,14 @@ class TestUtils {
 	}
 
 	/**
+	 * Copy a binary resource to a target file.
+	 */
+	void copyBinResourceToFile(String resourceName, File target) {
+		def source = Resources.toByteArray Resources.getResource(this.class, resourceName)
+		Files.write source, target
+	}
+
+	/**
 	 * Create a new directory. It creates the parent directories automatically.
 	 */
 	void makeDirectory(File directory) {
