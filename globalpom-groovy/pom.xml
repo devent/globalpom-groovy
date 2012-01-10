@@ -15,11 +15,6 @@
     <version>1.2-SNAPSHOT</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
 
-	<properties>
-		<project.custom.groovy.version>1.8.4</project.custom.groovy.version>
-		<project.custom.gmaven.version>1.3</project.custom.gmaven.version>
-	</properties>
-
 	<modules>
 		<module>../globalpom-groovy-izpack</module>
 		<module>../globalpom-groovy-izpack-singlejar</module>
