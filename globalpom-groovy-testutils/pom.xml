@@ -11,6 +11,7 @@
 	
 	<artifactId>globalpom-groovy-testutils</artifactId>
 	<name>Global POM Groovy Test Utilities</name>
+    <version>1.2-SNAPSHOT</version>
 	
 	<dependencies>
 		<dependency>

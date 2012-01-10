@@ -12,6 +12,7 @@
 	<artifactId>globalpom-groovy-izpack</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy IzPack</name>
+    <version>1.2-SNAPSHOT</version>
 	<description>Global parent POM with Groovy and IzPack installer support.</description>
 
 	<properties>

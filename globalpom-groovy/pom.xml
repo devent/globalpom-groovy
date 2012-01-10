@@ -12,6 +12,7 @@
 	<artifactId>globalpom-groovy</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
+    <version>1.2-SNAPSHOT</version>
 	<description>Global parent POM with Groovy support.</description>
 
 	<properties>

@@ -12,6 +12,7 @@
 	<artifactId>globalpom-groovy-izpack-singlejar</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy IzPack Single Jar</name>
+    <version>1.2-SNAPSHOT</version>
 	<description>Global parent POM with Groovy and IzPack installer
 		support; the application is bundled in a single Jar file.</description>
 
