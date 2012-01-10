@@ -8,7 +8,7 @@
 	<version>1.13-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Global POM</name>
-	<description>Global parent POM for ANRI GmbH projects. Here we will declare all dependencies and all maven plugins needed for a Fracsoftware project.</description>
+	<description>Declares all dependencies and all maven plugins needed for a ANRI GmbH project. It will declare the listed properties, add plugin to deploy source and test sources and deploy the project-tests with the project jar.</description>
 
 	<developers>
 		<developer>
@@ -99,6 +99,11 @@
 			<dependency>
 				<groupId>com.anrisoftware.globalpom</groupId>
 				<artifactId>globalpom-groovy-izpack</artifactId>
+				<version>1.2-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anrisoftware.globalpom</groupId>
+				<artifactId>globalpom-groovy-izpack-single</artifactId>
 				<version>1.2-SNAPSHOT</version>
 			</dependency>
 			<dependency>

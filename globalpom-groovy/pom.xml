@@ -13,7 +13,7 @@
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
     <version>1.2-SNAPSHOT</version>
-	<description>Global parent POM with Groovy support.</description>
+	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
 
 	<properties>
 		<project.custom.groovy.version>1.8.4</project.custom.groovy.version>
