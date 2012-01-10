@@ -13,8 +13,7 @@
 	<packaging>pom</packaging>
 	<name>Global POM Groovy IzPack Single Jar</name>
     <version>1.2-SNAPSHOT</version>
-	<description>Global parent POM with Groovy and IzPack installer
-		support; the application is bundled in a single Jar file.</description>
+	<description>Groovy and IzPack installer support. Defines a new property compile-izpack that will bundle and create an IzPack installer Jar file. The application is bundled in a single Jar file.</description>
 
 	<properties>
 		<project.custom.staging.dir>${project.build.directory}/staging</project.custom.staging.dir>

@@ -13,7 +13,7 @@
 	<packaging>pom</packaging>
 	<name>Global POM Groovy IzPack</name>
     <version>1.2-SNAPSHOT</version>
-	<description>Global parent POM with Groovy and IzPack installer support.</description>
+	<description>Groovy and IzPack installer support. Defines a new property compile-izpack that will bundle and create an IzPack installer Jar file.</description>
 
 	<properties>
 		<project.custom.staging.dir>${project.build.directory}/staging</project.custom.staging.dir>

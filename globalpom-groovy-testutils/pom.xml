@@ -12,6 +12,7 @@
 	<artifactId>globalpom-groovy-testutils</artifactId>
 	<name>Global POM Groovy Test Utilities</name>
     <version>1.2-SNAPSHOT</version>
+    <description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	
 	<dependencies>
 		<dependency>
