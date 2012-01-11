@@ -5,7 +5,7 @@ cd "`dirname "${symlink:-$0}"`"
 
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
 bootstrapversion=${project.custom.bootstrap.version}
-bootstrap="../../bootstrap/bootstrap-core-$bootstrapversion-jar-with-dependencies.jar"
+bootstrap="../../bootstrap/bootstrap-cli-${bootstrapversion}-jar-with-dependencies.jar"
 libs=../../lib
 mainclass="${project.custom.bootstrap.mainclass}"
 log="-Dlog4j.configuration=file:///$PWD/../../etc/debug-log4j.properties"
