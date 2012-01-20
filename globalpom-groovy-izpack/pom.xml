@@ -5,14 +5,14 @@
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.3</version>
+		<version>1.4-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 
 	<artifactId>globalpom-groovy-izpack</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy IzPack</name>
-    <version>1.3</version>
+    <version>1.4-SNAPSHOT</version>
 	<description>Groovy and IzPack installer support. Defines a new property compile-izpack that will bundle and create an IzPack installer Jar file.</description>
 
 	<properties>
