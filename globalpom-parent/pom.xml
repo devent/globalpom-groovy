@@ -38,11 +38,6 @@
 		<project.custom.source.target>1.6</project.custom.source.target>
 	</properties>
 
-	<modules>
-		<module>../globalpom-groovy</module>
-		<module>../globalpom-log</module>
-	</modules>
-
 	<scm>
 		<connection>scm:git:${custom.gitpublic.url}globalpom.git</connection>
 		<developerConnection>scm:git:${custom.gitpublic.url}globalpom.git</developerConnection>
