@@ -9,7 +9,7 @@
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 	
-	<artifactId>globalpom-groovy-testutils</artifactId>
+	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM Groovy Test Utilities</name>
     <version>1.4-SNAPSHOT</version>
     <description>Various utilities methods to help write more expressive unit tests in Groovy.</description>

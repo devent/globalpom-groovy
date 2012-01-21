@@ -16,9 +16,9 @@
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
 
 	<modules>
-		<module>../globalpom-groovy-izpack</module>
-		<module>../globalpom-groovy-izpack-singlejar</module>
-        <module>../globalpom-groovy-testutils</module>
+		<module>../globalpom-groovyizpack</module>
+		<module>../globalpom-groovyizpacksinglejar</module>
+        <module>../globalpom-groovytestutils</module>
 	</modules>
 
     <scm>
