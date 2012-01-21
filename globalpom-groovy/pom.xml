@@ -6,7 +6,6 @@
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
 		<version>1.15</version>
-		<relativePath>../globalpom-parent</relativePath>
 	</parent>
 
 	<artifactId>globalpom-groovy</artifactId>
