@@ -438,7 +438,63 @@
 				<artifactId>fdsanalysis-core</artifactId>
 				<version>2.3.1</version>
 			</dependency>
-
+            
+            <!-- sscontrol -->
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-service</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-database</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-dhclient</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-dns</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-firewall</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-hostname</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-hosts</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-httpd</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-network</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-repositories</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anrisoftware.sscontrol</groupId>
+                <artifactId>sscontrol-resolv</artifactId>
+                <version>1.0</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 
