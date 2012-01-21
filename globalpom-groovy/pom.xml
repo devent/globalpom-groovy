@@ -21,6 +21,12 @@
         <module>../globalpom-groovy-testutils</module>
 	</modules>
 
+    <scm>
+        <connection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</connection>
+        <developerConnection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</developerConnection>
+        <url>scm:git:${custom.gitpublic.url}globalpom-groovy.git</url>
+    </scm>
+    
     <dependencies>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
