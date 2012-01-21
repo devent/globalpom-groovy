@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.15-SNAPSHOT</version>
+		<version>1.14</version>
 		<relativePath>../globalpom-parent</relativePath>
 	</parent>
 
