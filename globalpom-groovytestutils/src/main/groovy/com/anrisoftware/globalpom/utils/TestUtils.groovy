@@ -31,6 +31,11 @@ class TestUtils {
 	Charset charset = Charsets.UTF_8
 
 	/**
+	 * Default epsilon for the equality of two values.
+	 */
+	static epsilon = 10**-16
+
+	/**
 	 * Create a temp file with an optional content.
 	 */
 	File createTempFile(String text="") {
@@ -169,5 +174,13 @@ class TestUtils {
 	 */
 	void makeDirectory(File directory) {
 		directory.mkdirs()
+	}
+
+	/**
+	 * Assert that two values are equals. The two values are equals if the
+	 * difference is smaller than epsilon.
+	 */
+	def assertEquals(Number a, Number b) {
+		assert (a - b).abs() < epsilon : "The difference between $a and $b is greater than $epsilon"
 	}
 }
