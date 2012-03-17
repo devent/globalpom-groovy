@@ -10,7 +10,7 @@
         <relativePath>./globalpom-groovy</relativePath>
     </parent>
   
-    <artifactId>swingcomponents-complete</artifactId>
+    <artifactId>globalpom-groovy-complete</artifactId>
     <packaging>pom</packaging>
     
     <modules>
