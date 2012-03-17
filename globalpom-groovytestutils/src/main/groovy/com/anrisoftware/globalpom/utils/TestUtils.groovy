@@ -183,4 +183,15 @@ class TestUtils {
 	def assertDecimalEquals(Number a, Number b) {
 		assert (a - b).abs() < epsilon : "The difference between $a and $b is greater than $epsilon"
 	}
+
+	/**
+	 * Assert that two decimal values in an array are equals. The two values 
+	 * are equals if the difference is smaller than epsilon.
+	 */
+	def assertDecimalArrayEquals(def a, def b) {
+		assert a.size() == b.size()
+		a.eachWithIndex { it, idx ->
+			assert (it - b[idx]).abs() < epsilon : "The difference between $a and $b is greater than $epsilon"
+		}
+	}
 }
