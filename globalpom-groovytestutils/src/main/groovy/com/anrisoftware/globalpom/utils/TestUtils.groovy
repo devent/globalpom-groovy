@@ -177,10 +177,10 @@ class TestUtils {
 	}
 
 	/**
-	 * Assert that two values are equals. The two values are equals if the
-	 * difference is smaller than epsilon.
+	 * Assert that two decimal  values are equals. The two values are equals 
+	 * if the difference is smaller than epsilon.
 	 */
-	def assertEquals(Number a, Number b) {
+	def assertDecimalEquals(Number a, Number b) {
 		assert (a - b).abs() < epsilon : "The difference between $a and $b is greater than $epsilon"
 	}
 }
