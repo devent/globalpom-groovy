@@ -95,8 +95,8 @@ class TestUtils {
 	/**
 	 * Loads the resource with the given name as a string.
 	 */
-	String resourceToString(String resourceName) {
-		Resources.toString Resources.getResource(this.class, resourceName), charset
+	String resourceToString(String resourceName, Class contextClass=this.class) {
+		Resources.toString Resources.getResource(contextClass, resourceName), charset
 	}
 
 	/**
