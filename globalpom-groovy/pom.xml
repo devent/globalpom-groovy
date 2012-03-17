@@ -11,14 +11,8 @@
 	<artifactId>globalpom-groovy</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
-    <version>1.6-SNAPSHOT</version>
+    <version>1.6</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
-
-	<modules>
-		<module>../globalpom-groovyizpack</module>
-		<module>../globalpom-groovyizpacksinglejar</module>
-        <module>../globalpom-groovytestutils</module>
-	</modules>
 
     <scm>
         <connection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</connection>
