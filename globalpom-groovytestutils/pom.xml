@@ -1,19 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
 		<version>1.6</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
-	
+
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM Groovy Test Utilities</name>
-    <version>1.6-SNAPSHOT</version>
-    <description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
-	
+	<version>1.6-SNAPSHOT</version>
+	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -31,6 +32,10 @@
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-swing-junit-4.5</artifactId>
+		</dependency>
 	</dependencies>
-	
+
 </project>
