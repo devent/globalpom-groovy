@@ -16,7 +16,7 @@ import com.google.common.testing.SerializableTester
  * Various utilities to simplify the groovy tests.
  * 
  * @author Erwin Mueller, erwin.mueller@deventm.org
- * @since 1.12
+ * @since 1.5
  */
 class TestUtils {
 
