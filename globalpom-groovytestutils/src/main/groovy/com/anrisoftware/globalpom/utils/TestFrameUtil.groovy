@@ -3,6 +3,7 @@ package com.anrisoftware.globalpom.utils
 import groovy.swing.SwingBuilder
 
 import java.awt.BorderLayout
+import java.awt.Dimension
 
 import javax.swing.JFrame
 
@@ -28,6 +29,11 @@ import org.fest.swing.fixture.FrameFixture
  */
 class TestFrameUtil extends TestUtils {
 
+	/**
+	 * The default size of the main frame, set to 300x200.
+	 */
+	def frameSize = new Dimension(300, 200)
+
 	private FrameFixture fixture
 
 	private JFrame frame
@@ -44,12 +50,9 @@ class TestFrameUtil extends TestUtils {
 	 * 
 	 * @param runTest
 	 * 		the tests to run.
-	 * 
-	 * @param frameSize
-	 * 		optional the {@link JFrame} size, default is 480x360.
 	 */
-	void beginPanelFrame(def title, def component, def runTest, def frameSize=[480, 360]) {
-		frame = createFrame(title, component, frameSize)
+	void beginPanelFrame(def title, def component, def runTest) {
+		frame = createFrame(title, component)
 		beginFixture()
 		runTest()
 		endFixture()
@@ -64,12 +67,9 @@ class TestFrameUtil extends TestUtils {
 	 * @param component
 	 * 		the {@link Component} we test.
 	 * 
-	 * @param frameSize
-	 * 		optional the {@link JFrame} size, default is 480x360.
-	 * 
 	 * @return the created {@link JFrame}.
 	 */
-	def createFrame(def title, def component, def frameSize=[480, 360]) {
+	def createFrame(def title, def component) {
 		new SwingBuilder().frame(title: title, pack: true, preferredSize: frameSize) {
 			borderLayout()
 			widget(component, constraints: BorderLayout.CENTER)
