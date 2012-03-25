@@ -49,7 +49,7 @@ class TestFrameUtil extends TestUtils {
 	 * 		optional the {@link JFrame} size, default is 480x360.
 	 */
 	void beginPanelFrame(def title, def component, def runTest, def frameSize=[480, 360]) {
-		createFrame(title, component, frameSize)
+		frame = createFrame(title, component, frameSize)
 		beginFixture()
 		runTest()
 		endFixture()
@@ -66,9 +66,11 @@ class TestFrameUtil extends TestUtils {
 	 * 
 	 * @param frameSize
 	 * 		optional the {@link JFrame} size, default is 480x360.
+	 * 
+	 * @return the created {@link JFrame}.
 	 */
-	void createFrame(def title, def component, def frameSize=[480, 360]) {
-		frame = new SwingBuilder().frame(title: title, pack: true, preferredSize: frameSize) {
+	def createFrame(def title, def component, def frameSize=[480, 360]) {
+		new SwingBuilder().frame(title: title, pack: true, preferredSize: frameSize) {
 			borderLayout()
 			widget(component, constraints: BorderLayout.CENTER)
 		}
@@ -93,6 +95,13 @@ class TestFrameUtil extends TestUtils {
 	void endFixture() {
 		fixture.cleanUp()
 		fixture = null
+	}
+
+	/**
+	 * Returns the {@link JFrame} of the fixture.
+	 */
+	JFrame getFrame() {
+		frame
 	}
 
 	/**
