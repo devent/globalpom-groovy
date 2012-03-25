@@ -40,6 +40,11 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	def iconifiable = true
 
 	/**
+	 * {@link Icon} for the internal frame.
+	 */
+	def frameIcon = null
+
+	/**
 	 * Creates a new {@link JFrame} with a {@link JInternalFrame} for the 
 	 * fixture. The component is added to the internal frame.
 	 *
@@ -60,6 +65,7 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	 */
 	def createFrame(def title, def component) {
 		def internalFrame = new JInternalFrame(title, resizable, closable, maximizable, iconifiable)
+		internalFrame.frameIcon = frameIcon
 		internalFrame.setSize internalFrameSize
 		internalFrame.setVisible true
 		internalFrame.setSelected true
