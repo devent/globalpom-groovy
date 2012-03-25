@@ -6,6 +6,7 @@ import java.awt.BorderLayout
 import java.awt.Dimension
 
 import javax.swing.JFrame
+import javax.swing.UIManager
 
 import org.fest.swing.edt.GuiActionRunner
 import org.fest.swing.edt.GuiQuery
@@ -30,9 +31,30 @@ import org.fest.swing.fixture.FrameFixture
 class TestFrameUtil extends TestUtils {
 
 	/**
-	 * The default size of the main frame, set to 300x200.
+	 * Name of the system look&feel.
+	 */
+	public static SYSTEM_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel"
+
+	/**
+	 * Name of the GTK look&feel.
+	 */
+	public static GTK_LOOK_AND_FEEL = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+
+	/**
+	 * Name of the nimbus look&feel.
+	 */
+	public static NIMBUS_LOOK_AND_FEEL = "javax.swing.plaf.nimbus.NimbusLookAndFeel"
+
+	/**
+	 * The size of the main frame, default set to 300x200.
 	 */
 	def frameSize = new Dimension(300, 200)
+
+	/**
+	 * The name of the look and feel used, default to 
+	 * "javax.swing.plaf.metal.MetalLookAndFeel".
+	 */
+	def lookAndFeel = SYSTEM_LOOK_AND_FEEL
 
 	private FrameFixture fixture
 
@@ -52,6 +74,7 @@ class TestFrameUtil extends TestUtils {
 	 * 		the tests to run.
 	 */
 	void beginPanelFrame(def title, def component, def runTest) {
+		UIManager.setLookAndFeel(lookAndFeel)
 		frame = createFrame(title, component)
 		beginFixture()
 		runTest()
