@@ -45,6 +45,11 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	def frameIcon = null
 
 	/**
+	 * The {@link JInternalFrame} for the test.
+	 */
+	private JInternalFrame internalFrame
+
+	/**
 	 * Creates a new {@link JFrame} with a {@link JInternalFrame} for the 
 	 * fixture. The component is added to the internal frame.
 	 *
@@ -64,7 +69,7 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	 * @return the created {@link JFrame}.
 	 */
 	def createFrame(def title, def component) {
-		def internalFrame = new JInternalFrame(title, resizable, closable, maximizable, iconifiable)
+		this.internalFrame = new JInternalFrame(title, resizable, closable, maximizable, iconifiable)
 		internalFrame.frameIcon = frameIcon
 		internalFrame.setSize internalFrameSize
 		internalFrame.setVisible true
@@ -77,5 +82,12 @@ class TestInternalFrameUtil extends TestFrameUtil {
 		frame.contentPane.add internalFrame
 		frame.setPreferredSize frameSize as Dimension
 		frame
+	}
+
+	/**
+	 * The {@link JInternalFrame} for the test.
+	 */
+	JInternalFrame getInternalFrame() {
+		internalFrame
 	}
 }
