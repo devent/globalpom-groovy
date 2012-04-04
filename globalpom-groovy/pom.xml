@@ -12,7 +12,7 @@
 	<artifactId>globalpom-groovy</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.7</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
 
     <scm>
