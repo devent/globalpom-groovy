@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.7</version>
+		<version>1.9-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 
@@ -35,6 +35,10 @@
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-swing-junit-4.5</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.java-diff-utils</groupId>
+			<artifactId>diffutils</artifactId>
 		</dependency>
 	</dependencies>
 
