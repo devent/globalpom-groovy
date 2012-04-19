@@ -4,6 +4,8 @@ import java.io.File
 import java.net.URL
 import java.nio.charset.Charset
 
+import name.fraser.neil.plaintext.diff_match_patch;
+
 import org.apache.commons.lang.builder.ToStringBuilder
 import org.apache.commons.lang.builder.ToStringStyle
 
@@ -75,7 +77,13 @@ class TestUtils {
 	 * Assert that the file content equals the given string.
 	 */
 	void assertFileContent(File file, String string) {
-		assert fileToString(file) == string
+		String fileString = fileToString(file)
+		if (fileString != string) {
+			def diffMatch = new diff_match_patch()
+			def patch = diffMatch.patch_make string, fileString
+			def diff = diffMatch.patch_toText patch
+			assert false : "The contents of $file and the string differs: ``$diff''"
+		}
 	}
 
 	/**
