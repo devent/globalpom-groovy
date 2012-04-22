@@ -97,6 +97,7 @@ class TestUtils {
 	 * Read the content of the file.
 	 */
 	String fileToString(File file) {
+		assert file.isFile() : "File $file does not exists"
 		Files.toString(file, charset)
 	}
 
