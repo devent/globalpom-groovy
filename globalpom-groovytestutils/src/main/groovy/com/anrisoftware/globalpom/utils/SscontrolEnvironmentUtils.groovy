@@ -22,6 +22,8 @@ abstract class SscontrolEnvironmentUtils extends TestUtils {
 
 	Injector injector
 
+	def scriptsPath
+
 	/**
 	 * Creates the Guice {@link Injector} from the modules.
 	 */
@@ -107,7 +109,16 @@ abstract class SscontrolEnvironmentUtils extends TestUtils {
 	/**
 	 * Delete the created database service environment.
 	 */
-	abstract deleteEnvironment()
+	def deleteEnvironment() {
+		def dir = new File("$_")
+		dir.isDirectory() ? Files.deleteRecursively(dir) : false
+		Files.deleteRecursively scriptsPath
+	}
+
+	/**
+	 * Returns the directory prefix of the environment.
+	 */
+	abstract get_()
 
 	/**
 	 * Loads the service script and runs the workers. After the tests are 
@@ -129,7 +140,8 @@ abstract class SscontrolEnvironmentUtils extends TestUtils {
 	 * 
 	 * @see SscontrolEnvironmentUtils#runScript(Class, String, URL, Object, Object, Object, boolean)
 	 */
-	abstract runScript(String scriptName, def profile, def tests, boolean delete=true)
+	abstract runScript(String scriptName, def profile, def tests,
+	boolean delete=true)
 
 	/**
 	 * Loads the service script and runs the workers. After the tests are 
@@ -140,9 +152,6 @@ abstract class SscontrolEnvironmentUtils extends TestUtils {
 	 * 
 	 * @param scriptName
 	 * 		the name of the script to load.
-	 * 
-	 * @param scriptsPath
-	 * 		the URL of the scripts path.
 	 * 
 	 * @param services
 	 * 		the services.
@@ -156,16 +165,20 @@ abstract class SscontrolEnvironmentUtils extends TestUtils {
 	 * @param delete
 	 * 		whether to delete the environment after the tests are run.
 	 */
-	void runScript(Class handlerClass, String scriptName, URL scriptsPath, def services, def profile, def tests, boolean delete=true) {
+	void runScript(Class handlerClass, String scriptName, def services,
+	def profile, def tests, boolean delete=true) {
 		try {
-			runScriptWithHandler handlerClass, scriptName, scriptsPath, services, profile
+			scriptsPath = copyScript scriptName
+			runScriptWithHandler handlerClass, scriptName,
+					fileToURL(scriptsPath), services, profile
 			tests()
 		} finally {
 			delete ? deleteEnvironment() : false
 		}
 	}
 
-	private runScriptWithHandler(Class handlerClass, String scriptName, URL scriptsPath, def services, def profile) {
+	private runScriptWithHandler(Class handlerClass, String scriptName,
+	URL scriptsPath, def services, def profile) {
 		def handler = injector.getInstance handlerClass
 		handler.loadScript(scriptsPath, scriptName, services)
 		handler.getWorkers(profile, services).each { it.call() }
