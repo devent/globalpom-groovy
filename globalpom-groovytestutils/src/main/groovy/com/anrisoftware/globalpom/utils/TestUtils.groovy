@@ -1,6 +1,7 @@
 package com.anrisoftware.globalpom.utils
 
 import java.io.File
+import java.io.InputStream;
 import java.net.URL
 import java.nio.charset.Charset
 
@@ -28,14 +29,46 @@ class TestUtils {
 	static toStringStyle = ToStringBuilder.setDefaultStyle(ToStringStyle.SHORT_PREFIX_STYLE)
 
 	/**
-	 * The default {@link Charset} for the tests.
-	 */
-	Charset charset = Charsets.UTF_8
-
-	/**
 	 * Default epsilon for the equality of two values.
 	 */
 	static epsilon = 10**-16
+
+	/**
+	 * Opens the {@link InputStream} of the resource with the given name, 
+	 * relative to the context class.
+	 * 
+	 * @param contextClass
+	 * 		the context {@link Class} to which the resource is search at.
+	 * 
+	 * @param resourceName
+	 * 		the name of the resource.
+	 * 
+	 * @since 1.7
+	 */
+	static InputStream openResourceStream(Class contextClass, String resourceName) {
+		resourceURL contextClass, resourceName openStream()
+	}
+
+	/**
+	 * Returns the resource {@link URL} with the given name, relative to the
+	 * context class.
+	 * 
+	 * @param contextClass
+	 * 		the context {@link Class} to which the resource is search at.
+	 * 
+	 * @param resourceName
+	 * 		the name of the resource.
+	 * 
+	 * @since 1.7
+	 */
+	static URL resourceURL(Class contextClass, String resourceName) {
+		Resources.getResource contextClass, resourceName
+	}
+
+	/**
+	 * The default {@link Charset} for the tests.
+	 */
+	Charset charset = Charsets.UTF_8
 
 	/**
 	 * Create a temp file with an optional content.
