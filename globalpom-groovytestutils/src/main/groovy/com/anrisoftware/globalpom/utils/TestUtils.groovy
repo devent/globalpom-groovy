@@ -74,7 +74,8 @@ class TestUtils {
 	}
 
 	/**
-	 * Assert that the file content equals the given string.
+	 * Assert that the file content equals the given string. If not we create
+	 * a difference patch of the string and the file content.
 	 */
 	void assertFileContent(File file, String string) {
 		String fileString = fileToString(file)
@@ -83,6 +84,21 @@ class TestUtils {
 			def patch = diffMatch.patch_make string, fileString
 			def diff = diffMatch.patch_toText patch
 			assert false : "The contents of $file and the string differs: ``$diff''"
+		}
+	}
+
+	/**
+	 * Assert that one string equals a different string. If not we create
+	 * a difference patch of the string and the file content.
+	 * 
+	 * @since 1.7
+	 */
+	void assertStringContent(String stringA, String stringB) {
+		if (stringA != stringB) {
+			def diffMatch = new diff_match_patch()
+			def patch = diffMatch.patch_make stringA, stringB
+			def diff = diffMatch.patch_toText patch
+			assert false : "The contents of string A and the string B differs: ``$diff''"
 		}
 	}
 
