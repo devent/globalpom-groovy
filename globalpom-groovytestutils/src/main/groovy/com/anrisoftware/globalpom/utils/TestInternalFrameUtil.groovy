@@ -47,7 +47,7 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	/**
 	 * The {@link JInternalFrame} for the test.
 	 */
-	private JInternalFrame internalFrame
+	JInternalFrame internalFrame
 
 	/**
 	 * Creates a new {@link JFrame} with a {@link JInternalFrame} for the 
