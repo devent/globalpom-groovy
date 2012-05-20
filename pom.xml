@@ -6,14 +6,15 @@
     <parent>
         <artifactId>globalpom-groovy</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>1.6</version>
+        <version>1.9</version>
         <relativePath>./globalpom-groovy</relativePath>
     </parent>
   
-    <artifactId>globalpom-groovy-complete</artifactId>
+    <artifactId>globalpom-groovy-bundle</artifactId>
     <packaging>pom</packaging>
     
     <modules>
+        <module>globalpom-groovy</module>
         <module>globalpom-groovyizpack</module>
         <module>globalpom-groovyizpacksinglejar</module>
         <module>globalpom-groovytestutils</module>
