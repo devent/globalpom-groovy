@@ -262,6 +262,24 @@ class TestUtils {
 	 * The method is good for actions that the user have to see to verify, like
 	 * GUI actions.
 	 * </p>
+	 * <p>
+	 * Example with only the initial delay:
+	 * </p>
+	 * <pre>
+	 * sequencedActions([{ }])
+	 * </pre>
+	 * <p>
+	 * Example to execute different GUI related actions:
+	 * </p>
+	 * <pre>
+	 * sequencedActions([
+	 * 		{ childrenPanel.name = name },
+	 * 		{ model.addElement "Ddd" },
+	 * 		{ model.addElement "Eee" },
+	 * 		{ model.addElement "Fff" }
+	 * ])
+	 * </pre>
+	 * 
 	 * 
 	 * @param actions
 	 * 		a list of actions. The first actions is the initial action and is
