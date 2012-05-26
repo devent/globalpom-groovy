@@ -1,11 +1,11 @@
 package com.anrisoftware.globalpom.utils
 
 import java.io.File
-import java.io.InputStream;
+import java.io.InputStream
 import java.net.URL
 import java.nio.charset.Charset
 
-import name.fraser.neil.plaintext.diff_match_patch;
+import name.fraser.neil.plaintext.diff_match_patch
 
 import org.apache.commons.lang.builder.ToStringBuilder
 import org.apache.commons.lang.builder.ToStringStyle
@@ -251,5 +251,43 @@ class TestUtils {
 		a.eachWithIndex { it, idx ->
 			assert (it - b[idx]).abs() < epsilon : "The difference between $a and $b is greater than $epsilon"
 		}
+	}
+
+	/**
+	 * <p>
+	 * Starts the executions of actions after an initial delay. The actions are
+	 * delayed for a fixed amount of time. At the end we have again a delay.
+	 * </p>
+	 * <p>
+	 * The method is good for actions that the user have to see to verify, like
+	 * GUI actions.
+	 * </p>
+	 * 
+	 * @param actions
+	 * 		a list of actions. The first actions is the initial action and is
+	 * 		executed after the <code>startDelay</code> delay. Subsequent actions
+	 * 		are executed after the fixed delay specified in 
+	 * 		<code>actionDelay</code>. After the last action the delay 
+	 * 		<code>endDelay</code> is waited.
+	 * 
+	 * @param startDelay
+	 * 		the initial delay before the first action, in milliseconds.
+	 * 
+	 * @param endDelay
+	 * 		the last delay after the actions are executed, in milliseconds.
+	 * 
+	 * @param actionDelay
+	 * 		the delay before each action is executed, in milliseconds.
+	 * 
+	 * @since 1.8
+	 */
+	def sequencedActions(def actions, long startDelay=2000, long endDelay=2000, long actionDelay=1000) {
+		Thread.sleep startDelay
+		actions.first()()
+		actions.drop(1).each {
+			Thread.sleep actionDelay
+			it()
+		}
+		Thread.sleep endDelay
 	}
 }
