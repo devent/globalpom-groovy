@@ -34,6 +34,27 @@ class TestUtils {
 	static epsilon = 10**-16
 
 	/**
+	 * The initial delay before the first action, in milliseconds.
+	 * 
+	 * @see #sequencedActions(Object)
+	 */
+	static long startDelay = 2000
+
+	/**
+	 * The last delay after the actions are executed, in milliseconds.
+	 * 
+	 * @see #sequencedActions(Object)
+	 */
+	static long endDelay = 2000
+
+	/**
+	 * The delay before each action is executed, in milliseconds.
+	 * 
+	 * @see #sequencedActions(Object)
+	 */
+	static long actionDelay = 1000
+
+	/**
 	 * Opens the {@link InputStream} of the resource with the given name, 
 	 * relative to the context class.
 	 * 
@@ -263,10 +284,10 @@ class TestUtils {
 	 * GUI actions.
 	 * </p>
 	 * <p>
-	 * Example with only the initial delay:
+	 * Example with only the initial and end delay:
 	 * </p>
 	 * <pre>
-	 * sequencedActions([{ }])
+	 * sequencedActions([])
 	 * </pre>
 	 * <p>
 	 * Example to execute different GUI related actions:
@@ -288,19 +309,17 @@ class TestUtils {
 	 * 		<code>actionDelay</code>. After the last action the delay 
 	 * 		<code>endDelay</code> is waited.
 	 * 
-	 * @param startDelay
-	 * 		the initial delay before the first action, in milliseconds.
-	 * 
-	 * @param endDelay
-	 * 		the last delay after the actions are executed, in milliseconds.
-	 * 
-	 * @param actionDelay
-	 * 		the delay before each action is executed, in milliseconds.
-	 * 
 	 * @since 1.8
+	 * 
+	 * @see #startDelay
+	 * @see #endDelay
+	 * @see #actionDelay
 	 */
-	def sequencedActions(def actions, long startDelay=2000, long endDelay=2000, long actionDelay=1000) {
+	def sequencedActions(def actions) {
 		Thread.sleep startDelay
+		if (actions.empty) {
+			return
+		}
 		actions.first()()
 		actions.drop(1).each {
 			Thread.sleep actionDelay
