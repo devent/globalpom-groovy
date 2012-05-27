@@ -287,7 +287,13 @@ class TestUtils {
 	 * Example with only the initial and end delay:
 	 * </p>
 	 * <pre>
-	 * sequencedActions([])
+	 * sequencedActions { }
+	 * </pre>
+	 * <p>
+	 * Example with only one action:
+	 * </p>
+	 * <pre>
+	 * sequencedActions { model.addElement "Ddd" }
 	 * </pre>
 	 * <p>
 	 * Example to execute different GUI related actions:
@@ -317,13 +323,17 @@ class TestUtils {
 	 */
 	def sequencedActions(def actions) {
 		Thread.sleep startDelay
-		if (actions.empty) {
-			return
-		}
-		actions.first()()
-		actions.drop(1).each {
-			Thread.sleep actionDelay
-			it()
+		if (actions instanceof List) {
+			if (actions.empty) {
+				return
+			}
+			actions.first()()
+			actions.drop(1).each {
+				Thread.sleep actionDelay
+				it()
+			}
+		} else if (actions instanceof Closure) {
+			actions()
 		}
 		Thread.sleep endDelay
 	}
