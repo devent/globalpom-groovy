@@ -56,9 +56,9 @@ class TestFrameUtil extends TestUtils {
 	 */
 	def lookAndFeel = SYSTEM_LOOK_AND_FEEL
 
-	private FrameFixture fixture
+	FrameFixture fixture
 
-	private JFrame frame
+	JFrame frame
 
 	/**
 	 * Creates a new {@link FrameFixture} with a {@link JFrame}, runs the test
@@ -73,11 +73,11 @@ class TestFrameUtil extends TestUtils {
 	 * @param runTest
 	 * 		the tests to run.
 	 */
-	void beginPanelFrame(def title, def component, def runTest) {
+	void beginPanelFrame(def title, def component, Object... tests) {
 		UIManager.setLookAndFeel(lookAndFeel)
 		frame = createFrame(title, component)
 		beginFixture()
-		runTest()
+		sequencedActions tests
 		endFixture()
 	}
 
@@ -104,12 +104,12 @@ class TestFrameUtil extends TestUtils {
 	 */
 	void beginFixture() {
 		fixture = createFrameFixture()
-		fixture.show();
+		fixture.show()
 	}
 
 	private createFrameFixture() {
-		def result = GuiActionRunner.execute([executeInEDT: { frame } ] as GuiQuery);
-		new FrameFixture(result);
+		def result = GuiActionRunner.execute([executeInEDT: { frame } ] as GuiQuery)
+		new FrameFixture(result)
 	}
 
 	/**
