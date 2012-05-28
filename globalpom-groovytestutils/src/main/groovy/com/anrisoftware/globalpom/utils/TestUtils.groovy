@@ -299,12 +299,12 @@ class TestUtils {
 	 * Example to execute different GUI related actions:
 	 * </p>
 	 * <pre>
-	 * sequencedActions([
+	 * sequencedActions(
 	 * 		{ childrenPanel.name = name },
 	 * 		{ model.addElement "Ddd" },
 	 * 		{ model.addElement "Eee" },
 	 * 		{ model.addElement "Fff" }
-	 * ])
+	 * )
 	 * </pre>
 	 * 
 	 * 
@@ -321,19 +321,12 @@ class TestUtils {
 	 * @see #endDelay
 	 * @see #actionDelay
 	 */
-	def sequencedActions(def actions) {
+	def sequencedActions(Object... actions) {
 		Thread.sleep startDelay
-		if (actions instanceof List) {
-			if (actions.empty) {
-				return
-			}
-			actions.first()()
-			actions.drop(1).each {
-				Thread.sleep actionDelay
-				it()
-			}
-		} else if (actions instanceof Closure) {
-			actions()
+		actions.first()()
+		actions.drop(1).each {
+			Thread.sleep actionDelay
+			it()
 		}
 		Thread.sleep endDelay
 	}
