@@ -17,7 +17,8 @@
      encoding="UTF-8"
      terminal="false"
      KdeSubstUID="false"
-     initialState="normal">
+     initialState="normal"
+     iconFile="$INSTALL_PATH\etc\${project.custom.icon.windows}">
         <createForPack name="Windows run files" />
     </shortcut>
     <shortcut
@@ -35,7 +36,8 @@
      encoding="UTF-8"
      terminal="true"
      KdeSubstUID="false"
-     initialState="normal">
+     initialState="normal"
+     iconFile="$INSTALL_PATH\etc\${project.custom.icon.windows}">
         <createForPack name="Windows run files" />
     </shortcut>
     <shortcut

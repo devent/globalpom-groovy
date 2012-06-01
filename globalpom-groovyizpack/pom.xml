@@ -12,7 +12,7 @@
 	<artifactId>globalpom-groovyizpack</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy IzPack</name>
-    <version>1.6</version>
+    <version>1.7-SNAPSHOT</version>
 	<description>Groovy and IzPack installer support. Defines a new property compile-izpack that will bundle and create an IzPack installer Jar file.</description>
 
 	<properties>
@@ -23,6 +23,8 @@
 		<project.custom.organization.url>http://www.anr-institute.com</project.custom.organization.url>
 		<project.custom.author.name />
 		<project.custom.author.email />
+        <project.custom.icon.unix>application.png</project.custom.icon.unix>
+		<project.custom.icon.windows>application.ico</project.custom.icon.windows>
 	</properties>
 
 	<dependencies>
@@ -77,6 +79,8 @@
 									<excludes>
 										<exclude>**/*.jar</exclude>
 										<exclude>**/*.pdf</exclude>
+                                        <exclude>**/*.ico</exclude>
+                                        <exclude>**/*.png</exclude>
 									</excludes>
 								</resource>
 								<resource>
@@ -85,6 +89,8 @@
 									<includes>
 										<include>**/*.jar</include>
 										<include>**/*.pdf</include>
+                                        <include>**/*.ico</include>
+                                        <include>**/*.png</include>
 									</includes>
 								</resource>
 							</resources>
