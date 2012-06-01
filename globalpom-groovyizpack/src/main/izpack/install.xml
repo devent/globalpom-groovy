@@ -71,4 +71,8 @@
         </pack>
 	</packs>
 
+    <!-- Required for creating shortcuts on Windows -->
+    <native type="izpack" name="ShellLink.dll" />
+    <native type="izpack" name="ShellLink_x64.dll" />
+
 </installation>
