@@ -18,7 +18,7 @@
      terminal="false"
      KdeSubstUID="false"
      initialState="normal"
-     iconFile="$INSTALL_PATH\etc\application.png">
+     iconFile="$INSTALL_PATH\etc\${project.custom.icon.unix}">
         <createForPack name="Linux run files" />
     </shortcut>
     <shortcut
@@ -37,7 +37,7 @@
      terminal="true"
      KdeSubstUID="false"
      initialState="normal"
-     iconFile="$INSTALL_PATH\etc\application.png">
+     iconFile="$INSTALL_PATH\etc\${project.custom.icon.unix}">
         <createForPack name="Linux run files" />
     </shortcut>
     <shortcut
