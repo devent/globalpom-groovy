@@ -61,12 +61,12 @@
 		<pack name="Doc-English" required="no" preselected="yes"
 			installGroups="Documentation">
 			<description>English Documentation.</description>
-			<file src="doc/en/" targetdir="$INSTALL_PATH" />
+			<file src="doc/en/" targetdir="$INSTALL_PATH/doc/" />
 		</pack>
         <pack name="Doc-Deutsch" required="no" preselected="yes"
             installGroups="Documentation">
             <description>Deutsche Dokumentation.</description>
-            <file src="doc/de/" targetdir="$INSTALL_PATH" />
+            <file src="doc/de/" targetdir="$INSTALL_PATH/doc/" />
         </pack>
 	</packs>
 
