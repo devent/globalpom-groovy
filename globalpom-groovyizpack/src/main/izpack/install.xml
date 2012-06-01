@@ -22,8 +22,8 @@
 
 	<resources>
         <res id="InfoPanel.info" src="doc/en/readme.txt" />
-        <res src="win_shortcutSpec.xml" id="Win_shortcutSpec.xml" />
-        <res src="unix_shortcutSpec.xml" id="Unix_shortcutSpec.xml" />
+        <res id="shortcutSpec.xml" src="win_shortcutSpec.xml" />
+        <res id="Unix_shortcutSpec.xml" src="unix_shortcutSpec.xml" />
 	</resources>
 
 	<panels>
