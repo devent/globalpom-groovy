@@ -12,7 +12,7 @@
 	<artifactId>globalpom-groovyizpack</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy IzPack</name>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.7</version>
 	<description>Groovy and IzPack installer support. Defines a new property compile-izpack that will bundle and create an IzPack installer Jar file.</description>
 
 	<properties>
