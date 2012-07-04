@@ -1,8 +1,5 @@
 package com.anrisoftware.globalpom.utils
 
-import java.io.File
-import java.io.InputStream
-import java.net.URL
 import java.nio.charset.Charset
 
 import name.fraser.neil.plaintext.diff_match_patch
@@ -55,35 +52,72 @@ class TestUtils {
 	static long actionDelay = 1000
 
 	/**
-	 * Opens the {@link InputStream} of the resource with the given name, 
-	 * relative to the context class.
-	 * 
-	 * @param contextClass
-	 * 		the context {@link Class} to which the resource is search at.
+	 * Opens the resource with the specified name, relative to the 
+	 * context class.
 	 * 
 	 * @param resourceName
 	 * 		the name of the resource.
 	 * 
-	 * @since 1.7
+	 * @param contextClass
+	 * 		the context {@link Class} to which the resource is search at.
+	 * 		If {@code null} the resource will be located with 
+	 * 		{@code Resources.class.getClassLoader()}.
+	 * 
+	 * @return the opened {@link InputStream} of the resource.
+	 * 
+	 * @since 1.8
 	 */
-	static InputStream openResourceStream(Class contextClass, String resourceName) {
+	static InputStream openResourceStream(String resourceName, Class contextClass=null) {
 		resourceURL contextClass, resourceName openStream()
 	}
 
 	/**
-	 * Returns the resource {@link URL} with the given name, relative to the
-	 * context class.
+	 * Reads the resource with the specified name and specified character set, 
+	 * relative to the context class.
+	 * 
+	 * @param resourceName
+	 * 			the name of the resource.
 	 * 
 	 * @param contextClass
-	 * 		the context {@link Class} to which the resource is search at.
+	 * 			the context {@link Class} to which the resource is search at.
+	 * 			If {@code null} the resource will be located with 
+	 * 			{@code Resources.class.getClassLoader()}.
+	 * 
+	 * @param charset
+	 * 			the {@link Charset} of the resource. If {@code null} the 
+	 * 			default character set is used as returned by 
+	 * 			{@link Charset#getDefaultCharset()}.
+	 * 
+	 * @return the content of the resource.
+	 * 
+	 * @since 1.8
+	 */
+	static String resourceToString(String resourceName, Class contextClass=null, Charset charset=Charset.defaultCharset) {
+		Resources.toString resourceURL(resourceName, contextClass), charset
+	}
+
+	/**
+	 * Returns the resource URL with the specified name, relative to the
+	 * context class.
 	 * 
 	 * @param resourceName
 	 * 		the name of the resource.
 	 * 
-	 * @since 1.7
+	 * @param contextClass
+	 * 		the context {@link Class} to which the resource is search at.
+	 * 		If {@code null} the resource will be located with 
+	 * 		{@code Resources.class.getClassLoader()}.
+	 * 
+	 * @return the {@link URL} of the resource.
+	 * 
+	 * @since 1.8
 	 */
-	static URL resourceURL(Class contextClass, String resourceName) {
-		Resources.getResource contextClass, resourceName
+	static URL resourceURL(String resourceName, Class contextClass=null) {
+		if (contextClass == null) {
+			Resources.getResource resourceName
+		} else {
+			Resources.getResource contextClass, resourceName
+		}
 	}
 
 	/**
@@ -172,23 +206,47 @@ class TestUtils {
 	}
 
 	/**
-	 * Loads the resource with the given name as a string.
+	 * Reads the resource with the specified name and the current
+	 * object as the context.
+	 * 
+	 * @param resourceName
+	 * 			the name of the resource.
+	 * 
+	 * @return the content of the resource.
+	 * 
+	 * @since 1.8
 	 */
-	String resourceToString(String resourceName, Class contextClass=this.class) {
-		Resources.toString Resources.getResource(contextClass, resourceName), charset
+	String resourceToStringFromObject(String resourceName) {
+		Resources.toString Resources.getResource(this.class, resourceName), charset
 	}
 
 	/**
-	 * Opens the stream of the resource with the given name.
+	 * Opens the stream of the resource with the specified name and the current
+	 * object as the context.
+	 * 
+	 * @param resourceName
+	 * 			the name of the resource.
+	 * 
+	 * @return the opened {@link InputStream} from the resource.
+	 * 
+	 * @since 1.8
 	 */
-	InputStream openResourceStream(String resourceName) {
-		resourceURL(resourceName).openStream()
+	InputStream openResourceStreamFromObject(String resourceName) {
+		resourceURLFromObject(resourceName).openStream()
 	}
 
 	/**
-	 * Returns the resource URL with the given name.
+	 * Returns the resource with the specified name and the current
+	 * object as the context.
+	 * 
+	 * @param resourceName
+	 * 			the name of the resource.
+	 * 
+	 * @return the {@link URL} of the resource.
+	 * 
+	 * @since 1.8
 	 */
-	URL resourceURL(String resourceName) {
+	URL resourceURLFromObject(String resourceName) {
 		Resources.getResource(this.class, resourceName)
 	}
 
