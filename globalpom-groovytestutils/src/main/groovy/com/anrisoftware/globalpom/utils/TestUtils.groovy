@@ -4,8 +4,8 @@ import java.nio.charset.Charset
 
 import name.fraser.neil.plaintext.diff_match_patch
 
-import org.apache.commons.lang.builder.ToStringBuilder
-import org.apache.commons.lang.builder.ToStringStyle
+import org.apache.commons.lang3.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringStyle
 
 import com.google.common.base.Charsets
 import com.google.common.io.Files
