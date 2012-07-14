@@ -2,3 +2,6 @@
 .settings/
 target/
 *~
+.directory
+*.orig
+.classpath
