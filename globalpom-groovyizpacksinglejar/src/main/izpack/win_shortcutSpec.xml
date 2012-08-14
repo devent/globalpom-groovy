@@ -17,11 +17,12 @@
      encoding="UTF-8"
      terminal="false"
      KdeSubstUID="false"
-     initialState="normal">
+     initialState="normal"
+     iconFile="$INSTALL_PATH\etc\\${project.custom.icon.windows}">
         <createForPack name="Windows run files" />
     </shortcut>
     <shortcut
-       name="Debug ${project.name}"
+       name="Debug Mode ${project.name}"
      programGroup="yes"
      desktop="yes"
      applications="no"
@@ -35,7 +36,8 @@
      encoding="UTF-8"
      terminal="true"
      KdeSubstUID="false"
-     initialState="normal">
+     initialState="normal"
+     iconFile="$INSTALL_PATH\etc\\${project.custom.icon.windows}">
         <createForPack name="Windows run files" />
     </shortcut>
     <shortcut
@@ -45,9 +47,9 @@
      applications="no"
      startMenu="yes"
      startup="no"
-     target="$INSTALL_PATH\doc\readme-en.txt"
+     target="$INSTALL_PATH\doc\en\readme.txt"
      commandLine=""
-     workingDirectory="$INSTALL_PATH\doc"
+     workingDirectory="$INSTALL_PATH\doc\en"
      description="${project.name} readme file"
      type="Link"
      encoding="UTF-8">
@@ -60,9 +62,9 @@
      applications="no"
      startMenu="yes"
      startup="no"
-     target="$INSTALL_PATH\doc\readme-de.txt"
+     target="$INSTALL_PATH\doc\de\readme.txt"
      commandLine=""
-     workingDirectory="$INSTALL_PATH\doc"
+     workingDirectory="$INSTALL_PATH\doc\de"
      description="${project.name} liesmich Datei"
      type="Link"
      encoding="UTF-8">

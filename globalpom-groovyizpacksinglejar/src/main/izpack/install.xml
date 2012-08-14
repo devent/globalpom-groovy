@@ -5,7 +5,7 @@
 	<info>
 		<appname>${project.name}</appname>
 		<appversion>${project.version}</appversion>
-		<appsubpath>${project.artifactId}/${project.artifactId}-${project.version}</appsubpath>
+        <appsubpath>${project.artifactId}-${project.version}</appsubpath>
 		<url>${project.custom.organization.url}</url>
 		<authors>
 			<author name="${project.custom.author.name}" email="${project.custom.author.email}" />
@@ -22,8 +22,8 @@
 
 	<resources>
 		<res id="InfoPanel.info" src="doc/readme-en.txt" />
-        <res src="win_shortcutSpec.xml" id="Win_shortcutSpec.xml" />
-        <res src="unix_shortcutSpec.xml" id="Unix_shortcutSpec.xml" />
+        <res id="shortcutSpec.xml" src="win_shortcutSpec.xml" />
+        <res id="Unix_shortcutSpec.xml" src="unix_shortcutSpec.xml" />
 	</resources>
 
 	<panels>
@@ -61,13 +61,17 @@
 		<pack name="Doc-English" required="no" preselected="yes"
 			installGroups="Documentation">
 			<description>English Documentation.</description>
-			<file src="doc/readme-en.txt" targetdir="$INSTALL_PATH/doc/" />
+            <file src="doc/en/" targetdir="$INSTALL_PATH/doc/" />
 		</pack>
         <pack name="Doc-Deutsch" required="no" preselected="yes"
             installGroups="Documentation">
             <description>Deutsche Dokumentation.</description>
-            <file src="doc/readme-de.txt" targetdir="$INSTALL_PATH/doc/" />
+            <file src="doc/de/" targetdir="$INSTALL_PATH/doc/" />
         </pack>
 	</packs>
+
+    <!-- Required for creating shortcuts on Windows -->
+    <native type="izpack" name="ShellLink.dll" />
+    <native type="izpack" name="ShellLink_x64.dll" />
 
 </installation>
