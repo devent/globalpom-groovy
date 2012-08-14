@@ -1,7 +1,4 @@
-symlink=`find "$0" -printf "%l"`
-cd "`dirname "${symlink:-$0}"`"
+set mainjar=%CD%\lib\${project.artifactId}-${project.version}-jar-with-dependencies.jar
+set log="-Dlog4j.configuration=file:///%CD%/etc/debug-log4j.properties"
 
-set mainjar="..\..\lib\${project.artifactId}-${project.version}-jar-with-dependencies.jar"
-set log="-Dlog4j.configuration=file:///$PWD/../../etc/debug-log4j.properties"
-
-java "%log%" -jar "%mainjar%"
+java %log% -jar %mainjar%
