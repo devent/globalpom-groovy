@@ -15,6 +15,7 @@
 	<name>Global POM Groovy</name>
 	<version>1.12-SNAPSHOT</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
+	<inceptionYear>2011</inceptionYear>
 
 	<scm>
 		<connection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</connection>
