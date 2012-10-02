@@ -14,6 +14,11 @@
 	<name>Global POM Groovy Test Utilities</name>
 	<version>1.9-SNAPSHOT</version>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
+	<inceptionYear>2011</inceptionYear>
+
+	<properties>
+		<project.custom.year>${project.inceptionYear}-2012</project.custom.year>
+	</properties>
 
 	<dependencies>
 		<dependency>
