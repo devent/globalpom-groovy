@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2012 Erwin Müller <erwin.mueller@deventm.org>
  *
  * This file is part of globalpom-groovytestutils.
