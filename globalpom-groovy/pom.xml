@@ -6,14 +6,14 @@
 	<parent>
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.23</version>
+		<version>1.24-SNAPSHOT</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>globalpom-groovy</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
-	<version>1.12</version>
+	<version>1.13-SNAPSHOT</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
 	<inceptionYear>2011</inceptionYear>
 
