@@ -32,7 +32,7 @@ import com.google.common.testing.SerializableTester
 
 /**
  * Various utilities to simplify the groovy tests.
- * 
+ *
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.5
  */
@@ -50,39 +50,46 @@ class TestUtils {
 
 	/**
 	 * The initial delay before the first action, in milliseconds.
-	 * 
+	 *
 	 * @see #sequencedActions(Object)
 	 */
 	static long startDelay = 2000
 
 	/**
 	 * The last delay after the actions are executed, in milliseconds.
-	 * 
+	 *
 	 * @see #sequencedActions(Object)
 	 */
 	static long endDelay = 2000
 
 	/**
 	 * The delay before each action is executed, in milliseconds.
-	 * 
+	 *
 	 * @see #sequencedActions(Object)
 	 */
 	static long actionDelay = 1000
 
 	/**
-	 * Opens the resource with the specified name, relative to the 
+	 * The default {@link Charset} for the tests.
+	 *
+	 * @since 1.10
+	 */
+	static Charset charset = Charsets.UTF_8
+
+	/**
+	 * Opens the resource with the specified name, relative to the
 	 * context class.
-	 * 
+	 *
 	 * @param resourceName
 	 * 		the name of the resource.
-	 * 
+	 *
 	 * @param contextClass
 	 * 		the context {@link Class} to which the resource is search at.
-	 * 		If {@code null} the resource will be located with 
+	 * 		If {@code null} the resource will be located with
 	 * 		{@code Resources.class.getClassLoader()}.
-	 * 
+	 *
 	 * @return the opened {@link InputStream} of the resource.
-	 * 
+	 *
 	 * @since 1.8
 	 */
 	static InputStream openResourceStream(String resourceName, Class contextClass=null) {
@@ -90,44 +97,34 @@ class TestUtils {
 	}
 
 	/**
-	 * Reads the resource with the specified name and specified character set, 
+	 * Reads the resource with the specified name and specified character set,
 	 * relative to the context class.
-	 * 
-	 * @param resourceName
-	 * 			the name of the resource.
-	 * 
-	 * @param contextClass
-	 * 			the context {@link Class} to which the resource is search at.
-	 * 			If {@code null} the resource will be located with 
-	 * 			{@code Resources.class.getClassLoader()}.
-	 * 
-	 * @param charset
-	 * 			the {@link Charset} of the resource. If {@code null} the 
-	 * 			default character set is used as returned by 
-	 * 			{@link Charset#getDefaultCharset()}.
-	 * 
+	 *
+	 * @param resource
+	 * 				the URL of the resource.
+	 *
 	 * @return the content of the resource.
-	 * 
-	 * @since 1.8
+	 *
+	 * @since 1.10
 	 */
-	static String resourceToString(String resourceName, Class contextClass=null, Charset charset=Charset.defaultCharset) {
-		Resources.toString resourceURL(resourceName, contextClass), charset
+	static String resourceToString(URL resource) {
+		Resources.toString resource, charset
 	}
 
 	/**
 	 * Returns the resource URL with the specified name, relative to the
 	 * context class.
-	 * 
+	 *
 	 * @param resourceName
 	 * 		the name of the resource.
-	 * 
+	 *
 	 * @param contextClass
 	 * 		the context {@link Class} to which the resource is search at.
-	 * 		If {@code null} the resource will be located with 
+	 * 		If {@code null} the resource will be located with
 	 * 		{@code Resources.class.getClassLoader()}.
-	 * 
+	 *
 	 * @return the {@link URL} of the resource.
-	 * 
+	 *
 	 * @since 1.8
 	 */
 	static URL resourceURL(String resourceName, Class contextClass=null) {
@@ -139,14 +136,41 @@ class TestUtils {
 	}
 
 	/**
-	 * The default {@link Charset} for the tests.
+	 * Copy the resource to a target file.
+	 *
+	 * @since 1.10
 	 */
-	Charset charset = Charsets.UTF_8
+	static void copyResourceToFile(URL resource, File target) {
+		def source = resourceToString(resource)
+		Files.write source, target, charset
+	}
+
+	/**
+	 * Copy the resource to a target file and make the file executable.
+	 *
+	 * @since 1.10
+	 */
+	static void copyResourceToCommand(URL resource, File target) {
+		copyResourceToFile(resource, target)
+		target.setExecutable true, false
+	}
+
+	/**
+	 * Copy a binary resource to a target file.
+	 *
+	 * @since 1.10
+	 */
+	static void copyBinResourceToFile(URL resource, File target) {
+		def source = Resources.toByteArray resource
+		Files.write source, target
+	}
 
 	/**
 	 * Create a temp file with an optional content.
+	 *
+	 * @since 1.10
 	 */
-	File createTempFile(String text="") {
+	static File createTempFile(String text="") {
 		def tmpFile = File.createTempFile(this.getClass().name, null)
 		Files.write text.toString(), tmpFile, charset
 		tmpFile.deleteOnExit()
@@ -155,11 +179,13 @@ class TestUtils {
 
 	/**
 	 * Create a temporary directory.
-	 * 
+	 *
 	 * @param files
 	 * 		closure that is called with the created directory.
+	 *
+	 * @since 1.10
 	 */
-	File createTempDirectory(def files= {}) {
+	static File createTempDirectory(def files= {}) {
 		def dir = Files.createTempDir()
 		files(dir)
 		return dir
@@ -167,23 +193,29 @@ class TestUtils {
 
 	/**
 	 * Returns the URL from the parent directory of the file.
+	 *
+	 * @since 1.10
 	 */
-	URL parentFileToURL(File file) {
+	static URL parentFileToURL(File file) {
 		fileToURL file.parentFile
 	}
 
 	/**
 	 * Returns the URL from the file.
+	 *
+	 * @since 1.10
 	 */
-	URL fileToURL(File file) {
+	static URL fileToURL(File file) {
 		file.toURI().toURL()
 	}
 
 	/**
 	 * Assert that the file content equals the given string. If not we create
 	 * a difference patch of the string and the file content.
+	 *
+	 * @since 1.10
 	 */
-	void assertFileContent(File file, String string) {
+	static void assertFileContent(File file, String string) {
 		String fileString = fileToString(file)
 		if (fileString != string) {
 			def diffMatch = new diff_match_patch()
@@ -196,10 +228,10 @@ class TestUtils {
 	/**
 	 * Assert that one string equals a different string. If not we create
 	 * a difference patch of the string and the file content.
-	 * 
-	 * @since 1.7
+	 *
+	 * @since 1.10
 	 */
-	void assertStringContent(String stringA, String stringB) {
+	static void assertStringContent(String stringA, String stringB) {
 		if (stringA != stringB) {
 			def diffMatch = new diff_match_patch()
 			def patch = diffMatch.patch_make stringA, stringB
@@ -210,15 +242,19 @@ class TestUtils {
 
 	/**
 	 * Assert that the file is a directory.
+	 *
+	 * @since 1.10
 	 */
-	void assertFileIsDirectory(File file) {
+	static void assertFileIsDirectory(File file) {
 		assert file.isDirectory()
 	}
 
 	/**
 	 * Read the content of the file.
+	 *
+	 * @since 1.10
 	 */
-	String fileToString(File file) {
+	static String fileToString(File file) {
 		assert file.isFile() : "File $file does not exists"
 		Files.toString(file, charset)
 	}
@@ -226,12 +262,12 @@ class TestUtils {
 	/**
 	 * Reads the resource with the specified name and the current
 	 * object as the context.
-	 * 
+	 *
 	 * @param resourceName
 	 * 			the name of the resource.
-	 * 
+	 *
 	 * @return the content of the resource.
-	 * 
+	 *
 	 * @since 1.8
 	 */
 	String resourceToStringFromObject(String resourceName) {
@@ -241,12 +277,12 @@ class TestUtils {
 	/**
 	 * Opens the stream of the resource with the specified name and the current
 	 * object as the context.
-	 * 
+	 *
 	 * @param resourceName
 	 * 			the name of the resource.
-	 * 
+	 *
 	 * @return the opened {@link InputStream} from the resource.
-	 * 
+	 *
 	 * @since 1.8
 	 */
 	InputStream openResourceStreamFromObject(String resourceName) {
@@ -256,12 +292,12 @@ class TestUtils {
 	/**
 	 * Returns the resource with the specified name and the current
 	 * object as the context.
-	 * 
+	 *
 	 * @param resourceName
 	 * 			the name of the resource.
-	 * 
+	 *
 	 * @return the {@link URL} of the resource.
-	 * 
+	 *
 	 * @since 1.8
 	 */
 	URL resourceURLFromObject(String resourceName) {
@@ -270,8 +306,10 @@ class TestUtils {
 
 	/**
 	 * Test if a closure is throwing the expected exception class.
+	 *
+	 * @since 1.10
 	 */
-	void shouldFailWith(Class exceptionClass, Closure closure) {
+	static void shouldFailWith(Class exceptionClass, Closure closure) {
 		try {
 			closure()
 			assert false : "An expected exception was not thrown: $exceptionClass"
@@ -281,10 +319,12 @@ class TestUtils {
 	}
 
 	/**
-	 * Test if a closure is throwing the expected exception class as the 
+	 * Test if a closure is throwing the expected exception class as the
 	 * cause of the current exception.
+	 *
+	 * @since 1.10
 	 */
-	void shouldFailWithCause(Class exceptionClass, Closure closure) {
+	static void shouldFailWithCause(Class exceptionClass, Closure closure) {
 		try {
 			closure()
 			assert false : "The expected cause was not thrown: $exceptionClass"
@@ -295,55 +335,39 @@ class TestUtils {
 
 	/**
 	 * Serializes and deserializes the specified object.
+	 *
+	 * @since 1.10
 	 */
-	def reserialize(def object) {
+	static def reserialize(def object) {
 		SerializableTester.reserialize(object)
 	}
 
 	/**
-	 * Copy the resource to a target file.
-	 */
-	void copyResourceToFile(String resourceName, File target) {
-		def source = resourceToString(resourceName)
-		Files.write source, target, charset
-	}
-
-	/**
-	 * Copy the resource to a target file and make the file executable.
-	 */
-	void copyResourceToCommand(String resourceName, File target) {
-		copyResourceToFile(resourceName, target)
-		target.setExecutable true, false
-	}
-
-	/**
-	 * Copy a binary resource to a target file.
-	 */
-	void copyBinResourceToFile(String resourceName, File target) {
-		def source = Resources.toByteArray Resources.getResource(this.class, resourceName)
-		Files.write source, target
-	}
-
-	/**
 	 * Create a new directory. It creates the parent directories automatically.
+	 *
+	 * @since 1.10
 	 */
-	void makeDirectory(File directory) {
+	static void makeDirectory(File directory) {
 		directory.mkdirs()
 	}
 
 	/**
-	 * Assert that two decimal  values are equals. The two values are equals 
+	 * Assert that two decimal  values are equals. The two values are equals
 	 * if the difference is smaller than epsilon.
+	 *
+	 * @since 1.10
 	 */
-	def assertDecimalEquals(Number a, Number b) {
+	static void assertDecimalEquals(Number a, Number b) {
 		assert (a - b).abs() < epsilon : "The difference between $a and $b is greater than $epsilon"
 	}
 
 	/**
-	 * Assert that two decimal values in an array are equals. The two values 
+	 * Assert that two decimal values in an array are equals. The two values
 	 * are equals if the difference is smaller than epsilon.
+	 *
+	 * @since 1.10
 	 */
-	def assertDecimalArrayEquals(def a, def b) {
+	static void assertDecimalArrayEquals(def a, def b) {
 		assert a.size() == b.size()
 		a.eachWithIndex { it, idx ->
 			assert (it - b[idx]).abs() < epsilon : "The difference between $a and $b is greater than $epsilon"
@@ -382,22 +406,22 @@ class TestUtils {
 	 * 		{ model.addElement "Fff" }
 	 * )
 	 * </pre>
-	 * 
-	 * 
+	 *
+	 *
 	 * @param actions
 	 * 		a list of actions. The first actions is the initial action and is
 	 * 		executed after the <code>startDelay</code> delay. Subsequent actions
-	 * 		are executed after the fixed delay specified in 
-	 * 		<code>actionDelay</code>. After the last action the delay 
+	 * 		are executed after the fixed delay specified in
+	 * 		<code>actionDelay</code>. After the last action the delay
 	 * 		<code>endDelay</code> is waited.
-	 * 
-	 * @since 1.8
-	 * 
+	 *
 	 * @see #startDelay
 	 * @see #endDelay
 	 * @see #actionDelay
+	 *
+	 * @since 1.10
 	 */
-	def sequencedActions(Object... actions) {
+	static void sequencedActions(Object... actions) {
 		Thread.sleep startDelay
 		actions.first()()
 		actions.drop(1).each {
@@ -405,5 +429,54 @@ class TestUtils {
 			it()
 		}
 		Thread.sleep endDelay
+	}
+
+	/**
+	 * Run tests with created files in a temporary directory.
+	 *
+	 * @param count
+	 * 				how many empty files should be created in
+	 * 				the temporary directory.
+	 *
+	 * @param name
+	 * 				the prefix name of the empty files.
+	 *
+	 * @param callback
+	 * 				the callback that will run the tests. The first parameter
+	 * 				is a map with the temporary directory and the created
+	 * 				files: {@code [dir: <tmpDirectory>, files: <files>]}
+	 *
+	 * @param keepFiles
+	 * 				set to {@code true} to not delete the temporary directory
+	 * 				and the created files after the tests are run. Default to
+	 * 				{@code false}.
+	 *
+	 * @since 1.10
+	 */
+	static void withFiles(int count, def name, def callback, boolean keepFiles = false, def copy = { }) {
+		def files = createFiles count, name
+		try {
+			copy files
+			callback files
+		} finally {
+			keepFiles ? null : deleteFiles(files)
+		}
+	}
+
+	private static def createFiles(int count, def name) {
+		def files = []
+		def file
+		def dir = createTempDirectory({ dir ->
+			(1..count).each {
+				file = new File(dir, "${name}_$it")
+				file.createNewFile()
+				files << file
+			}
+		})
+		[dir: dir, files: files]
+	}
+
+	private static deleteFiles(def files) {
+		files.dir.deleteDir()
 	}
 }
