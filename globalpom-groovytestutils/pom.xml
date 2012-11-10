@@ -31,7 +31,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
+			<artifactId>groovy</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.easytesting</groupId>
@@ -40,6 +40,11 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-swing</artifactId>
+			<version>${project.custom.groovy.version}</version>
 		</dependency>
 	</dependencies>
 
