@@ -434,10 +434,6 @@ class TestUtils {
 	/**
 	 * Run tests with created files in a temporary directory.
 	 *
-	 * @param count
-	 * 				how many empty files should be created in
-	 * 				the temporary directory.
-	 *
 	 * @param name
 	 * 				the prefix name of the empty files.
 	 *
@@ -446,6 +442,16 @@ class TestUtils {
 	 * 				is a map with the temporary directory and the created
 	 * 				files: {@code [dir: <tmpDirectory>, files: <files>]}
 	 *
+	 * @param copy
+	 * 				the callback that is used to create files in the temporary
+	 * 				directory. The first parameter
+	 * 				is a map with the temporary directory and the created
+	 * 				files: {@code [dir: <tmpDirectory>, files: <files>]}
+	 *
+	 * @param count
+	 * 				how many empty files should be created in
+	 * 				the temporary directory. Default to zero.
+	 *
 	 * @param keepFiles
 	 * 				set to {@code true} to not delete the temporary directory
 	 * 				and the created files after the tests are run. Default to
@@ -453,7 +459,7 @@ class TestUtils {
 	 *
 	 * @since 1.10
 	 */
-	static void withFiles(int count, def name, def callback, boolean keepFiles = false, def copy = { }) {
+	static void withFiles(String name, def callback, def copy = { }, int count = 0, boolean keepFiles = false) {
 		def files = createFiles count, name
 		try {
 			copy files
