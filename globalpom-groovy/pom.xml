@@ -13,7 +13,7 @@
 	<artifactId>globalpom-groovy</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
-	<version>1.13-SNAPSHOT</version>
+	<version>1.13</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
 	<inceptionYear>2011</inceptionYear>
 
