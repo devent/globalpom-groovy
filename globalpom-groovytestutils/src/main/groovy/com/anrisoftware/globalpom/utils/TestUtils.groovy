@@ -216,15 +216,41 @@ class TestUtils {
 	 * Assert that the file content equals the given string. If not we create
 	 * a difference patch of the string and the file content.
 	 *
-	 * @since 1.10
+	 * @param file
+	 * 				the {@link File} that content is read.
+	 *
+	 * @param expected
+	 * 				the expected resource {@link URL}, {@link File} or object.
+	 * 				The resource URL or file is read. If it's neither a
+	 * 				resource URL nor a file then the object is interpreted
+	 * 				as a string.
+	 *
+	 * @param trim
+	 * 				if the file content and the expected should be trimmed
+	 * 				before compared. Default is set to {@code false} which
+	 * 				means no trimming is done. See {@link String#trim()}.
+	 *
+	 * @since 1.11
 	 */
-	static void assertFileContent(File file, String string) {
+	static void assertFileContent(File file, def expected, boolean trim = false) {
 		String fileString = fileToString(file)
+		String string
+		if (expected instanceof URL) {
+			string = resourceToString((URL) expected)
+		} else if (expected instanceof File) {
+			string = fileToString((File) expected)
+		} else {
+			string = expected.toString()
+		}
+		if (trim) {
+			fileString = fileString.trim()
+			string = string.trim()
+		}
 		if (fileString != string) {
 			def diffMatch = new diff_match_patch()
 			def patch = diffMatch.patch_make string, fileString
 			def diff = diffMatch.patch_toText patch
-			assert false : "The contents of $file and the string differs: ``$diff''"
+			assert false : "The contents of $file and the expected differs: ``$diff''"
 		}
 	}
 
