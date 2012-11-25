@@ -137,16 +137,19 @@ class TestUtils {
 
 	/**
 	 * Copy the resource to a target file.
+	 * Create any parent directories of the target.
 	 *
 	 * @since 1.10
 	 */
 	static void copyResourceToFile(URL resource, File target) {
 		def source = resourceToString(resource)
+		target.parentFile.mkdirs()
 		Files.write source, target, charset
 	}
 
 	/**
 	 * Copy the resource to a target file and make the file executable.
+	 * Create any parent directories of the target.
 	 *
 	 * @since 1.10
 	 */
