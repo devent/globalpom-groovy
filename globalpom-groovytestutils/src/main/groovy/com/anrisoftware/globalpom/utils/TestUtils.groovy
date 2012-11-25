@@ -468,50 +468,31 @@ class TestUtils {
 	 *
 	 * @param callback
 	 * 				the callback that will run the tests. The first parameter
-	 * 				is a map with the temporary directory and the created
-	 * 				files: {@code [dir: <tmpDirectory>, files: <files>]}
+	 * 				is the temporary directory {@link File}.
 	 *
 	 * @param copy
 	 * 				the callback that is used to create files in the temporary
 	 * 				directory. The first parameter
-	 * 				is a map with the temporary directory and the created
-	 * 				files: {@code [dir: <tmpDirectory>, files: <files>]}
+	 * 				is the temporary directory {@link File}.
 	 *
-	 * @param count
-	 * 				how many empty files should be created in
-	 * 				the temporary directory. Default to zero.
+	 * @param tmpdir
+	 * 				the {@link File} temporary directory. If set to {@code null}
+	 * 				then the temporary directory is created.
 	 *
 	 * @param keepFiles
 	 * 				set to {@code true} to not delete the temporary directory
 	 * 				and the created files after the tests are run. Default to
 	 * 				{@code false}.
 	 *
-	 * @since 1.10
+	 * @since 1.11
 	 */
-	static void withFiles(String name, def callback, def copy = { }, int count = 0, boolean keepFiles = false) {
-		def files = createFiles count, name
+	static void withFiles(String name, def callback, def copy = { }, File tmpdir = null, boolean keepFiles = false) {
+		tmpdir = tmpdir == null ? createTempDirectory() : tmpdir
 		try {
-			copy files
-			callback files
+			copy tmpdir
+			callback tmpdir
 		} finally {
-			keepFiles ? null : deleteFiles(files)
+			keepFiles ? null : tmpdir.deleteDir()
 		}
-	}
-
-	private static def createFiles(int count, def name) {
-		def files = []
-		def file
-		def dir = createTempDirectory({ dir ->
-			(1..count).each {
-				file = new File(dir, "${name}_$it")
-				file.createNewFile()
-				files << file
-			}
-		})
-		[dir: dir, files: files]
-	}
-
-	private static deleteFiles(def files) {
-		files.dir.deleteDir()
 	}
 }
