@@ -24,6 +24,7 @@ import name.fraser.neil.plaintext.diff_match_patch
 
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
+import org.slf4j.LoggerFactory
 
 import com.google.common.base.Charsets
 import com.google.common.io.Files
@@ -242,29 +243,37 @@ class TestUtils {
 		} else {
 			string = expected.toString()
 		}
-		if (trim) {
-			fileString = fileString.trim()
-			string = string.trim()
-		}
-		if (fileString != string) {
-			def diffMatch = new diff_match_patch()
-			def patch = diffMatch.patch_make string, fileString
-			def diff = diffMatch.patch_toText patch
-			assert false : "The contents of $file and the expected differs: ``$diff''"
-		}
+		assertStringContent(fileString, string, trim)
 	}
 
 	/**
 	 * Assert that one string equals a different string. If not we create
 	 * a difference patch of the string and the file content.
 	 *
-	 * @since 1.10
+	 * @param string
+	 * 				the test string.
+	 *
+	 * @param expected
+	 * 				the expected string.
+	 *
+	 * @param trim
+	 * 				if the file content and the expected should be trimmed
+	 * 				before compared. Default is set to {@code false} which
+	 * 				means no trimming is done. See {@link String#trim()}.
+	 *
+	 * @since 1.11
 	 */
-	static void assertStringContent(String stringA, String stringB) {
-		if (stringA != stringB) {
+	static void assertStringContent(String string, String expected, boolean trim = false) {
+		if (trim) {
+			expected = expected.trim()
+			string = string.trim()
+		}
+		if (string != expected) {
+			def log = LoggerFactory.getLogger(TestUtils)
 			def diffMatch = new diff_match_patch()
-			def patch = diffMatch.patch_make stringA, stringB
+			def patch = diffMatch.patch_make string, expected
 			def diff = diffMatch.patch_toText patch
+			log.error "String A: '{}', string B: '{}'.", string, expected
 			assert false : "The contents of string A and the string B differs: ``$diff''"
 		}
 	}
