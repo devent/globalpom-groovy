@@ -22,6 +22,7 @@ import java.nio.charset.Charset
 
 import name.fraser.neil.plaintext.diff_match_patch
 
+import org.apache.commons.lang3.StringUtils
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import org.slf4j.LoggerFactory
@@ -76,6 +77,28 @@ class TestUtils {
 	 * @since 1.10
 	 */
 	static Charset charset = Charsets.UTF_8
+
+	/**
+	 * Flag if the strings should be trimmed before comparison. 
+	 * Default is set to {@code false} which
+	 * means no trimming is done. See {@link String#trim()}.
+	 * 
+	 * @since 1.11
+	 */
+	static boolean trimStrings = false
+
+	/**
+	 * Flag if the line ending should be ignored before comparison of
+	 * strings. Default is set to {@code true} which
+	 * means the line ending is ignored.
+	 * <p>
+	 * On different systems the line ending can be different: Windows is using
+	 * {@code \n\r} and Linux is using {@code \n}. If this flag is set to
+	 * {@code true} the line ending will be treated the same.
+	 * 
+	 * @since 1.11
+	 */
+	static boolean normalizeLineEnding = true
 
 	/**
 	 * Opens the resource with the specified name, relative to the
@@ -226,14 +249,9 @@ class TestUtils {
 	 * 				resource URL nor a file then the object is interpreted
 	 * 				as a string.
 	 *
-	 * @param trim
-	 * 				if the file content and the expected should be trimmed
-	 * 				before compared. Default is set to {@code false} which
-	 * 				means no trimming is done. See {@link String#trim()}.
-	 *
 	 * @since 1.11
 	 */
-	static void assertFileContent(File file, def expected, boolean trim = false) {
+	static void assertFileContent(File file, def expected) {
 		String fileString = fileToString(file)
 		String string
 		if (expected instanceof URL) {
@@ -243,12 +261,13 @@ class TestUtils {
 		} else {
 			string = expected.toString()
 		}
-		assertStringContent(fileString, string, trim)
+		assertStringContent(fileString, string)
 	}
 
 	/**
 	 * Assert that one string equals a different string. If not we create
-	 * a difference patch of the string and the file content.
+	 * a difference patch of the string and the file content. The file content is trimmed before
+	 * comparison, according to {@link #trimStrings}.
 	 *
 	 * @param string
 	 * 				the test string.
@@ -256,17 +275,18 @@ class TestUtils {
 	 * @param expected
 	 * 				the expected string.
 	 *
-	 * @param trim
-	 * 				if the file content and the expected should be trimmed
-	 * 				before compared. Default is set to {@code false} which
-	 * 				means no trimming is done. See {@link String#trim()}.
-	 *
 	 * @since 1.11
 	 */
-	static void assertStringContent(String string, String expected, boolean trim = false) {
-		if (trim) {
+	static void assertStringContent(String string, String expected) {
+		if (trimStrings) {
 			expected = expected.trim()
 			string = string.trim()
+		}
+		if (normalizeLineEnding) {
+			string = StringUtils.replace(string, "\r\n", "\n")
+			string = StringUtils.replace(string, "\r", "\n")
+			expected = StringUtils.replace(expected, "\r\n", "\n")
+			expected = StringUtils.replace(expected, "\r", "\n")
 		}
 		if (string != expected) {
 			def log = LoggerFactory.getLogger(TestUtils)
