@@ -6,13 +6,13 @@
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.13</version>
+		<version>1.14-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM Groovy :: Test Utilities</name>
-	<version>1.11</version>
+	<version>1.12-SNAPSHOT</version>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	<inceptionYear>2011</inceptionYear>
 
@@ -44,8 +44,11 @@
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-swing</artifactId>
-			<version>${project.custom.groovy.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-exec</artifactId>
+        </dependency>
 	</dependencies>
 
 </project>
