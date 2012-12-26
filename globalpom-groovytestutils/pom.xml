@@ -6,13 +6,13 @@
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.14</version>
+		<version>1.15-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM Groovy :: Test Utilities</name>
-	<version>1.12</version>
+	<version>1.13-SNAPSHOT</version>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	<inceptionYear>2011</inceptionYear>
 
@@ -29,10 +29,10 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava-testlib</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-swing-junit-4.5</artifactId>
@@ -52,6 +52,10 @@
         <dependency>
         	<groupId>com.google.inject.extensions</groupId>
         	<artifactId>guice-assistedinject</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>joda-time</groupId>
+        	<artifactId>joda-time</artifactId>
         </dependency>
 	</dependencies>
 

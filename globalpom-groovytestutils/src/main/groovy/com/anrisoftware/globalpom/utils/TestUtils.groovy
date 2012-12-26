@@ -25,6 +25,8 @@ import name.fraser.neil.plaintext.diff_match_patch
 import org.apache.commons.lang3.StringUtils
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
+import org.joda.time.Duration
+import org.joda.time.ReadableDuration
 import org.slf4j.LoggerFactory
 
 import com.google.common.base.Charsets
@@ -79,10 +81,10 @@ class TestUtils {
 	static Charset charset = Charsets.UTF_8
 
 	/**
-	 * Flag if the strings should be trimmed before comparison. 
+	 * Flag if the strings should be trimmed before comparison.
 	 * Default is set to {@code false} which
 	 * means no trimming is done. See {@link String#trim()}.
-	 * 
+	 *
 	 * @since 1.11
 	 */
 	static boolean trimStrings = false
@@ -95,7 +97,7 @@ class TestUtils {
 	 * On different systems the line ending can be different: Windows is using
 	 * {@code \n\r} and Linux is using {@code \n}. If this flag is set to
 	 * {@code true} the line ending will be treated the same.
-	 * 
+	 *
 	 * @since 1.11
 	 */
 	static boolean normalizeLineEnding = true
@@ -523,5 +525,32 @@ class TestUtils {
 		} finally {
 			keepFiles ? null : tmpdir.deleteDir()
 		}
+	}
+
+	/**
+	 * Waits for a condition to be true and asserts that the time it took is
+	 * less then the specified timeout duration.
+	 *
+	 * <pre>
+	 * waitFor { condition == true }
+	 * </pre>
+	 *
+	 * @param condition
+	 * 				the condition for that we wait for.
+	 *
+	 * @param timeout
+	 * 				the {@link ReadableDuration} duration for the timeout.
+	 * 				Defaults to 25 seconds.
+	 *
+	 * @since 1.13
+	 */
+	static void waitFor(def condition, ReadableDuration timeout = Duration.parse("PT25S")) {
+		long time = System.currentTimeMillis()
+		long timeNow = time
+		while (!condition() && timeNow - time < timeout.millis) {
+			Thread.sleep 100
+			timeNow = System.currentTimeMillis()
+		}
+		assert timeNow - time <= timeout.millis
 	}
 }
