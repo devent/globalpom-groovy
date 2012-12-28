@@ -27,6 +27,7 @@ import org.apache.commons.exec.ExecuteResultHandler
 import org.apache.commons.exec.ExecuteWatchdog
 import org.apache.commons.exec.Executor
 import org.apache.commons.exec.PumpStreamHandler
+import org.joda.time.Duration
 
 /**
  * Creates a process for tests.
@@ -38,11 +39,11 @@ import org.apache.commons.exec.PumpStreamHandler
 class ProcessContext {
 
 	/**
-	 * Sets the timeout of the process in milliseconds.
+	 * Sets the {@link Duration} timeout of the process in milliseconds.
 	 * <p>
 	 * Defaults to 10 seconds.
 	 */
-	public static timeoutMs = 10*1000
+	public static Duration timeout = Duration.parse("PT10S")
 
 	private final CommandLine cmdLine
 
@@ -65,7 +66,7 @@ class ProcessContext {
 	ProcessContext(String process) {
 		cmdLine = CommandLine.parse(process)
 		processResult = new DefaultExecuteResultHandler()
-		watchdog = new ExecuteWatchdog(timeoutMs)
+		watchdog = new ExecuteWatchdog(timeout.millis)
 		executor = new DefaultExecutor()
 		processStream = new ByteArrayOutputStream()
 		executor.streamHandler = new PumpStreamHandler(processStream)
