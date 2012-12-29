@@ -18,6 +18,7 @@
  */
 package com.anrisoftware.globalpom.utils
 
+import static com.anrisoftware.globalpom.utils.TestUtils.*
 import groovy.swing.SwingBuilder
 
 import java.awt.BorderLayout
@@ -32,21 +33,23 @@ import org.fest.swing.fixture.FrameFixture
 
 /**
  * Creates a {@link FrameFixture} to test components in a {@link JFrame}.
- * 
- * The method {@link TestFrameUtil#beginPanelFrame()} can be used to create
- * a new {@link FrameFixture}, run the tests for one component and end the 
- * fixture all in one test method:
- * 
+ * <p>
+ * The method {@link TestFrameUtil#withFixture(Object...)} can be used to run
+ * tests in the fixture. Multiple tests can be specified and they will be
+ * run in a sequence. See {@link TestUtils#sequencedActions(Object...)}. *
+ *
  * <pre>
- * beginPanelFrame "Test Frame", component, {
+ * new TestFrameUtil("Test Frame", component).withFixture {
+ * 		fixture.button("test_button").click()
+ * }, {
  * 		fixture.label("test").requireText "test label"
  * }
  * </pre>
- * 
+ *
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.6
  */
-class TestFrameUtil extends TestUtils {
+class TestFrameUtil {
 
 	/**
 	 * Name of the system look&feel.
@@ -69,31 +72,50 @@ class TestFrameUtil extends TestUtils {
 	def frameSize = new Dimension(300, 200)
 
 	/**
-	 * The name of the look and feel used, default to 
-	 * "javax.swing.plaf.metal.MetalLookAndFeel".
+	 * The name of the look and feel used.
 	 */
-	def lookAndFeel = SYSTEM_LOOK_AND_FEEL
+	def lookAndFeel
 
+	/**
+	 * The current {@link FrameFixture}.
+	 */
 	FrameFixture fixture
 
+	/**
+	 * The {@link JFrame} of the fixture.
+	 */
 	JFrame frame
+
+	/**
+	 * Sets the title, the test component and optional the Look&Feel to use.
+	 *
+	 * @param title
+	 * 					the title of the frame.
+	 *
+	 * @param component
+	 * 					the {@link Component} component to test.
+	 *
+	 * @param lookAndFeel
+	 * 					optional the Look&Feel to use. Defaults to the system
+	 * 					Look&Feel.
+	 *
+	 * @since 1.13
+	 */
+	TestFrameUtil(String title, def component, def lookAndFeel = SYSTEM_LOOK_AND_FEEL) {
+		UIManager.setLookAndFeel(lookAndFeel)
+		frame = createFrame(title, component)
+	}
 
 	/**
 	 * Creates a new {@link FrameFixture} with a {@link JFrame}, runs the test
 	 * and end the fixture after the test.
-	 * 
-	 * @param title
-	 * 		the title of the {@link JFrame}.
-	 * 
-	 * @param component
-	 * 		the {@link Component} we test.
-	 * 
-	 * @param runTest
-	 * 		the tests to run.
+	 *
+	 * @param tests
+	 * 					the tests to run.
+	 *
+	 * @since 1.13
 	 */
-	void beginPanelFrame(def title, def component, Object... tests) {
-		UIManager.setLookAndFeel(lookAndFeel)
-		frame = createFrame(title, component)
+	void withFixture(Object... tests) {
 		beginFixture()
 		sequencedActions tests
 		endFixture()
@@ -101,16 +123,16 @@ class TestFrameUtil extends TestUtils {
 
 	/**
 	 * Creates the {@link JFrame} for the fixture.
-	 * 
+	 *
 	 * @param title
 	 * 		the title of the {@link JFrame}.
-	 * 
+	 *
 	 * @param component
 	 * 		the {@link Component} we test.
-	 * 
+	 *
 	 * @return the created {@link JFrame}.
 	 */
-	def createFrame(def title, def component) {
+	protected createFrame(String title, def component) {
 		new SwingBuilder().frame(title: title, pack: true, preferredSize: frameSize) {
 			borderLayout()
 			widget(component, constraints: BorderLayout.CENTER)
@@ -118,9 +140,9 @@ class TestFrameUtil extends TestUtils {
 	}
 
 	/**
-	 * Creates and show the {@link FrameFixture}. 
+	 * Creates and show the {@link FrameFixture}.
 	 */
-	void beginFixture() {
+	private beginFixture() {
 		fixture = createFrameFixture()
 		fixture.show()
 	}
@@ -133,22 +155,11 @@ class TestFrameUtil extends TestUtils {
 	/**
 	 * End the {@link FrameFixture}.
 	 */
-	void endFixture() {
+	private endFixture() {
 		fixture.cleanUp()
 		fixture = null
 	}
 
-	/**
-	 * Returns the {@link JFrame} of the fixture.
-	 */
-	JFrame getFrame() {
-		frame
-	}
-
-	/**
-	 * Returns the current {@link FrameFixture}.
-	 */
-	FrameFixture getFixture() {
-		fixture
+	private void setFixture(FrameFixture fixture) {
 	}
 }

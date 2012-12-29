@@ -68,25 +68,30 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	JInternalFrame internalFrame
 
 	/**
-	 * Creates a new {@link JFrame} with a {@link JInternalFrame} for the 
-	 * fixture. The component is added to the internal frame.
+	 * Sets the title, the test component and optional the Look&Feel to use.
 	 *
 	 * @param title
-	 * 		the title of the {@link JFrame}.
+	 * 					the title of the frame.
 	 *
 	 * @param component
-	 * 		the {@link Component} we test.
+	 * 					the {@link Component} component to test.
 	 *
-	 * @param frameSize
-	 * 		optional the {@link JFrame} size, default is 1024x768.
-	 * 
-	 * @param internalFrameSize
-	 * 		optional the size of the {@link JInternalFrame}, default is the
-	 * 		half of the {@link JFrame} size.
-	 * 
-	 * @return the created {@link JFrame}.
+	 * @param lookAndFeel
+	 * 					optional the Look&Feel to use. Defaults to the system
+	 * 					Look&Feel.
+	 *
+	 * @since 1.13
 	 */
-	def createFrame(def title, def component) {
+	TestInternalFrameUtil(String title, def component, def lookAndFeel = TestFrameUtil.SYSTEM_LOOK_AND_FEEL) {
+		super(title, component, lookAndFeel)
+	}
+
+
+	/**
+	 * Creates a new {@link JFrame} with a {@link JInternalFrame} for the
+	 * fixture. The component is added to the internal frame.
+	 */
+	protected createFrame(String title, def component) {
 		this.internalFrame = new JInternalFrame(title, resizable, closable, maximizable, iconifiable)
 		internalFrame.frameIcon = frameIcon
 		internalFrame.setSize internalFrameSize
