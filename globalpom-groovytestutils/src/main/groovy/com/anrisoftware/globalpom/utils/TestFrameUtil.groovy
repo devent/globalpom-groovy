@@ -71,10 +71,9 @@ class TestFrameUtil {
 	 */
 	def frameSize = new Dimension(300, 200)
 
-	/**
-	 * The name of the look and feel used.
-	 */
-	def lookAndFeel
+	private final String title
+
+	private final def component
 
 	/**
 	 * The current {@link FrameFixture}.
@@ -103,7 +102,8 @@ class TestFrameUtil {
 	 */
 	TestFrameUtil(String title, def component, def lookAndFeel = SYSTEM_LOOK_AND_FEEL) {
 		UIManager.setLookAndFeel(lookAndFeel)
-		frame = createFrame(title, component)
+		this.title = title
+		this.component = component
 	}
 
 	/**
@@ -116,6 +116,7 @@ class TestFrameUtil {
 	 * @since 1.13
 	 */
 	void withFixture(Object... tests) {
+		frame = createFrame(title, component)
 		beginFixture()
 		sequencedActions tests
 		endFixture()

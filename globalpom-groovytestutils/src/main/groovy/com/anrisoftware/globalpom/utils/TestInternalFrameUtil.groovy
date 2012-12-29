@@ -40,22 +40,22 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	/**
 	 * If the internal frame can be resized, default is <code>true</code>.
 	 */
-	def resizable = true
+	boolean resizable = true
 
 	/**
-	 * If the internal frame can be closed, default is <code>false</code>.
+	 * If the internal frame can be closed, booleanault is <code>false</code>.
 	 */
-	def closable = false
+	boolean closable = false
 
 	/**
-	 * If the internal frame is maximized, default is <code>true</code>.
+	 * If the internal frame is maximized, booleanault is <code>true</code>.
 	 */
-	def maximizable = true
+	boolean maximizable = true
 
 	/**
-	 * If the internal frame is iconified, default is <code>true</code>.
+	 * If the internal frame is iconified, booleanault is <code>true</code>.
 	 */
-	def iconifiable = true
+	boolean iconifiable = true
 
 	/**
 	 * {@link Icon} for the internal frame.
@@ -65,7 +65,7 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	/**
 	 * The {@link JInternalFrame} for the test.
 	 */
-	JInternalFrame internalFrame
+	final JInternalFrame internalFrame
 
 	/**
 	 * Sets the title, the test component and optional the Look&Feel to use.
@@ -84,6 +84,7 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	 */
 	TestInternalFrameUtil(String title, def component, def lookAndFeel = TestFrameUtil.SYSTEM_LOOK_AND_FEEL) {
 		super(title, component, lookAndFeel)
+		this.internalFrame = new JInternalFrame(title)
 	}
 
 
@@ -92,25 +93,20 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	 * fixture. The component is added to the internal frame.
 	 */
 	protected createFrame(String title, def component) {
-		this.internalFrame = new JInternalFrame(title, resizable, closable, maximizable, iconifiable)
+		internalFrame.resizable = resizable
+		internalFrame.closable = closable
+		internalFrame.maximizable = maximizable
+		internalFrame.iconifiable = iconifiable
 		internalFrame.frameIcon = frameIcon
-		internalFrame.setSize internalFrameSize
-		internalFrame.setVisible true
-		internalFrame.setSelected true
-		internalFrame.setLayout new BorderLayout()
+		internalFrame.size = internalFrameSize
+		internalFrame.visible = true
+		internalFrame.layout = new BorderLayout()
 		internalFrame.add component
-
 		def frame = new JFrame(title)
 		frame.contentPane = new JDesktopPane()
 		frame.contentPane.add internalFrame
+		internalFrame.setSelected true
 		frame.setPreferredSize frameSize as Dimension
 		frame
-	}
-
-	/**
-	 * The {@link JInternalFrame} for the test.
-	 */
-	JInternalFrame getInternalFrame() {
-		internalFrame
 	}
 }
