@@ -435,29 +435,21 @@ class TestUtils {
 	}
 
 	/**
-	 * <p>
 	 * Starts the executions of actions after an initial delay. The actions are
 	 * delayed for a fixed amount of time. At the end we have again a delay.
-	 * </p>
 	 * <p>
 	 * The method is good for actions that the user have to see to verify, like
 	 * GUI actions.
-	 * </p>
 	 * <p>
 	 * Example with only the initial and end delay:
-	 * </p>
 	 * <pre>
 	 * sequencedActions { }
 	 * </pre>
-	 * <p>
 	 * Example with only one action:
-	 * </p>
 	 * <pre>
 	 * sequencedActions { model.addElement "Ddd" }
 	 * </pre>
-	 * <p>
 	 * Example to execute different GUI related actions:
-	 * </p>
 	 * <pre>
 	 * sequencedActions(
 	 * 		{ childrenPanel.name = name },
@@ -475,6 +467,9 @@ class TestUtils {
 	 * 		<code>actionDelay</code>. After the last action the delay
 	 * 		<code>endDelay</code> is waited.
 	 *
+	 * @param arg
+	 * 					the argument that is passed to each action.
+	 *
 	 * @see #startDelay
 	 * @see #endDelay
 	 * @see #actionDelay
@@ -482,11 +477,58 @@ class TestUtils {
 	 * @since 1.10
 	 */
 	static void sequencedActions(Object... actions) {
+		sequencedActionsWith(null, actions)
+	}
+
+
+	/**
+	 * Starts the executions of actions after an initial delay. The actions are
+	 * delayed for a fixed amount of time. At the end we have again a delay.
+	 * <p>
+	 * The method is good for actions that the user have to see to verify, like
+	 * GUI actions.
+	 * <p>
+	 * Example with only the initial and end delay:
+	 * <pre>
+	 * sequencedActionsWith foo, { }
+	 * </pre>
+	 * Example with only one action:
+	 * <pre>
+	 * sequencedActions foo, { model.addElement "Ddd" }
+	 * </pre>
+	 * Example to execute different GUI related actions:
+	 * <pre>
+	 * sequencedActions(foo,
+	 * 		{ childrenPanel.name = name },
+	 * 		{ model.addElement "Ddd" },
+	 * 		{ model.addElement "Eee" },
+	 * 		{ model.addElement "Fff" }
+	 * )
+	 * </pre>
+	 *
+	 *
+	 * @param actions
+	 * 		a list of actions. The first actions is the initial action and is
+	 * 		executed after the <code>startDelay</code> delay. Subsequent actions
+	 * 		are executed after the fixed delay specified in
+	 * 		<code>actionDelay</code>. After the last action the delay
+	 * 		<code>endDelay</code> is waited.
+	 *
+	 * @param arg
+	 * 					the argument that is passed to each action.
+	 *
+	 * @see #startDelay
+	 * @see #endDelay
+	 * @see #actionDelay
+	 *
+	 * @since 1.13
+	 */
+	static void sequencedActionsWith(def arg, Object... actions) {
 		Thread.sleep startDelay
-		actions.first()()
+		actions.first()(arg)
 		actions.drop(1).each {
 			Thread.sleep actionDelay
-			it()
+			it(arg)
 		}
 		Thread.sleep endDelay
 	}

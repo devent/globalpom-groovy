@@ -108,18 +108,22 @@ class TestFrameUtil {
 
 	/**
 	 * Creates a new {@link FrameFixture} with a {@link JFrame}, runs the test
-	 * and end the fixture after the test.
+	 * and end the fixture after the test. The {@link FrameFixture} is passed
+	 * to each specified test.
 	 *
 	 * @param tests
 	 * 					the tests to run.
 	 *
+	 * @return this {@link TestFrameUtil}
+	 *
 	 * @since 1.13
 	 */
-	void withFixture(Object... tests) {
+	TestFrameUtil withFixture(Object... tests) {
 		frame = createFrame(title, component)
 		beginFixture()
-		sequencedActions tests
+		sequencedActionsWith fixture, tests
 		endFixture()
+		this
 	}
 
 	/**
