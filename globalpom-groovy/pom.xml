@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.27-SNAPSHOT</version>
+		<version>1.27</version>
 		<relativePath />
 	</parent>
 
