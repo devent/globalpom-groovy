@@ -12,7 +12,7 @@
 
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM Groovy :: Test Utilities</name>
-	<version>1.13</version>
+	<version>1.14-SNAPSHOT</version>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	<inceptionYear>2011</inceptionYear>
 
@@ -29,10 +29,10 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava-testlib</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-swing-junit-4.5</artifactId>
@@ -45,18 +45,24 @@
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-swing</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-exec</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>com.google.inject.extensions</groupId>
-        	<artifactId>guice-assistedinject</artifactId>
-        </dependency>
-        <dependency>
-        	<groupId>joda-time</groupId>
-        	<artifactId>joda-time</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-assistedinject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anrisoftware.propertiesutils</groupId>
+			<artifactId>propertiesutils-contextproperties</artifactId>
+			<version>1.5</version>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 </project>
