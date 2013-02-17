@@ -29,10 +29,12 @@ class TableArrayPrinter {
 	 */
 	public static TableArrayPrinter withDefaults(def values) {
 		def p = new ContextPropertiesFactory(TableArrayPrinter).fromResource(PROPERTIES_RESOURCE)
-		def table = values
-		if (values.getClass().isArray()) {
-			table = values.inject([]) { list, v ->
-				list << Arrays.asList(ArrayUtils.toObject(v))
+		def table = values.inject([]) { list, v ->
+			if (v.getClass().isArray()) {
+				if (v.getClass().getComponentType().isPrimitive()) {
+					v = ArrayUtils.toObject(v)
+				}
+				list << Arrays.asList(v)
 			}
 		}
 		new TableArrayPrinter(p, table)
