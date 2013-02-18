@@ -22,17 +22,18 @@ import java.nio.charset.Charset
 
 import name.fraser.neil.plaintext.diff_match_patch
 
+import org.apache.commons.lang3.SerializationUtils
 import org.apache.commons.lang3.StringUtils
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import org.joda.time.Duration
 import org.joda.time.ReadableDuration
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import com.google.common.base.Charsets
 import com.google.common.io.Files
 import com.google.common.io.Resources
-import com.google.common.testing.SerializableTester
 
 /**
  * Various utilities to simplify the groovy tests.
@@ -41,6 +42,8 @@ import com.google.common.testing.SerializableTester
  * @since 1.5
  */
 class TestUtils {
+
+	private final static Logger LOG = LoggerFactory.getLogger(TestUtils)
 
 	/**
 	 * Set default to-string style.
@@ -398,8 +401,10 @@ class TestUtils {
 	 *
 	 * @since 1.10
 	 */
-	static def reserialize(def object) {
-		SerializableTester.reserialize(object)
+	static void reserialize(def object) {
+		def bytes = SerializationUtils.serialize(object)
+		def obj = SerializationUtils.deserialize(bytes)
+		LOG.info "Serialized object {}", obj
 	}
 
 	/**
