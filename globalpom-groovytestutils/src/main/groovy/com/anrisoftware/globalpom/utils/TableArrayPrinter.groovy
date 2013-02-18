@@ -35,6 +35,8 @@ class TableArrayPrinter {
 					v = ArrayUtils.toObject(v)
 				}
 				list << Arrays.asList(v)
+			} else {
+				list << v
 			}
 		}
 		new TableArrayPrinter(p, table)
