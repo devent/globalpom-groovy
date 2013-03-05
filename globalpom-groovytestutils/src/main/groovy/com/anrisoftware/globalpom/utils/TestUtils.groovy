@@ -259,13 +259,16 @@ class TestUtils {
 
 	/**
 	 * Serializes and deserializes the specified object.
+	 * 
+	 * @return the deserialized object.
 	 *
-	 * @since 1.10
+	 * @since 1.15.1
 	 */
-	static void reserialize(def object) {
+	static def reserialize(def object) {
 		def bytes = SerializationUtils.serialize(object)
 		def obj = SerializationUtils.deserialize(bytes)
 		LOG.info "Serialized object {}", obj
+		return obj
 	}
 
 	/**
