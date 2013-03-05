@@ -22,6 +22,9 @@ import java.nio.charset.Charset
 
 import name.fraser.neil.plaintext.diff_match_patch
 
+import org.apache.commons.io.Charsets
+import org.apache.commons.io.FileUtils
+import org.apache.commons.io.IOUtils
 import org.apache.commons.lang3.SerializationUtils
 import org.apache.commons.lang3.StringUtils
 import org.apache.commons.lang3.builder.ToStringBuilder
@@ -30,10 +33,6 @@ import org.joda.time.Duration
 import org.joda.time.ReadableDuration
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-
-import com.google.common.base.Charsets
-import com.google.common.io.Files
-import com.google.common.io.Resources
 
 /**
  * Various utilities to simplify the groovy tests.
@@ -106,26 +105,6 @@ class TestUtils {
 	static boolean normalizeLineEnding = true
 
 	/**
-	 * Opens the resource with the specified name, relative to the
-	 * context class.
-	 *
-	 * @param resourceName
-	 * 		the name of the resource.
-	 *
-	 * @param contextClass
-	 * 		the context {@link Class} to which the resource is search at.
-	 * 		If {@code null} the resource will be located with
-	 * 		{@code Resources.class.getClassLoader()}.
-	 *
-	 * @return the opened {@link InputStream} of the resource.
-	 *
-	 * @since 1.8
-	 */
-	static InputStream openResourceStream(String resourceName, Class contextClass=null) {
-		resourceURL contextClass, resourceName openStream()
-	}
-
-	/**
 	 * Reads the resource with the specified name and specified character set,
 	 * relative to the context class.
 	 *
@@ -137,43 +116,7 @@ class TestUtils {
 	 * @since 1.10
 	 */
 	static String resourceToString(URL resource) {
-		Resources.toString resource, charset
-	}
-
-	/**
-	 * Returns the resource URL with the specified name, relative to the
-	 * context class.
-	 *
-	 * @param resourceName
-	 * 		the name of the resource.
-	 *
-	 * @param contextClass
-	 * 		the context {@link Class} to which the resource is search at.
-	 * 		If {@code null} the resource will be located with
-	 * 		{@code Resources.class.getClassLoader()}.
-	 *
-	 * @return the {@link URL} of the resource.
-	 *
-	 * @since 1.8
-	 */
-	static URL resourceURL(String resourceName, Class contextClass=null) {
-		if (contextClass == null) {
-			Resources.getResource resourceName
-		} else {
-			Resources.getResource contextClass, resourceName
-		}
-	}
-
-	/**
-	 * Copy the resource to a target file.
-	 * Create any parent directories of the target.
-	 *
-	 * @since 1.10
-	 */
-	static void copyResourceToFile(URL resource, File target) {
-		def source = resourceToString(resource)
-		target.parentFile.mkdirs()
-		Files.write source, target, charset
+		IOUtils.toString resource, charset
 	}
 
 	/**
@@ -183,62 +126,25 @@ class TestUtils {
 	 * @since 1.10
 	 */
 	static void copyResourceToCommand(URL resource, File target) {
-		copyResourceToFile(resource, target)
+		FileUtils.copyURLToFile resource, target
 		target.setExecutable true, false
 	}
 
 	/**
-	 * Copy a binary resource to a target file.
-	 *
-	 * @since 1.10
-	 */
-	static void copyBinResourceToFile(URL resource, File target) {
-		def source = Resources.toByteArray resource
-		Files.write source, target
-	}
-
-	/**
-	 * Create a temp file with an optional content.
+	 * Create a temporary file with an optional content.
+	 * 
+	 * @param text
+	 * 			  the text context of the file. Default is empty string.
+	 * 
+	 * @return the temporary {@link File}.
 	 *
 	 * @since 1.10
 	 */
 	static File createTempFile(String text="") {
 		def tmpFile = File.createTempFile(this.getClass().name, null)
-		Files.write text.toString(), tmpFile, charset
+		FileUtils.write tmpFile, text, charset
 		tmpFile.deleteOnExit()
 		return tmpFile
-	}
-
-	/**
-	 * Create a temporary directory.
-	 *
-	 * @param files
-	 * 		closure that is called with the created directory.
-	 *
-	 * @since 1.10
-	 */
-	static File createTempDirectory(def files= {}) {
-		def dir = Files.createTempDir()
-		files(dir)
-		return dir
-	}
-
-	/**
-	 * Returns the URL from the parent directory of the file.
-	 *
-	 * @since 1.10
-	 */
-	static URL parentFileToURL(File file) {
-		fileToURL file.parentFile
-	}
-
-	/**
-	 * Returns the URL from the file.
-	 *
-	 * @since 1.10
-	 */
-	static URL fileToURL(File file) {
-		file.toURI().toURL()
 	}
 
 	/**
@@ -319,52 +225,7 @@ class TestUtils {
 	 */
 	static String fileToString(File file) {
 		assert file.isFile() : "File $file does not exists"
-		Files.toString(file, charset)
-	}
-
-	/**
-	 * Reads the resource with the specified name and the current
-	 * object as the context.
-	 *
-	 * @param resourceName
-	 * 			the name of the resource.
-	 *
-	 * @return the content of the resource.
-	 *
-	 * @since 1.8
-	 */
-	String resourceToStringFromObject(String resourceName) {
-		Resources.toString Resources.getResource(this.class, resourceName), charset
-	}
-
-	/**
-	 * Opens the stream of the resource with the specified name and the current
-	 * object as the context.
-	 *
-	 * @param resourceName
-	 * 			the name of the resource.
-	 *
-	 * @return the opened {@link InputStream} from the resource.
-	 *
-	 * @since 1.8
-	 */
-	InputStream openResourceStreamFromObject(String resourceName) {
-		resourceURLFromObject(resourceName).openStream()
-	}
-
-	/**
-	 * Returns the resource with the specified name and the current
-	 * object as the context.
-	 *
-	 * @param resourceName
-	 * 			the name of the resource.
-	 *
-	 * @return the {@link URL} of the resource.
-	 *
-	 * @since 1.8
-	 */
-	URL resourceURLFromObject(String resourceName) {
-		Resources.getResource(this.class, resourceName)
+		FileUtils.readFileToString(file, charset)
 	}
 
 	/**
@@ -405,15 +266,6 @@ class TestUtils {
 		def bytes = SerializationUtils.serialize(object)
 		def obj = SerializationUtils.deserialize(bytes)
 		LOG.info "Serialized object {}", obj
-	}
-
-	/**
-	 * Create a new directory. It creates the parent directories automatically.
-	 *
-	 * @since 1.10
-	 */
-	static void makeDirectory(File directory) {
-		directory.mkdirs()
 	}
 
 	/**
@@ -536,42 +388,6 @@ class TestUtils {
 			it(arg)
 		}
 		Thread.sleep endDelay
-	}
-
-	/**
-	 * Run tests with created files in a temporary directory.
-	 *
-	 * @param name
-	 * 				the prefix name of the empty files.
-	 *
-	 * @param callback
-	 * 				the callback that will run the tests. The first parameter
-	 * 				is the temporary directory {@link File}.
-	 *
-	 * @param copy
-	 * 				the callback that is used to create files in the temporary
-	 * 				directory. The first parameter
-	 * 				is the temporary directory {@link File}.
-	 *
-	 * @param tmpdir
-	 * 				the {@link File} temporary directory. If set to {@code null}
-	 * 				then the temporary directory is created.
-	 *
-	 * @param keepFiles
-	 * 				set to {@code true} to not delete the temporary directory
-	 * 				and the created files after the tests are run. Default to
-	 * 				{@code false}.
-	 *
-	 * @since 1.11
-	 */
-	static void withFiles(String name, def callback, def copy = { }, File tmpdir = null, boolean keepFiles = false) {
-		tmpdir = tmpdir == null ? createTempDirectory() : tmpdir
-		try {
-			copy tmpdir
-			callback tmpdir
-		} finally {
-			keepFiles ? null : tmpdir.deleteDir()
-		}
 	}
 
 	/**
