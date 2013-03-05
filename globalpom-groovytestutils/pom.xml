@@ -16,6 +16,10 @@
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	<inceptionYear>2011</inceptionYear>
 
+	<properties>
+		<project.custom.current.year>2013</project.custom.current.year>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
