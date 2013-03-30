@@ -74,7 +74,7 @@ class TableArrayPrinter {
 		notNull p, "Printer properties cannot be null."
 		notNull table, "Tabular data cannot be null."
 		isTrue table.size() > 0, "Tabular data cannot be empty."
-		this.borderKnot = p.getCharProperty("border_know")
+		this.borderKnot = p.getCharProperty("corner_border")
 		this.horizontalBorder = p.getCharProperty("horizontal_border")
 		this.verticalBorder = p.getCharProperty("vertical_border")
 		this.nullString = p.getProperty("null_string")
