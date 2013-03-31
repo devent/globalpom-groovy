@@ -12,7 +12,7 @@
 
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM :: Groovy Test Utilities</name>
-	<version>1.17</version>
+	<version>1.18-SNAPSHOT</version>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	<url>https://www.anr-institute.com/projects/projects/globalpom-groovy-testutils</url>
 	<inceptionYear>2011</inceptionYear>
@@ -54,11 +54,6 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.anrisoftware.propertiesutils</groupId>
-			<artifactId>propertiesutils-contextproperties</artifactId>
-			<version>1.5</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>

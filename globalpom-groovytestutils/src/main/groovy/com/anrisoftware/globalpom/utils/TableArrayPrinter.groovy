@@ -22,9 +22,6 @@ import static org.apache.commons.lang3.Validate.*
 
 import org.apache.commons.lang3.ArrayUtils
 
-import com.anrisoftware.propertiesutils.ContextProperties
-import com.anrisoftware.propertiesutils.ContextPropertiesFactory
-
 /**
  * Print an 2D array as a table.
  *
@@ -46,7 +43,7 @@ class TableArrayPrinter {
 	 * @return the {@link TableArrayPrinter}.
 	 */
 	public static TableArrayPrinter withDefaults(def values) {
-		def p = new ContextPropertiesFactory(TableArrayPrinter).fromResource(PROPERTIES_RESOURCE)
+		def p = loadProperties()
 		def table = values.inject([]) { list, v ->
 			if (v.getClass().isArray()) {
 				if (v.getClass().getComponentType().isPrimitive()) {
@@ -60,6 +57,12 @@ class TableArrayPrinter {
 		new TableArrayPrinter(p, table)
 	}
 
+	private static Properties loadProperties() {
+		def p = new Properties()
+		p.load(PROPERTIES_RESOURCE.openStream())
+		return p
+	}
+
 	private final char borderKnot
 
 	private final char horizontalBorder
@@ -70,14 +73,14 @@ class TableArrayPrinter {
 
 	private final List table
 
-	TableArrayPrinter(ContextProperties p, List table) {
+	TableArrayPrinter(Properties p, List table) {
 		notNull p, "Printer properties cannot be null."
 		notNull table, "Tabular data cannot be null."
 		isTrue table.size() > 0, "Tabular data cannot be empty."
-		this.borderKnot = p.getCharProperty("corner_border")
-		this.horizontalBorder = p.getCharProperty("horizontal_border")
-		this.verticalBorder = p.getCharProperty("vertical_border")
-		this.nullString = p.getProperty("null_string")
+		this.borderKnot = p.getProperty("com.anrisoftware.globalpom.utils.corner_border")
+		this.horizontalBorder = p.getProperty("com.anrisoftware.globalpom.utils.horizontal_border")
+		this.verticalBorder = p.getProperty("com.anrisoftware.globalpom.utils.vertical_border")
+		this.nullString = p.getProperty("com.anrisoftware.globalpom.utils.null_string")
 		this.table = table
 	}
 
