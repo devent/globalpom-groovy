@@ -32,19 +32,24 @@ import org.fest.swing.edt.GuiQuery
 import org.fest.swing.fixture.FrameFixture
 
 /**
- * Creates a {@link FrameFixture} to test components in a {@link JFrame}.
+ * Creates a frame fixture to test components in a frame.
  * <p>
  * The method {@link TestFrameUtil#withFixture(Object...)} can be used to run
  * tests in the fixture. Multiple tests can be specified and they will be
- * run in a sequence. See {@link TestUtils#sequencedActions(Object...)}. *
+ * run in a sequence.
  *
  * <pre>
- * new TestFrameUtil("Test Frame", component).withFixture {
+ * new TestFrameUtil("Test Frame", component).withFixture( 
+ * {  FrameFixture fixture ->
  * 		fixture.button("test_button").click()
- * }, {
+ * }, {  FrameFixture fixture ->
  * 		fixture.label("test").requireText "test label"
- * }
+ * })
  * </pre>
+ * 
+ * @see TestUtils#sequencedActions(Object...)
+ * @see JInternalFrame
+ * @see FrameFixture
  *
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.6

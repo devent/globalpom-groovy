@@ -25,6 +25,32 @@ import javax.swing.JDesktopPane
 import javax.swing.JFrame
 import javax.swing.JInternalFrame
 
+import org.fest.swing.fixture.FrameFixture
+
+/**
+ * Creates a frame fixture to test components in an internal frame.
+ * <p>
+ * The method {@link #withFixture(Object...)} can be used to run
+ * tests in the fixture. Multiple tests can be specified and they will be
+ * run in a sequence.
+ *
+ * <pre>
+ * new TestInternalFrameUtil("Test Frame", component).withFixture( 
+ * { FrameFixture fixture -> 
+ * 		fixture.button("test_button").click()
+ * }, { FrameFixture fixture ->
+ * 		fixture.label("test").requireText "test label"
+ * })
+ * </pre>
+ *
+ * @see TestUtils#sequencedActions(Object...)
+ * @see JInternalFrame
+ * @see FrameFixture
+ * @see TestFrameUtil
+ * 
+ * @author Erwin Mueller, erwin.mueller@deventm.org
+ * @since 1.6
+ */
 class TestInternalFrameUtil extends TestFrameUtil {
 
 	/**
