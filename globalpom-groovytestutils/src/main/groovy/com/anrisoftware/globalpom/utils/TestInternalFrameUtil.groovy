@@ -28,14 +28,9 @@ import javax.swing.JInternalFrame
 class TestInternalFrameUtil extends TestFrameUtil {
 
 	/**
-	 * The default size of the main frame, set to 600x400.
-	 */
-	def frameSize = new Dimension(600, 400)
-
-	/**
 	 * The default size of the internal frame, set to 300x200.
 	 */
-	def internalFrameSize = new Dimension(300, 200)
+	Dimension internalFrameSize = new Dimension(300, 200)
 
 	/**
 	 * If the internal frame can be resized, default is <code>true</code>.
@@ -68,22 +63,12 @@ class TestInternalFrameUtil extends TestFrameUtil {
 	final JInternalFrame internalFrame
 
 	/**
-	 * Sets the title, the test component and optional the Look&Feel to use.
+	 * @see TestFrameUtil#TestFrameUtil(String, Object, Dimension, Object)
 	 *
-	 * @param title
-	 * 					the title of the frame.
-	 *
-	 * @param component
-	 * 					the {@link Component} component to test.
-	 *
-	 * @param lookAndFeel
-	 * 					optional the Look&Feel to use. Defaults to the system
-	 * 					Look&Feel.
-	 *
-	 * @since 1.13
+	 * @since 1.19
 	 */
-	TestInternalFrameUtil(String title, def component, def lookAndFeel = TestFrameUtil.SYSTEM_LOOK_AND_FEEL) {
-		super(title, component, lookAndFeel)
+	TestInternalFrameUtil(String title, def component, Dimension frameSize = new Dimension(600, 400), def lookAndFeel = TestFrameUtil.SYSTEM_LOOK_AND_FEEL) {
+		super(title, component, frameSize, lookAndFeel)
 		this.internalFrame = new JInternalFrame(title)
 	}
 

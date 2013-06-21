@@ -69,7 +69,7 @@ class TestFrameUtil {
 	/**
 	 * The size of the main frame, default set to 300x200.
 	 */
-	def frameSize = new Dimension(300, 200)
+	Dimension frameSize = new Dimension(300, 200)
 
 	private final String title
 
@@ -89,21 +89,25 @@ class TestFrameUtil {
 	 * Sets the title, the test component and optional the Look&Feel to use.
 	 *
 	 * @param title
-	 * 					the title of the frame.
+	 * 			  the title of the frame.
 	 *
 	 * @param component
-	 * 					the {@link Component} component to test.
+	 * 			  the {@link Component} component to test.
+	 * 
+	 * @param frameSize
+	 * 			  the size of the main frame, default set to 300x200.
 	 *
 	 * @param lookAndFeel
-	 * 					optional the Look&Feel to use. Defaults to the system
-	 * 					Look&Feel.
+	 * 			  optional the Look&Feel to use. Defaults to the system
+	 * 			  Look&Feel.
 	 *
-	 * @since 1.13
+	 * @since 1.19
 	 */
-	TestFrameUtil(String title, def component, def lookAndFeel = SYSTEM_LOOK_AND_FEEL) {
+	TestFrameUtil(String title, def component, Dimension frameSize = new Dimension(300, 200), def lookAndFeel = SYSTEM_LOOK_AND_FEEL) {
 		UIManager.setLookAndFeel(lookAndFeel)
 		this.title = title
 		this.component = component
+		this.frameSize = frameSize
 	}
 
 	/**
