@@ -1,4 +1,4 @@
-com.anrisoftware.globalpom:globalpom-groovytestutils:jar:1.18
+com.anrisoftware.globalpom:globalpom-groovytestutils:jar:1.19
 +- org.apache.commons:commons-lang3:jar:3.1:compile
 +- org.codehaus.groovy:groovy:jar:2.1.2:compile
 |  +- antlr:antlr:jar:2.7.7:compile
