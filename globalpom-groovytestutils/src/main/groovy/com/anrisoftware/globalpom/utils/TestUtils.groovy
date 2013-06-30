@@ -236,8 +236,9 @@ class TestUtils {
 	static void shouldFailWith(Class exceptionClass, Closure closure) {
 		try {
 			closure()
-			assert false : "An expected exception was not thrown: $exceptionClass"
-		} catch (Throwable t) {
+			assert false : "Expected exception: $exceptionClass"
+		} catch (t) {
+			LOG.info "Expected exception thrown: {}", t.message, t
 			assert t.class == exceptionClass
 		}
 	}
@@ -251,8 +252,9 @@ class TestUtils {
 	static void shouldFailWithCause(Class exceptionClass, Closure closure) {
 		try {
 			closure()
-			assert false : "The expected cause was not thrown: $exceptionClass"
-		} catch (Throwable t) {
+			assert false : "Expected cause: $exceptionClass"
+		} catch (t) {
+			LOG.info "Expected exception with cause thrown: {}", t.cause
 			assert t.cause.class == exceptionClass
 		}
 	}
