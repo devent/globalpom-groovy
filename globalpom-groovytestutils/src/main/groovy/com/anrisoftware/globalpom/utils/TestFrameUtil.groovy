@@ -39,14 +39,14 @@ import org.fest.swing.fixture.FrameFixture
  * run in a sequence.
  *
  * <pre>
- * new TestFrameUtil("Test Frame", component).withFixture( 
+ * new TestFrameUtil("Test Frame", component).withFixture(
  * {  FrameFixture fixture ->
  * 		fixture.button("test_button").click()
  * }, {  FrameFixture fixture ->
  * 		fixture.label("test").requireText "test label"
  * })
  * </pre>
- * 
+ *
  * @see TestUtils#sequencedActions(Object...)
  * @see JInternalFrame
  * @see FrameFixture
@@ -70,6 +70,11 @@ class TestFrameUtil {
 	 * Name of the nimbus look&feel.
 	 */
 	public static String NIMBUS_LOOK_AND_FEEL = "javax.swing.plaf.nimbus.NimbusLookAndFeel"
+
+	/**
+	 * Name of the substance business look&feel.
+	 */
+	public static String SUBSTANCE_BUSINESS_LOOK_AND_FEEL = "org.pushingpixels.substance.api.skin.SubstanceBusinessLookAndFeel"
 
 	/**
 	 * Sets the specified Look&Feel.
@@ -105,14 +110,14 @@ class TestFrameUtil {
 	 *
 	 * @param component
 	 * 			  the {@link Component} component to test.
-	 * 
+	 *
 	 * @param frameSize
 	 * 			  the size of the main frame, default set to 300x200.
 	 *
 	 * @since 1.20
-	 * 
+	 *
 	 * @deprecated it is preferable to use the constructor with named arguments.
-	 * 
+	 *
 	 * @see #TestFrameUtil(Map)
 	 */
 	@Deprecated
@@ -128,7 +133,7 @@ class TestFrameUtil {
 	 *
 	 * @param component
 	 * 			  the {@link Component} component to test.
-	 * 
+	 *
 	 * @param frameSize
 	 * 			  the size of the main frame, default set to 300x200.
 	 *

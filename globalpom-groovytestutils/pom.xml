@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.18</version>
+		<version>1.19-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 
@@ -64,6 +64,12 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
+		</dependency>
+
+		<!-- extra look&feels -->
+		<dependency>
+			<groupId>com.github.insubstantial</groupId>
+			<artifactId>substance</artifactId>
 		</dependency>
 	</dependencies>
 
