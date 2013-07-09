@@ -59,17 +59,24 @@ class TestFrameUtil {
 	/**
 	 * Name of the system look&feel.
 	 */
-	public static SYSTEM_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel"
+	public static String SYSTEM_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel"
 
 	/**
 	 * Name of the GTK look&feel.
 	 */
-	public static GTK_LOOK_AND_FEEL = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+	public static String GTK_LOOK_AND_FEEL = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
 	/**
 	 * Name of the nimbus look&feel.
 	 */
-	public static NIMBUS_LOOK_AND_FEEL = "javax.swing.plaf.nimbus.NimbusLookAndFeel"
+	public static String NIMBUS_LOOK_AND_FEEL = "javax.swing.plaf.nimbus.NimbusLookAndFeel"
+
+	/**
+	 * Sets the specified Look&Feel.
+	 */
+	public static setLookAndFeel(String lookAndFeel) {
+		UIManager.setLookAndFeel(lookAndFeel)
+	}
 
 	/**
 	 * The size of the main frame, default set to 300x200.
@@ -102,17 +109,45 @@ class TestFrameUtil {
 	 * @param frameSize
 	 * 			  the size of the main frame, default set to 300x200.
 	 *
-	 * @param lookAndFeel
-	 * 			  optional the Look&Feel to use. Defaults to the system
-	 * 			  Look&Feel.
-	 *
-	 * @since 1.19
+	 * @since 1.20
+	 * 
+	 * @deprecated it is preferable to use the constructor with named arguments.
+	 * 
+	 * @see #TestFrameUtil(Map)
 	 */
-	TestFrameUtil(String title, def component, Dimension frameSize = new Dimension(300, 200), def lookAndFeel = SYSTEM_LOOK_AND_FEEL) {
-		UIManager.setLookAndFeel(lookAndFeel)
-		this.title = title
-		this.component = component
-		this.frameSize = frameSize
+	@Deprecated
+	TestFrameUtil(String title, def component, Dimension frameSize = new Dimension(300, 200)) {
+		this(title: title, component: component, frameSize: frameSize)
+	}
+
+	/**
+	 * Sets the title, the test component and optional the Look&Feel to use.
+	 *
+	 * @param title
+	 * 			  the title of the frame.
+	 *
+	 * @param component
+	 * 			  the {@link Component} component to test.
+	 * 
+	 * @param frameSize
+	 * 			  the size of the main frame, default set to 300x200.
+	 *
+	 * @since 1.20
+	 */
+	TestFrameUtil(Map args) {
+		args = defaultArgs(args)
+		this.title = args.title
+		this.component = args.component
+		this.frameSize = args.frameSize
+	}
+
+	private static defaultArgs(Map args) {
+		Map defaultArgs = [:]
+		defaultArgs.title = "Test Frame"
+		defaultArgs.component = null
+		defaultArgs.frameSize = new Dimension(300, 200)
+		defaultArgs.putAll(args)
+		return defaultArgs
 	}
 
 	/**
