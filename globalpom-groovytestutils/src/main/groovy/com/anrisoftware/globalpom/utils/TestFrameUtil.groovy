@@ -19,6 +19,7 @@
 package com.anrisoftware.globalpom.utils
 
 import static com.anrisoftware.globalpom.utils.TestUtils.*
+import static javax.swing.SwingUtilities.*
 import groovy.swing.SwingBuilder
 
 import java.awt.BorderLayout
@@ -80,7 +81,7 @@ class TestFrameUtil {
 	 * Sets the specified Look&Feel.
 	 */
 	public static setLookAndFeel(String lookAndFeel) {
-		UIManager.setLookAndFeel(lookAndFeel)
+		invokeAndWait { UIManager.setLookAndFeel(lookAndFeel) }
 	}
 
 	/**
@@ -187,10 +188,14 @@ class TestFrameUtil {
 	 * @return the created {@link JFrame}.
 	 */
 	protected createFrame(String title, def component) {
-		new SwingBuilder().frame(title: title, pack: true, preferredSize: frameSize) {
-			borderLayout()
-			widget(component, constraints: BorderLayout.CENTER)
+		def frame
+		invokeAndWait {
+			frame = new SwingBuilder().frame(title: title, pack: true, preferredSize: frameSize) {
+				borderLayout()
+				widget(component, constraints: BorderLayout.CENTER)
+			}
 		}
+		return frame
 	}
 
 	/**
