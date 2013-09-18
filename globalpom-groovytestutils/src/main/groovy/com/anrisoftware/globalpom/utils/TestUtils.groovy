@@ -132,10 +132,10 @@ class TestUtils {
 
 	/**
 	 * Create a temporary file with an optional content.
-	 * 
+	 *
 	 * @param text
 	 * 			  the text context of the file. Default is empty string.
-	 * 
+	 *
 	 * @return the temporary {@link File}.
 	 *
 	 * @since 1.10
@@ -204,7 +204,7 @@ class TestUtils {
 			def diffMatch = new diff_match_patch()
 			def patch = diffMatch.patch_make string, expected
 			def diff = diffMatch.patch_toText patch
-			log.error "String A: '{}', string B: '{}'.", string, expected
+			log.error "String A: \n>>>\n{}<<<EOL', string B: \n>>>\n{}<<<EOL.", string, expected
 			assert false : "The contents of string A and the string B differs: ``$diff''"
 		}
 	}
@@ -261,7 +261,7 @@ class TestUtils {
 
 	/**
 	 * Serializes and deserializes the specified object.
-	 * 
+	 *
 	 * @return the deserialized object.
 	 *
 	 * @since 1.15.1

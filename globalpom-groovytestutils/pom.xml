@@ -12,7 +12,7 @@
 
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM :: Groovy Test Utilities</name>
-	<version>1.20.1</version>
+	<version>1.20.2-SNAPSHOT</version>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	<url>https://www.anr-institute.com/projects/projects/globalpom-groovy-testutils</url>
 	<inceptionYear>2011</inceptionYear>
