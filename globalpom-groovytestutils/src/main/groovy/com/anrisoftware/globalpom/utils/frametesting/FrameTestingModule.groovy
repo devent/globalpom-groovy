@@ -25,6 +25,7 @@ import com.google.inject.assistedinject.FactoryModuleBuilder
  * Binds the frame testing factory.
  *
  * @see FrameTestingFactory
+ * @see DialogTestingFactory
  *
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.21
@@ -35,5 +36,7 @@ class FrameTestingModule extends AbstractModule {
 	protected void configure() {
 		install(new FactoryModuleBuilder().implement(FrameTesting.class,
 				FrameTesting.class).build(FrameTestingFactory.class))
+		install(new FactoryModuleBuilder().implement(DialogTesting.class,
+				DialogTesting.class).build(DialogTestingFactory.class))
 	}
 }

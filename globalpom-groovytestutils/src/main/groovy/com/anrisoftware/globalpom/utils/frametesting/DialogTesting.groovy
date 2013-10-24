@@ -20,26 +20,27 @@ package com.anrisoftware.globalpom.utils.frametesting
 
 import static com.anrisoftware.globalpom.utils.TestUtils.*
 import static javax.swing.SwingUtilities.*
+import static javax.swing.WindowConstants.*
 
 import java.awt.BorderLayout
 import java.awt.Component
 import java.awt.Dimension
 
 import javax.inject.Inject
-import javax.swing.JFrame
+import javax.swing.JDialog
 import javax.swing.JPanel
 
 import org.fest.swing.annotation.RunsInEDT
 import org.fest.swing.edt.GuiActionRunner
 import org.fest.swing.edt.GuiQuery
-import org.fest.swing.fixture.FrameFixture
+import org.fest.swing.fixture.DialogFixture
 
 import com.google.inject.assistedinject.Assisted
 
 /**
- * Creates a frame fixture to test components in a frame.
+ * Creates a frame fixture to test components in a dialog.
  * <p>
- * The method {@link FrameTesting#withFixture(Object...)} can be used to run
+ * The method {@link DialogTesting#withFixture(Object...)} can be used to run
  * tests in the fixture. Multiple tests can be specified and they will be
  * run in a sequence.
  *
@@ -48,9 +49,9 @@ import com.google.inject.assistedinject.Assisted
  * <h2>Example:</h2>
  * <p>
  * <pre>
- * def injector = Guice.createInjector(new FrameTestingModule())
- * def testingFactory = injector.getInstance(FrameTestingFactory.class)
- * def title = "Frame Test"
+ * def injector = Guice.createInjector(new DialogTestingModule())
+ * def testingFactory = injector.getInstance(DialogTestingFactory.class)
+ * def title = "Dialog Test"
  * def testing = testingFactory.create([title: title])()
  * testing.withFixture({
  * 	// tests
@@ -58,12 +59,13 @@ import com.google.inject.assistedinject.Assisted
  * </pre>
  *
  * @see TestUtils#sequencedActions(Object...)
- * @see FrameFixture
+ * @see DialogFixture
  *
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.21
  */
-class FrameTesting {
+class DialogTesting {
+
 
 	/**
 	 * The current title.
@@ -71,14 +73,14 @@ class FrameTesting {
 	final String title
 
 	/**
-	 * Returns the frame size.
+	 * The frame size.
 	 */
 	final Dimension size
 
 	/**
-	 * The frame.
+	 * The dialog.
 	 */
-	JFrame frame
+	JDialog dialog
 
 	/**
 	 * The component.
@@ -86,139 +88,139 @@ class FrameTesting {
 	Component component
 
 	/**
-	 * The current {@link FrameFixture}.
+	 * The current {@link DialogFixture}.
 	 */
-	FrameFixture fixture
+	DialogFixture fixture
 
-	private createFrameCallback
+	private createDialogCallback
 
 	private createComponentCallback
 
-	private setupFrameCallback
+	private setupDialogCallback
 
 	private createFixtureCallback
 
 	/**
-	 * @see FrameTestingFactory#create(Map)
+	 * @see DialogTestingFactory#create(Map)
 	 */
 	@Inject
-	FrameTesting(@Assisted Map args) {
+	DialogTesting(@Assisted Map args) {
 		args = defaultArgs(args)
 		this.title = args.title
 		this.size = args.size
-		this.createFrameCallback = args.createFrame
+		this.createDialogCallback = args.createDialog
 		this.createComponentCallback = args.createComponent
-		this.setupFrameCallback = args.setupFrame
+		this.setupDialogCallback = args.setupDialog
 		this.createFixtureCallback = args.createFixture
 	}
 
 	private Map defaultArgs(Map args) {
 		[
-			title: "Frame Test",
+			title: "Dialog Test",
 			size: new Dimension(680, 480),
-			createFrame: null,
+			createDialog: null,
 			createComponent: null,
-			setupFrame: null,
+			setupDialog: null,
 			createFixture: null
 		] << args
 	}
 
 	/**
-	 * Creates the frame, dock and frame fixture.
+	 * Creates the frame, dock and dialog fixture.
 	 *
-	 * @return this {@link FrameTesting}.
+	 * @return this {@link DialogTesting}.
 	 */
-	FrameTesting call() {
+	DialogTesting call() {
 		invokeAndWait {
-			frame = createFrame()
-			component = createComponent(frame)
-			setupFrame(frame, component)
-			fixture = createFixture(frame)
+			dialog = createDialog()
+			component = createComponent(dialog)
+			setupDialog(dialog, component)
+			fixture = createFixture(dialog)
 		}
 		this
 	}
 
 	/**
-	 * Creates the frame.
+	 * Creates the dialog.
 	 *
-	 * @return the {@link JFrame}.
+	 * @return the {@link JDialog}.
 	 */
 	@RunsInEDT
-	JFrame createFrame() {
-		if (createFrameCallback != null) {
-			createFrameCallback()
+	JDialog createDialog() {
+		if (createDialogCallback != null) {
+			createDialogCallback()
 		} else {
-			def frame = new JFrame(title)
-			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE)
-			frame.setSize size
-			frame.setPreferredSize size
-			frame
+			def dialog = new JDialog(null, title)
+			dialog.setDefaultCloseOperation DISPOSE_ON_CLOSE
+			dialog.setSize size
+			dialog.setPreferredSize size
+			dialog
 		}
 	}
 
 	/**
-	 * Creates the frame component.
+	 * Creates the dialog component.
 	 *
-	 * @param frame
-	 * 			  the {@link JFrame}.
+	 * @param dialog
+	 * 			  the {@link JDialog}.
 	 *
 	 * @return the {@link Component}.
 	 */
 	@RunsInEDT
-	Component createComponent(JFrame frame) {
+	Component createComponent(JDialog dialog) {
 		if (createComponentCallback != null) {
-			createComponentCallback(frame)
+			createComponentCallback(dialog)
 		} else {
 			new JPanel()
 		}
 	}
 
 	/**
-	 * Setups the frame.
+	 * Setups the dialog.
 	 *
-	 * @param frame
-	 * 			  the {@link JFrame}.
+	 * @param dialog
+	 * 			  the {@link JDialog}.
 	 *
 	 * @param component
-	 * 			  the {@link Component} of the frame.
+	 * 			  the {@link Component} of the dialog.
 	 */
 	@RunsInEDT
-	void setupFrame(JFrame frame, Component component) {
-		if (setupFrameCallback != null) {
-			setupFrameCallback(frame, component)
+	void setupDialog(JDialog dialog, Component component) {
+		if (setupDialogCallback != null) {
+			setupDialogCallback(dialog, component)
 		} else {
-			frame.add component, BorderLayout.CENTER
+			dialog.add component, BorderLayout.CENTER
 		}
 	}
 
 	/**
-	 * Creates the frame fixture.
+	 * Creates the dialog fixture.
 	 *
-	 * @param frame
-	 * 			  the {@link JFrame}.
+	 * @param dialog
+	 * 			  the {@link JDialog}.
 	 *
 	 * @return the {@link FrameFixture}.
 	 */
 	@RunsInEDT
-	FrameFixture createFixture(JFrame frame) {
+	DialogFixture createFixture(JDialog dialog) {
 		if (createFixtureCallback != null) {
-			createFixtureCallback(frame)
+			createFixtureCallback(dialog)
 		} else {
-			def result = GuiActionRunner.execute([executeInEDT: { frame } ] as GuiQuery)
-			new FrameFixture(result)
+			def result = GuiActionRunner.execute([executeInEDT: { dialog } ] as GuiQuery)
+			new DialogFixture(result)
 		}
 	}
 
 	/**
-	 * Runs the tests. The {@link FrameFixture} is passed
+	 * Runs the tests. The {@link DialogFixture} is passed
 	 * to each specified test as the first argument.
 	 *
 	 * @param tests
 	 * 			  the tests to run.
 	 *
-	 * @return this {@link FrameTesting}
+	 * @return this {@link DialogTesting}
 	 */
-	FrameTesting withFixture(Object... tests) {
+	DialogTesting withFixture(Object... tests) {
 		beginFixture()
 		sequencedActionsWith(fixture, tests)
 		endFixture()
