@@ -27,6 +27,8 @@ import javax.swing.JInternalFrame
 
 import org.fest.swing.fixture.FrameFixture
 
+import com.anrisoftware.globalpom.utils.frametesting.FrameTesting;
+
 /**
  * Creates a frame fixture to test components in an internal frame.
  * <p>
@@ -51,7 +53,7 @@ import org.fest.swing.fixture.FrameFixture
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.6
  */
-class TestInternalFrameUtil extends TestFrameUtil {
+class TestInternalFrameUtil extends FrameTesting {
 
 	/**
 	 * The default size of the internal frame, set to 300x200.
