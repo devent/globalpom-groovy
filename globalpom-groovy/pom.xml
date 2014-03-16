@@ -53,6 +53,11 @@
 						<artifactId>groovy-eclipse-compiler</artifactId>
 						<version>${project.custom.groovy-eclipse-compiler.version}</version>
 					</dependency>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-eclipse-batch</artifactId>
+						<version>${project.custom.groovy-eclipse-batch.version}</version>
+					</dependency>
 				</dependencies>
 			</plugin>
 
