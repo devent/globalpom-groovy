@@ -6,27 +6,27 @@
 	<parent>
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.33</version>
+		<version>1.35</version>
 		<relativePath />
 	</parent>
 
 	<artifactId>globalpom-groovy</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
-	<version>1.21</version>
+	<version>1.22</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
-	<url>https://www.anr-institute.com/projects/projects/globalpom-groovy</url>
+	<url>https://anrisoftware.com/projects/projects/globalpom-groovy</url>
 	<inceptionYear>2011</inceptionYear>
 
 	<scm>
 		<connection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</connection>
 		<developerConnection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</developerConnection>
-		<url>https://www.anr-institute.com/gitpublic/globalpom-groovy.git/</url>
+		<url>https://anrisoftware.com/gitpublic/globalpom-groovy.git/</url>
 	</scm>
 
 	<issueManagement>
 		<system>Redmine</system>
-		<url>https://www.anr-institute.com/projects/projects/globalpom-groovy</url>
+		<url>https://anrisoftware.com/projects/projects/globalpom-groovy</url>
 	</issueManagement>
 
 	<distributionManagement>
