@@ -6,14 +6,14 @@
 	<parent>
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.35</version>
+		<version>1.37</version>
 		<relativePath />
 	</parent>
 
 	<artifactId>globalpom-groovy</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy</name>
-	<version>1.22</version>
+	<version>1.23-SNAPSHOT</version>
 	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
 	<url>https://anrisoftware.com/projects/projects/globalpom-groovy</url>
 	<inceptionYear>2011</inceptionYear>
@@ -30,14 +30,14 @@
 	</issueManagement>
 
 	<distributionManagement>
-		<repository>
-			<id>${custom.repository.anrispublic.id}</id>
-			<url>${custom.repository.root}${custom.repository.anrispublic.path}</url>
-		</repository>
-		<snapshotRepository>
-			<id>${custom.repository.anrispublicsnapshots.id}</id>
-			<url>${custom.repository.root}${custom.repository.anrispublicsnapshots.path}</url>
-		</snapshotRepository>
+        <repository>
+            <id>osssonatype</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>osssonatype_snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
 	</distributionManagement>
 
 	<build>
