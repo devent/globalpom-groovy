@@ -54,7 +54,7 @@ are empty.
     <parent>
         <artifactId>globalpom-groovy</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>1.25-SNAPSHOT</version>
+        <version>1.25</version>
         <relativePath>../globalpom-groovy</relativePath>
     </parent>
 ---
