@@ -6,21 +6,21 @@
 	<parent>
 		<artifactId>globalpom-groovy</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.24</version>
+		<version>1.25-SNAPSHOT</version>
 		<relativePath>../globalpom-groovy</relativePath>
 	</parent>
 
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM :: Groovy Test Utilities</name>
-	<version>1.24</version>
+	<version>1.25-SNAPSHOT</version>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
 	<url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils</url>
 	<inceptionYear>2011</inceptionYear>
 
 	<scm>
-		<connection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</connection>
-		<developerConnection>scm:git:${custom.gitpublic.url}globalpom-groovy.git</developerConnection>
-		<url>https://anrisoftware.com/gitpublic/globalpom-groovy.git/</url>
+		<connection>scm:git:git@anrisoftware.com:globalpom-groovy.git</connection>
+		<developerConnection>scm:git:git@anrisoftware.com:globalpom-groovy.git</developerConnection>
+		<url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository</url>
 	</scm>
 
 	<issueManagement>
