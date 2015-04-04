@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>globalpom-parent</artifactId>
 		<groupId>com.anrisoftware.globalpom</groupId>
-		<version>1.39-SNAPSHOT</version>
+		<version>1.39</version>
 		<relativePath />
 	</parent>
 
@@ -21,7 +21,7 @@
 	<scm>
 		<connection>scm:git:git@anrisoftware.com:globalpom-groovy.git</connection>
 		<developerConnection>scm:git:git@anrisoftware.com:globalpom-groovy.git</developerConnection>
-		<url>https://anrisoftware.com/gitpublic/globalpom-groovy.git/</url>
+		<url>https://anrisoftware.com/projects/projects/globalpom-groovy/repository</url>
 	</scm>
 
 	<issueManagement>
@@ -30,6 +30,10 @@
 	</issueManagement>
 
 	<distributionManagement>
+        <site>
+          <id>anrisoftware</id>
+          <url>dav:https://anrisoftware.com/javadoc/${project.groupId}/${project.artifactId}</url>
+        </site>
         <repository>
             <id>osssonatype</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>

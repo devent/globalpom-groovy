@@ -1,0 +1,60 @@
+~~
+~~ Copyright 2011-2015 Erwin Müller <erwin.mueller@deventm.org>
+~~
+~~ This file is part of globalpom-groovy.
+~~
+~~ globalpom-groovy is free software: you can redistribute it and/or modify it
+~~ under the terms of the GNU Lesser General Public License as published by the
+~~ Free Software Foundation, either version 3 of the License, or (at your
+~~ option) any later version.
+~~
+~~ globalpom-groovy is distributed in the hope that it will be useful, but
+~~ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+~~ FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+~~ details.
+~~
+~~ You should have received a copy of the GNU Lesser General Public License
+~~ along with globalpom-groovy. If not, see <http://www.gnu.org/licenses/>.
+~~
+
+  Adds Groovy support to compile Groovy sources and test sources.
+
+Anrisoftware.com SCM
+
+  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy/repository}Repository}}
+
+  * {{{git@anrisoftware.com:globalpom-groovy.git}SSH Access}}
+
+GitHub SCM
+
+  * {{{https://github.com/devent/globalpom-groovy}Repository}}
+
+  * {{{git@github.com:devent/globalpom-groovy.git}SSH Access}}
+
+Maven Module
+
+---
+<dependency>
+    <groupId>com.anrisoftware.globalpom</groupId>
+    <artifactId>globalpom-groovy</artifactId>
+    <version>1.25</version>
+</dependency>
+---
+
+Description
+
+  The project is suppose to be used by all Maven projects that wants to have
+Groovy support. It is added as the parent POM to the project, and is adding
+the groovy-eclipse-compiler and groovy-eclipse-batch plug-ins into the build
+cycle. The build-helper-maven-plugin is also added to the build cycle to
+recognize src/main/groovy and src/test/groovy if the java source directories
+are empty.
+
+---
+    <parent>
+        <artifactId>globalpom-groovy</artifactId>
+        <groupId>com.anrisoftware.globalpom</groupId>
+        <version>1.25-SNAPSHOT</version>
+        <relativePath>../globalpom-groovy</relativePath>
+    </parent>
+---

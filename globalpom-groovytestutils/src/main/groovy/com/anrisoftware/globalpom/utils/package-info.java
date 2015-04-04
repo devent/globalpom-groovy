@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2014 Erwin Müller <erwin.mueller@deventm.org>
+ * Copyright 2011-2015 Erwin Müller <erwin.mueller@deventm.org>
  *
  * This file is part of globalpom-groovytestutils.
  *
@@ -17,14 +17,14 @@
  * along with globalpom-groovytestutils. If not, see <http://www.gnu.org/licenses/>.
  */
 /**
- * <h1>GitHub SCM</h1>
+ * <h1>SCM</h1>
  * <ul>
- * <li><a href="https://github.com/devent/globalpom-groovy">Propertiesutils Repository</a></li>
- * <li><a href="git://git@github.com:devent/globalpom-groovy.git">Propertiesutils Repository SSH</a>
- * <li><a href="https://github.com/devent/globalpom-groovy.git">Propertiesutils Repository HTTPS</a>
+ * <li><a href="https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository">Repository</a></li>
+ * <li><a href="git@anrisoftware.com:globalpom-groovy.git">SSH Access</a>
+ * <li><a href="https://github.com/devent/globalpom-groovy">Github Repository</a>
  * </ul>
  *
- * @version 1.21
+ * @version 1.25
  * @author Erwin Mueller, erwin.mueller@deventm.org
  */
 package com.anrisoftware.globalpom.utils;
