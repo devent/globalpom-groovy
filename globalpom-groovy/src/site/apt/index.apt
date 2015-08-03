@@ -17,30 +17,6 @@
 ~~ along with globalpom-groovy. If not, see <http://www.gnu.org/licenses/>.
 ~~
 
-  Adds Groovy support to compile Groovy sources and test sources.
-
-Anrisoftware.com SCM
-
-  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy/repository}Repository}}
-
-  * {{{git@anrisoftware.com:globalpom-groovy.git}SSH Access}}
-
-GitHub SCM
-
-  * {{{https://github.com/devent/globalpom-groovy}Repository}}
-
-  * {{{git@github.com:devent/globalpom-groovy.git}SSH Access}}
-
-Maven Module
-
----
-<dependency>
-    <groupId>com.anrisoftware.globalpom</groupId>
-    <artifactId>globalpom-groovy</artifactId>
-    <version>1.25</version>
-</dependency>
----
-
 Description
 
   The project is suppose to be used by all Maven projects that wants to have
@@ -50,11 +26,24 @@ cycle. The build-helper-maven-plugin is also added to the build cycle to
 recognize src/main/groovy and src/test/groovy if the java source directories
 are empty.
 
+
+SCM
+
+  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy/repository}Main Repository}}
+
+  * git@anrisoftware.com:globalpom-groovy.git
+
+  * {{{https://github.com/devent/globalpom-groovy}Github Mirror Repository}}
+
+  * git@github.com:devent/globalpom-groovy.git
+
+Maven
+
 ---
-    <parent>
-        <artifactId>globalpom-groovy</artifactId>
-        <groupId>com.anrisoftware.globalpom</groupId>
-        <version>1.25</version>
-        <relativePath>../globalpom-groovy</relativePath>
-    </parent>
+<parent>
+    <artifactId>globalpom-groovy</artifactId>
+    <groupId>com.anrisoftware.globalpom</groupId>
+    <version>1.26</version>
+    <relativePath />
+</parent>
 ---
