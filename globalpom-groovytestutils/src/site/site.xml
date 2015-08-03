@@ -24,12 +24,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
     <bannerLeft>
         <name>${project.name}</name>
-        <title>${project.name}</title>
         <href>${project.url}</href>
+        <src>images/em-logo-250x80.jpg</src>
     </bannerLeft>
     <bannerRight>
         <name>Advanced Natural Research Institute Projects</name>
-        <title>Advanced Natural Research Institute Projects</title>
         <src>images/anri_logo_48.png</src>
         <href>https://anrisoftware.com/projects</href>
     </bannerRight>
@@ -42,10 +41,13 @@ xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache
         <links>
             <item name="${project.name}" href="${project.url}"/>
         </links>
-        <menu name="Released Versions">
-            <item name="1.23 Issues" href="https://anrisoftware.com/l/b" />
-            <item name="1.24 Issues" href="https://anrisoftware.com/l/a" />
-            <item name="1.25 Issues" href="https://anrisoftware.com/l/c" />
+        <menu name="Overview">
+            <item name="Home" href="/index.html" />
+            <item name="Download" href="https://anrisoftware.com/l/4g" />
+            <item name="Source code" href="https://anrisoftware.com/l/4h" />
+            <item name="Source code (Github)" href="https://github.com/devent/globalpom-groovy" />
+            <item name="Roadmap" href="https://anrisoftware.com/l/4i" />
+            <item name="Issues" href="https://anrisoftware.com/l/4j" />
         </menu>
         <menu ref="parent" />
         <menu ref="modules" />

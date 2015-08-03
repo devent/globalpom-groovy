@@ -17,30 +17,26 @@
 ~~ along with globalpom-groovytestutils. If not, see <http://www.gnu.org/licenses/>.
 ~~
 
-  Various utilities methods to help write more expressive unit tests in Groovy.
+Description
 
-Anrisoftware.com SCM
+  The project is a collection of test utilities on top of JUnit.
 
-  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository}Repository}}
+SCM
 
-  * {{{git@anrisoftware.com:globalpom-groovy.git}SSH Access}}
+  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy/repository}Main Repository}}
 
-GitHub SCM
+  * git@anrisoftware.com:globalpom-groovy.git
 
-  * {{{https://github.com/devent/globalpom-groovy}Repository}}
+  * {{{https://github.com/devent/globalpom-groovy}Github Mirror Repository}}
 
-  * {{{git@github.com:devent/globalpom-groovy.git}SSH Access}}
+  * git@github.com:devent/globalpom-groovy.git
 
-Maven Module
+Maven
 
 ---
 <dependency>
     <groupId>com.anrisoftware.globalpom</groupId>
     <artifactId>globalpom-groovytestutils</artifactId>
-    <version>1.25</version>
+    <version>1.26</version>
 </dependency>
 ---
-
-Description
-
-  The project is a collection of test utilities on top of JUnit.

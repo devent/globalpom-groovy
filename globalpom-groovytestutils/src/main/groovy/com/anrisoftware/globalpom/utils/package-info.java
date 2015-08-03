@@ -19,12 +19,15 @@
 /**
  * <h1>SCM</h1>
  * <ul>
- * <li><a href="https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository">Repository</a></li>
- * <li><a href="git@anrisoftware.com:globalpom-groovy.git">SSH Access</a>
- * <li><a href="https://github.com/devent/globalpom-groovy">Github Repository</a>
+ * <li><a href="https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository">Main Repository</a></li>
+ * <li><code>git@anrisoftware.com:globalpom-groovy.git</code>
+ * </ul>
+ * <ul>
+ * <li><a href="https://github.com/devent/globalpom-groovy">Github Mirror Repository</a>
+ * <li><code>git@github.com:devent/globalpom-groovy.git</code>
  * </ul>
  *
- * @version 1.25
+ * @version 1.26
  * @author Erwin Mueller, erwin.mueller@deventm.org
  */
 package com.anrisoftware.globalpom.utils;
