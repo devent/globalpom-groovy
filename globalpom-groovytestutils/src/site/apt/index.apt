@@ -1,5 +1,5 @@
 ~~
-~~ Copyright 2011-2015 Erwin Müller <erwin.mueller@deventm.org>
+~~ Copyright 2011-2016 Erwin Müller <erwin.mueller@deventm.org>
 ~~
 ~~ This file is part of globalpom-groovytestutils.
 ~~
@@ -37,6 +37,6 @@ Maven
 <dependency>
     <groupId>com.anrisoftware.globalpom</groupId>
     <artifactId>globalpom-groovytestutils</artifactId>
-    <version>1.26</version>
+    <version>2.0</version>
 </dependency>
 ---
