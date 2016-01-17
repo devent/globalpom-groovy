@@ -19,19 +19,33 @@
 
 Description
 
-  The project is a collection of test utilities on top of JUnit.
+    The project is a collection of test utilities on top of JUnit.
+
+    * <<<com.anrisoftware.globalpom.utils.frametesting>>>
+
+        * {{{./FrameTesting.html}FrameTesting}}
+
+        Creates a frame fixture to test components in a frame.
+
+        * {{{./DialogTesting.html}DialogTesting}}
+
+        Creates a frame fixture to test components in a dialog.
 
 SCM
 
-  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy/repository}Main Repository}}
+* Main
 
-  * git@anrisoftware.com:globalpom-groovy.git
+    * {{{https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository}Repository}}
 
-  * {{{https://github.com/devent/globalpom-groovy}Github Mirror Repository}}
+    * git@anrisoftware.com:globalpom-parent.git
 
-  * git@github.com:devent/globalpom-groovy.git
+GitHub SCM
 
-Maven
+    * {{{https://github.com/devent/globalpom-groovy}Repository}}
+
+    * {{{git@github.com:devent/globalpom-parent.git}SSH Access}}
+
+Maven Module
 
 ---
 <dependency>

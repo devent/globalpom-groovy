@@ -21,7 +21,7 @@ package com.anrisoftware.globalpom.utils.frametesting
 import static com.anrisoftware.globalpom.utils.TestUtils.*
 import groovy.transform.CompileStatic
 
-import org.fest.swing.fixture.DialogFixture
+import org.fest.swing.fixture.FrameFixture
 import org.junit.BeforeClass
 import org.junit.Test
 
@@ -29,29 +29,29 @@ import com.google.inject.Guice
 import com.google.inject.Injector
 
 /**
- * @see DialogTesting
+ * @see FrameTesting
  *
  * @author Erwin Mueller, erwin.mueller@deventm.org
- * @since 1.0
+ * @since 2.0
  */
 @CompileStatic
-class DialogTestingTest {
+class FrameTestingTest {
 
     @Test
-    void "show dialog"() {
-        def title = "$NAME/show dialog"
+    void "show frame"() {
+        def title = "$NAME/show frame"
         def testing = factory.create([title: title])()
-        testing.withFixture { DialogFixture fix ->
+        testing.withFixture { FrameFixture fix ->
             assert fix != null
         }
     }
 
     @Test
-    void "exception dialog"() {
-        def title = "$NAME/exception dialog"
+    void "exception frame"() {
+        def title = "$NAME/exception frame"
         def testing = factory.create([title: title])()
         shouldFailWith NullPointerException, {
-            testing.withFixture { DialogFixture fix ->
+            testing.withFixture { FrameFixture fix ->
                 throw new NullPointerException()
             }
         }
@@ -59,13 +59,13 @@ class DialogTestingTest {
 
     static Injector injector
 
-    static DialogTestingFactory factory
+    static FrameTestingFactory factory
 
-    static NAME = DialogTestingTest.class.simpleName
+    static NAME = FrameTestingTest.class.simpleName
 
     @BeforeClass
     static void createFactory() {
         injector = Guice.createInjector(new FrameTestingModule())
-        factory = injector.getInstance DialogTestingFactory
+        factory = injector.getInstance FrameTestingFactory
     }
 }

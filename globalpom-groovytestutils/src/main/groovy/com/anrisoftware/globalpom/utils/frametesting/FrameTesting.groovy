@@ -65,178 +65,181 @@ import com.google.inject.assistedinject.Assisted
  */
 class FrameTesting {
 
-	/**
-	 * The current title.
-	 */
-	final String title
+    /**
+     * The current title.
+     */
+    final String title
 
-	/**
-	 * Returns the frame size.
-	 */
-	final Dimension size
+    /**
+     * Returns the frame size.
+     */
+    final Dimension size
 
-	/**
-	 * The frame.
-	 */
-	JFrame frame
+    /**
+     * The frame.
+     */
+    JFrame frame
 
-	/**
-	 * The component.
-	 */
-	Component component
+    /**
+     * The component.
+     */
+    Component component
 
-	/**
-	 * The current {@link FrameFixture}.
-	 */
-	FrameFixture fixture
+    /**
+     * The current {@link FrameFixture}.
+     */
+    FrameFixture fixture
 
-	private createFrameCallback
+    private createFrameCallback
 
-	private createComponentCallback
+    private createComponentCallback
 
-	private setupFrameCallback
+    private setupFrameCallback
 
-	private createFixtureCallback
+    private createFixtureCallback
 
-	/**
-	 * @see FrameTestingFactory#create(Map)
-	 */
-	@Inject
-	FrameTesting(@Assisted Map args) {
-		args = defaultArgs(args)
-		this.title = args.title
-		this.size = args.size
-		this.createFrameCallback = args.createFrame
-		this.createComponentCallback = args.createComponent
-		this.setupFrameCallback = args.setupFrame
-		this.createFixtureCallback = args.createFixture
-	}
+    /**
+     * @see FrameTestingFactory#create(Map)
+     */
+    @Inject
+    FrameTesting(@Assisted Map args) {
+        args = defaultArgs(args)
+        this.title = args.title
+        this.size = args.size
+        this.createFrameCallback = args.createFrame
+        this.createComponentCallback = args.createComponent
+        this.setupFrameCallback = args.setupFrame
+        this.createFixtureCallback = args.createFixture
+    }
 
-	private Map defaultArgs(Map args) {
-		[
-			title: "Frame Test",
-			size: new Dimension(680, 480),
-			createFrame: null,
-			createComponent: null,
-			setupFrame: null,
-			createFixture: null
-		] << args
-	}
+    private Map defaultArgs(Map args) {
+        [
+            title: "Frame Test",
+            size: new Dimension(680, 480),
+            createFrame: null,
+            createComponent: null,
+            setupFrame: null,
+            createFixture: null
+        ] << args
+    }
 
-	/**
-	 * Creates the frame, dock and frame fixture.
-	 *
-	 * @return this {@link FrameTesting}.
-	 */
-	FrameTesting call() {
-		invokeAndWait {
-			frame = createFrame()
-			component = createComponent(frame)
-			setupFrame(frame, component)
-			fixture = createFixture(frame)
-		}
-		this
-	}
+    /**
+     * Creates the frame, dock and frame fixture.
+     *
+     * @return this {@link FrameTesting}.
+     */
+    FrameTesting call() {
+        invokeAndWait {
+            frame = createFrame()
+            component = createComponent(frame)
+            setupFrame(frame, component)
+            fixture = createFixture(frame)
+        }
+        this
+    }
 
-	/**
-	 * Creates the frame.
-	 *
-	 * @return the {@link JFrame}.
-	 */
-	@RunsInEDT
-	JFrame createFrame() {
-		if (createFrameCallback != null) {
-			createFrameCallback()
-		} else {
-			def frame = new JFrame(title)
-			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE)
-			frame.setSize size
-			frame.setPreferredSize size
-			frame
-		}
-	}
+    /**
+     * Creates the frame.
+     *
+     * @return the {@link JFrame}.
+     */
+    @RunsInEDT
+    JFrame createFrame() {
+        if (createFrameCallback != null) {
+            createFrameCallback()
+        } else {
+            def frame = new JFrame(title)
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE)
+            frame.setSize size
+            frame.setPreferredSize size
+            frame
+        }
+    }
 
-	/**
-	 * Creates the frame component.
-	 *
-	 * @param frame
-	 * 			  the {@link JFrame}.
-	 *
-	 * @return the {@link Component}.
-	 */
-	@RunsInEDT
-	Component createComponent(JFrame frame) {
-		if (createComponentCallback != null) {
-			createComponentCallback(frame)
-		} else {
-			new JPanel()
-		}
-	}
+    /**
+     * Creates the frame component.
+     *
+     * @param frame
+     * 			  the {@link JFrame}.
+     *
+     * @return the {@link Component}.
+     */
+    @RunsInEDT
+    Component createComponent(JFrame frame) {
+        if (createComponentCallback != null) {
+            createComponentCallback(frame)
+        } else {
+            new JPanel()
+        }
+    }
 
-	/**
-	 * Setups the frame.
-	 *
-	 * @param frame
-	 * 			  the {@link JFrame}.
-	 *
-	 * @param component
-	 * 			  the {@link Component} of the frame.
-	 */
-	@RunsInEDT
-	void setupFrame(JFrame frame, Component component) {
-		if (setupFrameCallback != null) {
-			setupFrameCallback(frame, component)
-		} else {
-			frame.add component, BorderLayout.CENTER
-		}
-	}
+    /**
+     * Setups the frame.
+     *
+     * @param frame
+     * 			  the {@link JFrame}.
+     *
+     * @param component
+     * 			  the {@link Component} of the frame.
+     */
+    @RunsInEDT
+    void setupFrame(JFrame frame, Component component) {
+        if (setupFrameCallback != null) {
+            setupFrameCallback(frame, component)
+        } else {
+            frame.add component, BorderLayout.CENTER
+        }
+    }
 
-	/**
-	 * Creates the frame fixture.
-	 *
-	 * @param frame
-	 * 			  the {@link JFrame}.
-	 *
-	 * @return the {@link FrameFixture}.
-	 */
-	@RunsInEDT
-	FrameFixture createFixture(JFrame frame) {
-		if (createFixtureCallback != null) {
-			createFixtureCallback(frame)
-		} else {
-			def result = GuiActionRunner.execute([executeInEDT: { frame } ] as GuiQuery)
-			new FrameFixture(result)
-		}
-	}
+    /**
+     * Creates the frame fixture.
+     *
+     * @param frame
+     * 			  the {@link JFrame}.
+     *
+     * @return the {@link FrameFixture}.
+     */
+    @RunsInEDT
+    FrameFixture createFixture(JFrame frame) {
+        if (createFixtureCallback != null) {
+            createFixtureCallback(frame)
+        } else {
+            def result = GuiActionRunner.execute([executeInEDT: { frame } ] as GuiQuery)
+            new FrameFixture(result)
+        }
+    }
 
-	/**
-	 * Runs the tests. The {@link FrameFixture} is passed
-	 * to each specified test as the first argument.
-	 *
-	 * @param tests
-	 * 			  the tests to run.
-	 *
-	 * @return this {@link FrameTesting}
-	 */
-	FrameTesting withFixture(Object... tests) {
-		beginFixture()
-		sequencedActionsWith(fixture, tests)
-		endFixture()
-		this
-	}
+    /**
+     * Runs the tests. The {@link FrameFixture} is passed
+     * to each specified test as the first argument.
+     *
+     * @param tests
+     * 			  the tests to run.
+     *
+     * @return this {@link FrameTesting}
+     */
+    FrameTesting withFixture(Object... tests) {
+        beginFixture()
+        try {
+            sequencedActionsWith(fixture, tests)
+        } finally {
+            endFixture()
+        }
+        this
+    }
 
-	/**
-	 * Creates and show the {@link FrameFixture}.
-	 */
-	void beginFixture() {
-		fixture.show()
-	}
+    /**
+     * Creates and show the {@link FrameFixture}.
+     */
+    void beginFixture() {
+        fixture.show()
+    }
 
-	/**
-	 * End the {@link FrameFixture}.
-	 */
-	void endFixture() {
-		fixture.cleanUp()
-		fixture = null
-	}
+    /**
+     * End the {@link FrameFixture}.
+     */
+    void endFixture() {
+        fixture.cleanUp()
+        fixture = null
+    }
 }
