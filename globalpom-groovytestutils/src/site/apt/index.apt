@@ -30,17 +30,13 @@ Description
 
 SCM
 
-* Main
+  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy/repository}Main Repository}}
 
-    * {{{https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository}Repository}}
+  * git@anrisoftware.com:globalpom-groovy.git
 
-    * git@anrisoftware.com:globalpom-parent.git
+  * {{{https://github.com/devent/globalpom-groovy}Github Mirror Repository}}
 
-GitHub SCM
-
-    * {{{https://github.com/devent/globalpom-groovy}Repository}}
-
-    * {{{git@github.com:devent/globalpom-parent.git}SSH Access}}
+  * git@github.com:devent/globalpom-groovy.git
 
 Maven Module
 
@@ -51,4 +47,22 @@ Maven Module
     <version>2.1</version>
     <scope>test</scope>
 </dependency>
+---
+
+License
+
+---
+Copyright 2011-2016 Erwin Müller <erwin.mueller@deventm.org>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ---

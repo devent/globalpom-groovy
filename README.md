@@ -9,7 +9,6 @@ cycle. The build-helper-maven-plugin is also added to the build cycle to
 recognize src/main/groovy and src/test/groovy if the java source directories
 are empty.
 
-
 ## SCM
 
 * [Main Repository](https://anrisoftware.com/projects/projects/globalpom-groovy/repository)
@@ -28,7 +27,37 @@ are empty.
 </parent>
 ```
 
-## License
+# globalpom-groovytestutils
+
+## Description
+
+The project is a collection of test utilities on top of JUnit.
+
+* <<<com.anrisoftware.globalpom.utils.frametesting>>>
+  * FrameTesting
+  Creates a frame fixture to test components in a frame.
+  * DialogTesting
+  Creates a frame fixture to test components in a dialog.
+
+## SCM
+
+* [Main Repository](https://anrisoftware.com/projects/projects/globalpom-groovy/repository)
+* `git@anrisoftware.com:globalpom-groovy.git`
+* [Github Mirror Repository](https://github.com/devent/globalpom-groovy)
+* `git@github.com:devent/globalpom-groovy.git`
+
+## Maven Module
+
+```
+<dependency>
+    <groupId>com.anrisoftware.globalpom</groupId>
+    <artifactId>globalpom-groovytestutils</artifactId>
+    <version>2.1</version>
+    <scope>test</scope>
+</dependency>
+```
+
+# License
 
 Copyright 2011-2016 Erwin Müller <erwin.mueller@deventm.org>
 
