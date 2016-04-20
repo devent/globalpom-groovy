@@ -53,7 +53,7 @@ The `maven-scr-plugin` is used to declare declarative services.
 
 The project is a collection of test utilities on top of JUnit.
 
-* <<<com.anrisoftware.globalpom.utils.frametesting>>>
+* `com.anrisoftware.globalpom.utils.frametesting`
   * FrameTesting
   Creates a frame fixture to test components in a frame.
   * DialogTesting
