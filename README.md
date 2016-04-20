@@ -9,20 +9,40 @@ cycle. The build-helper-maven-plugin is also added to the build cycle to
 recognize src/main/groovy and src/test/groovy if the java source directories
 are empty.
 
-## SCM
-
-* [Main Repository](https://anrisoftware.com/projects/projects/globalpom-groovy/repository)
-* `git@anrisoftware.com:globalpom-groovy.git`
-* [Github Mirror Repository](https://github.com/devent/globalpom-groovy)
-* `git@github.com:devent/globalpom-groovy.git`
-
 ## Maven
 
 ```
 <parent>
     <artifactId>globalpom-groovy</artifactId>
     <groupId>com.anrisoftware.globalpom</groupId>
-    <version>2.1</version>
+    <version>2.2</version>
+    <relativePath />
+</parent>
+```
+
+# globalpom-groovy-osgi
+
+## Description
+
+The project is suppose to be used by all Maven OSGi bundles that wants to have
+Groovy support. In addition to the Groovy plug-ins, the <<<maven-bundle-plugin>>> is added
+that exports the package defined in the <<<project.custom.bundle.namespace>>>
+property and protects the package defined in the <<<project.custom.bundle.namespace.internal>>>
+property. Also, the <<<osgi.bnd>>> is added to define project specific OSGi properties.
+The <<<maven-scr-plugin>>> is used to declare declarative services.
+
+| Property      | Description   |
+| ------------- |:-------------:|
+| `project.custom.bundle.namespace` | The exported package, defaults to `com.anrisoftware.sscontrol` |
+| `project.custom.bundle.namespace.internal` | The protected package, defaults to `com.anrisoftware.sscontrol.internal` |
+
+## Maven Module
+
+```
+<parent>
+    <groupId>com.anrisoftware.globalpom</groupId>
+    <artifactId>globalpom-groovy-osgi</artifactId>
+    <version>2.2</version>
     <relativePath />
 </parent>
 ```
@@ -39,23 +59,23 @@ The project is a collection of test utilities on top of JUnit.
   * DialogTesting
   Creates a frame fixture to test components in a dialog.
 
-## SCM
-
-* [Main Repository](https://anrisoftware.com/projects/projects/globalpom-groovy/repository)
-* `git@anrisoftware.com:globalpom-groovy.git`
-* [Github Mirror Repository](https://github.com/devent/globalpom-groovy)
-* `git@github.com:devent/globalpom-groovy.git`
-
 ## Maven Module
 
 ```
 <dependency>
     <groupId>com.anrisoftware.globalpom</groupId>
     <artifactId>globalpom-groovytestutils</artifactId>
-    <version>2.1</version>
+    <version>2.2</version>
     <scope>test</scope>
 </dependency>
 ```
+
+# SCM
+
+* [Main Repository](https://anrisoftware.com/projects/projects/globalpom-groovy/repository)
+* `git@anrisoftware.com:globalpom-groovy.git`
+* [Github Mirror Repository](https://github.com/devent/globalpom-groovy)
+* `git@github.com:devent/globalpom-groovy.git`
 
 # License
 

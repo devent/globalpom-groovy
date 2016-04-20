@@ -1,0 +1,73 @@
+~~
+~~ Copyright 2016 Erwin Müller <erwin.mueller@deventm.org>
+~~
+~~ Licensed under the Apache License, Version 2.0 (the "License");
+~~ you may not use this file except in compliance with the License.
+~~ You may obtain a copy of the License at
+~~
+~~     http://www.apache.org/licenses/LICENSE-2.0
+~~
+~~ Unless required by applicable law or agreed to in writing, software
+~~ distributed under the License is distributed on an "AS IS" BASIS,
+~~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~~ See the License for the specific language governing permissions and
+~~ limitations under the License.
+~~
+
+Description
+
+  The project is suppose to be used by all Maven OSGi bundles that wants to have
+Groovy support. In addition to the Groovy plug-ins, the <<<maven-bundle-plugin>>> is added
+that exports the package defined in the <<<project.custom.bundle.namespace>>>
+property and protects the package defined in the <<<project.custom.bundle.namespace.internal>>>
+property. Also, the <<<osgi.bnd>>> is added to define project specific OSGi properties.
+The <<<maven-scr-plugin>>> is used to declare declarative services.
+
+* Properties
+
+  The following properties must be set or can be adjusted.
+
+*-----*------*
+ <<<project.custom.bundle.namespace>>> | The exported package, defaults to <<<com.anrisoftware.sscontrol>>>
+*-----*------*
+ <<<project.custom.bundle.namespace.internal>>> | The protected package, defaults to <<<com.anrisoftware.sscontrol.internal>>>
+*-----*------*
+
+SCM
+
+  * {{{https://anrisoftware.com/projects/projects/globalpom-groovy/repository}Main Repository}}
+
+  * git@anrisoftware.com:globalpom-groovy.git
+
+  * {{{https://github.com/devent/globalpom-groovy}Github Mirror Repository}}
+
+  * git@github.com:devent/globalpom-groovy.git
+
+Maven
+
+---
+<parent>
+    <groupId>com.anrisoftware.globalpom</groupId>
+    <artifactId>globalpom-groovy-osgi</artifactId>
+    <version>2.2</version>
+    <relativePath />
+</parent>
+---
+
+License
+
+---
+Copyright 2016 Erwin Müller <erwin.mueller@deventm.org>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+---

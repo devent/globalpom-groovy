@@ -10,6 +10,7 @@
 
 	<modules>
 		<module>globalpom-groovy</module>
+        <module>globalpom-groovy-osgi</module>
 		<module>globalpom-groovytestutils</module>
 	</modules>
 
