@@ -13,9 +13,9 @@ are empty.
 ## SCM
 
 * [Main Repository](https://anrisoftware.com/projects/projects/globalpom-groovy/repository)
-* git@anrisoftware.com:globalpom-groovy.git
+* `git@anrisoftware.com:globalpom-groovy.git`
 * [Github Mirror Repository](https://github.com/devent/globalpom-groovy)
-* git@github.com:devent/globalpom-groovy.git
+* `git@github.com:devent/globalpom-groovy.git`
 
 ## Maven
 
