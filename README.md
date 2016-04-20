@@ -25,11 +25,11 @@ are empty.
 ## Description
 
 The project is suppose to be used by all Maven OSGi bundles that wants to have
-Groovy support. In addition to the Groovy plug-ins, the <<<maven-bundle-plugin>>> is added
-that exports the package defined in the <<<project.custom.bundle.namespace>>>
-property and protects the package defined in the <<<project.custom.bundle.namespace.internal>>>
-property. Also, the <<<osgi.bnd>>> is added to define project specific OSGi properties.
-The <<<maven-scr-plugin>>> is used to declare declarative services.
+Groovy support. In addition to the Groovy plug-ins, the `maven-bundle-plugin` is added
+that exports the package defined in the `project.custom.bundle.namespace`
+property and protects the package defined in the `project.custom.bundle.namespace.internal`
+property. Also, the `osgi.bnd` is added to define project specific OSGi properties.
+The `maven-scr-plugin` is used to declare declarative services.
 
 | Property      | Description   |
 | ------------- |:-------------:|
