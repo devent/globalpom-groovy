@@ -13,7 +13,7 @@
 	<artifactId>globalpom-groovy-osgi</artifactId>
 	<packaging>pom</packaging>
 	<name>Global POM Groovy OSGi</name>
-	<description>Adds Groovy support to compile Groovy sources and test sources as an OSGi bundle.</description>
+	<description>Adds Groovy support to compile Groovy sources and test sources as an OSGi bundle</description>
 	<url>https://anrisoftware.com/projects/projects/globalpom-groovy-osgi</url>
 	<inceptionYear>2016</inceptionYear>
 
@@ -95,18 +95,6 @@
 						<_include>osgi.bnd</_include>
 					</instructions>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-scr-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>generate-scr-scrdescriptor</id>
-						<goals>
-							<goal>scr</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 		</plugins>

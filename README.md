@@ -20,7 +20,7 @@ are empty.
 </parent>
 ```
 
-# globalpom-groovy-osgi
+# globalpom-groovy-osgi-src
 
 ## Description
 
