@@ -22,6 +22,7 @@ import org.fest.swing.fixture.FrameFixture
 import org.junit.BeforeClass
 import org.junit.Test
 
+import com.anrisoftware.globalpom.utils.frametesting.FrameTesting.FrameTestingFactory
 import com.google.inject.Guice
 import com.google.inject.Injector
 

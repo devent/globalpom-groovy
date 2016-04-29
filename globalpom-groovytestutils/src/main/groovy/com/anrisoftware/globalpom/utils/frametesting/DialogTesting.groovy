@@ -18,10 +18,13 @@ package com.anrisoftware.globalpom.utils.frametesting
 import static com.anrisoftware.globalpom.utils.TestUtils.*
 import static javax.swing.SwingUtilities.*
 import static javax.swing.WindowConstants.*
+import groovy.transform.CompileStatic
 
 import java.awt.BorderLayout
 import java.awt.Component
+import java.awt.Dialog
 import java.awt.Dimension
+import java.awt.Frame
 
 import javax.inject.Inject
 import javax.swing.JDialog
@@ -61,8 +64,50 @@ import com.google.inject.assistedinject.Assisted
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.21
  */
+@CompileStatic
 class DialogTesting {
 
+    /**
+     * Factory to create dialog testing.
+     *
+     * @author Erwin Mueller, erwin.mueller@deventm.org
+     * @since 1.21
+     */
+    interface DialogTestingFactory {
+
+        /**
+         * Creates a new dialog testing with the specified arguments.
+         *
+         * @param title
+         *            the title of the dialog;
+         *
+         * @param size
+         *            the {@link Dimension} size of the dialog;
+         *
+         * @param createDialog
+         *            callback to create the {@link JDialog}. Have no arguments,
+         *            must return a {@link JDialog} object.
+         *
+         * @param createComponent
+         *            callback to create the {@link Component} for the frame;
+         *            the {@link JFrame} is passed as the first argument, must
+         *            return a {@link Component} object.
+         *
+         * @param setupDialog
+         *            callback to setups the {@link JDialog};
+         *            the {@link JDialog} is passed as the first argument,
+         *            the {@link Component} is passed as the second argument,
+         *            nothing is returned.
+         *
+         * @param createFixture
+         *            callback to create the {@link FrameFixture};
+         *            the {@link JDialog} is passed as the first argument, must
+         *            return a {@link FrameFixture} object.
+         *
+         * @return the {@link DialogTesting}.
+         */
+        DialogTesting create(Map args)
+    }
 
     /**
      * The current title.
@@ -89,13 +134,13 @@ class DialogTesting {
      */
     DialogFixture fixture
 
-    private createDialogCallback
+    private Closure createDialogCallback
 
-    private createComponentCallback
+    private Closure createComponentCallback
 
-    private setupDialogCallback
+    private Closure setupDialogCallback
 
-    private createFixtureCallback
+    private Closure createFixtureCallback
 
     /**
      * @see DialogTestingFactory#create(Map)
@@ -104,11 +149,11 @@ class DialogTesting {
     DialogTesting(@Assisted Map args) {
         args = defaultArgs(args)
         this.title = args.title
-        this.size = args.size
-        this.createDialogCallback = args.createDialog
-        this.createComponentCallback = args.createComponent
-        this.setupDialogCallback = args.setupDialog
-        this.createFixtureCallback = args.createFixture
+        this.size = args.size as Dimension
+        this.createDialogCallback = args.createDialog as Closure
+        this.createComponentCallback = args.createComponent as Closure
+        this.setupDialogCallback = args.setupDialog as Closure
+        this.createFixtureCallback = args.createFixture as Closure
     }
 
     private Map defaultArgs(Map args) {
@@ -147,7 +192,7 @@ class DialogTesting {
         if (createDialogCallback != null) {
             createDialogCallback()
         } else {
-            def dialog = new JDialog(null, title)
+            def dialog = new JDialog((Frame)null, title)
             dialog.setDefaultCloseOperation DISPOSE_ON_CLOSE
             dialog.setSize size
             dialog.setPreferredSize size
@@ -204,7 +249,7 @@ class DialogTesting {
             createFixtureCallback(dialog)
         } else {
             def result = GuiActionRunner.execute([executeInEDT: { dialog } ] as GuiQuery)
-            new DialogFixture(result)
+            new DialogFixture(result as Dialog)
         }
     }
 

@@ -15,6 +15,10 @@
  */
 package com.anrisoftware.globalpom.utils.frametesting
 
+import groovy.transform.CompileStatic
+
+import com.anrisoftware.globalpom.utils.frametesting.DialogTesting.DialogTestingFactory
+import com.anrisoftware.globalpom.utils.frametesting.FrameTesting.FrameTestingFactory
 import com.google.inject.AbstractModule
 import com.google.inject.assistedinject.FactoryModuleBuilder
 
@@ -27,13 +31,14 @@ import com.google.inject.assistedinject.FactoryModuleBuilder
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.21
  */
+@CompileStatic
 class FrameTestingModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		install(new FactoryModuleBuilder().implement(FrameTesting.class,
-				FrameTesting.class).build(FrameTestingFactory.class))
-		install(new FactoryModuleBuilder().implement(DialogTesting.class,
-				DialogTesting.class).build(DialogTestingFactory.class))
-	}
+    @Override
+    protected void configure() {
+        install(new FactoryModuleBuilder().implement(FrameTesting.class,
+                FrameTesting.class).build(FrameTestingFactory.class))
+        install(new FactoryModuleBuilder().implement(DialogTesting.class,
+                DialogTesting.class).build(DialogTestingFactory.class))
+    }
 }

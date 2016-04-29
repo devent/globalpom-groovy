@@ -19,32 +19,38 @@ import static com.anrisoftware.globalpom.utils.TestUtils.*
 
 import org.junit.Test
 
+/**
+ *
+ *
+ * @author Erwin Müller, erwin.mueller@deventm.de
+ * @since 1.0
+ */
 class TableArrayPrinterTest {
 
-	@Test
-	void "3-2 table"() {
-		def table = [
-			["A1", "A2", "A2"],
-			["B1", "B2", "B2"]
-		]
-		def output = TableArrayPrinter.withDefaults(table).toString()
-		assertStringContent output, """+--+--+--+
+    @Test
+    void "3-2 table"() {
+        def table = [
+            ["A1", "A2", "A2"],
+            ["B1", "B2", "B2"]
+        ]
+        def output = TableArrayPrinter.withDefaults(table).toString()
+        assertStringContent output, """+--+--+--+
 |A1|A2|A2|
 +--+--+--+
 |B1|B2|B2|
 +--+--+--+
 """
-	}
+    }
 
-	@Test
-	void "2-3 table"() {
-		def table = [
-			["A1", "A2"],
-			["B1", "B2"],
-			["C1", "C2"],
-		]
-		def output = TableArrayPrinter.withDefaults(table).toString()
-		assertStringContent output, """+--+--+
+    @Test
+    void "2-3 table"() {
+        def table = [
+            ["A1", "A2"],
+            ["B1", "B2"],
+            ["C1", "C2"],
+        ]
+        def output = TableArrayPrinter.withDefaults(table).toString()
+        assertStringContent output, """+--+--+
 |A1|A2|
 +--+--+
 |B1|B2|
@@ -52,17 +58,17 @@ class TableArrayPrinterTest {
 |C1|C2|
 +--+--+
 """
-	}
+    }
 
-	@Test
-	void "primitive values table"() {
-		int[][] table = [
-			[10, 20],
-			[11, 21],
-			[12, 22],
-		]
-		def output = TableArrayPrinter.withDefaults(table).toString()
-		assertStringContent output, """+--+--+
+    @Test
+    void "primitive values table"() {
+        int[][] table = [
+            [10, 20],
+            [11, 21],
+            [12, 22],
+        ]
+        def output = TableArrayPrinter.withDefaults(table).toString()
+        assertStringContent output, """+--+--+
 |10|20|
 +--+--+
 |11|21|
@@ -70,5 +76,5 @@ class TableArrayPrinterTest {
 |12|22|
 +--+--+
 """
-	}
+    }
 }

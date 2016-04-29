@@ -13,19 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- * <h1>SCM</h1>
- * <ul>
- * <li><a href="https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository">Source code</a></li>
- * <li><code>git@anrisoftware.com:globalpom-groovy.git</code>
- * </ul>
- * <ul>
- * <li><a href="https://github.com/devent/globalpom-groovy">Source code (Github)</a>
- * <li><code>git@github.com:devent/globalpom-groovy.git</code>
- * </ul>
- *
- * @version 2.0
- * @author Erwin Mueller, erwin.mueller@deventm.org
- */
-package com.anrisoftware.globalpom.utils;
+package com.anrisoftware.globalpom.utils.imagetesting
 
+import groovy.transform.CompileStatic
+
+import com.anrisoftware.globalpom.utils.imagetesting.ShowImagesFrame.ShowImagesFrameFactory
+import com.google.inject.AbstractModule
+import com.google.inject.assistedinject.FactoryModuleBuilder
+
+/**
+ * Binds the image testing factory.
+ *
+ * @see ShowImagesFrameFactory
+ *
+ * @author Erwin Mueller, erwin.mueller@deventm.org
+ * @since 2.2
+ */
+@CompileStatic
+class ImageTestingModule extends AbstractModule {
+
+    @Override
+    protected void configure() {
+        install(new FactoryModuleBuilder().implement(ShowImagesFrame.class,
+                ShowImagesFrame.class).build(ShowImagesFrameFactory.class))
+    }
+}
