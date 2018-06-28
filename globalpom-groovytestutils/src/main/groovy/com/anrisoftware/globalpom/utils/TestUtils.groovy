@@ -44,7 +44,7 @@ class TestUtils {
 	/**
 	 * Set default to-string style.
 	 */
-	static toStringStyle = ToStringBuilder.setDefaultStyle(ToStringStyle.SHORT_PREFIX_STYLE)
+	public static toStringStyle = ToStringBuilder.setDefaultStyle(ToStringStyle.SHORT_PREFIX_STYLE)
 
 	/**
 	 * Default epsilon for the equality of two values.

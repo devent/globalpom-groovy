@@ -106,7 +106,7 @@ class ShowImagesFrame {
         def testingArgs = new HashMap(args)
         List<JLabel> imageLabels = []
         testingArgs.createComponent = { JFrame frame ->
-            def count = Math.ceil(images.size() / 2) as int
+            def count = Math.ceil((double)images.size() / 2) as int
             def panel = new JPanel(new GridLayout(count, count, 4, 4))
             images.eachWithIndex { Image it, int i ->
                 def label = new JLabel(new ImageIcon(it))

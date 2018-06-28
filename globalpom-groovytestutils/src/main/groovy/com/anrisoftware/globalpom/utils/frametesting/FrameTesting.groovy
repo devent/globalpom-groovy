@@ -71,7 +71,7 @@ class FrameTesting {
      * @author Erwin Mueller, erwin.mueller@deventm.org
      * @since 1.21
      */
-    interface FrameTestingFactory {
+    public interface FrameTestingFactory {
 
         /**
          * Creates a new frame testing with the specified arguments.
