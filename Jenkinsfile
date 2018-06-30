@@ -37,7 +37,7 @@ pipeline {
                 container('maven') {
                     configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
                         withMaven() {
-                            sh '$MVN_CMD -s $MAVEN_SETTINGS clean package'
+                            sh '$MVN_CMD -s $MAVEN_SETTINGS clean install'
                         }
                     }
                 }
