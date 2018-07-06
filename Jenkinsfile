@@ -24,9 +24,9 @@ pipeline {
             steps {
                 container('maven') {
                     withCredentials([string(credentialsId: 'gpg-key-passphrase', variable: 'GPG_PASSPHRASE')]) {
-	                    configFileProvider([configFile(fileId: 'gpg-key', variable: 'GPG_KEY_FILE')]) {
-	                        sh '/setup-gpg.sh'
-	                    }
+                    configFileProvider([configFile(fileId: 'gpg-key', variable: 'GPG_KEY_FILE')]) {
+                        sh '/setup-gpg.sh'
+                    }
                     }
                 }
             }
@@ -44,19 +44,7 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                container('maven') {
-                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                        withMaven() {
-                            sh '$MVN_CMD -s $MAVEN_SETTINGS test'
-                        }
-                    }
-                }
-            }
-        }
-
-        stage('Deploy') {
+        stage('Deploy Public') {
             steps {
                 container('maven') {
                     configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
@@ -68,5 +56,16 @@ pipeline {
             }
         }
 
+        stage('Deploy Private') {
+            steps {
+                container('maven') {
+                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
+                        withMaven() {
+                            sh '$MVN_CMD -s $MAVEN_SETTINGS deploy -P private-repository'
+                        }
+                    }
+                }
+            }
+        }
     }
 }
