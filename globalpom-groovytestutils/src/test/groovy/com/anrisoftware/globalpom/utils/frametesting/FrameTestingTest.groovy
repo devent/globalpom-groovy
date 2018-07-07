@@ -16,15 +16,17 @@
 package com.anrisoftware.globalpom.utils.frametesting
 
 import static com.anrisoftware.globalpom.utils.TestUtils.*
-import groovy.transform.CompileStatic
 
 import org.fest.swing.fixture.FrameFixture
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty
 
 import com.anrisoftware.globalpom.utils.frametesting.FrameTesting.FrameTestingFactory
 import com.google.inject.Guice
 import com.google.inject.Injector
+
+import groovy.transform.CompileStatic
 
 /**
  * @see FrameTesting
@@ -33,37 +35,38 @@ import com.google.inject.Injector
  * @since 2.0
  */
 @CompileStatic
+@EnabledIfSystemProperty(named = "project.custom.tests.gui", matches = "true")
 class FrameTestingTest {
 
-    @Test
-    void "show frame"() {
-        def title = "$NAME/show frame"
-        def testing = factory.create([title: title])()
-        testing.withFixture { FrameFixture fix ->
-            assert fix != null
-        }
-    }
+	@Test
+	void "show frame"() {
+		def title = "$NAME/show frame"
+		def testing = factory.create([title: title])()
+		testing.withFixture { FrameFixture fix ->
+			assert fix != null
+		}
+	}
 
-    @Test
-    void "exception frame"() {
-        def title = "$NAME/exception frame"
-        def testing = factory.create([title: title])()
-        shouldFailWith NullPointerException, {
-            testing.withFixture { FrameFixture fix ->
-                throw new NullPointerException()
-            }
-        }
-    }
+	@Test
+	void "exception frame"() {
+		def title = "$NAME/exception frame"
+		def testing = factory.create([title: title])()
+		shouldFailWith NullPointerException, {
+			testing.withFixture { FrameFixture fix ->
+				throw new NullPointerException()
+			}
+		}
+	}
 
-    static Injector injector
+	static Injector injector
 
-    static FrameTestingFactory factory
+	static FrameTestingFactory factory
 
-    static NAME = FrameTestingTest.class.simpleName
+	static NAME = FrameTestingTest.class.simpleName
 
-    @BeforeClass
-    static void createFactory() {
-        injector = Guice.createInjector(new FrameTestingModule())
-        factory = injector.getInstance FrameTestingFactory
-    }
+	@BeforeAll
+	static void createFactory() {
+		injector = Guice.createInjector(new FrameTestingModule())
+		factory = injector.getInstance FrameTestingFactory
+	}
 }

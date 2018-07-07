@@ -16,15 +16,17 @@
 package com.anrisoftware.globalpom.utils.frametesting
 
 import static com.anrisoftware.globalpom.utils.TestUtils.*
-import groovy.transform.CompileStatic
 
 import org.fest.swing.fixture.DialogFixture
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty
 
 import com.anrisoftware.globalpom.utils.frametesting.DialogTesting.DialogTestingFactory
 import com.google.inject.Guice
 import com.google.inject.Injector
+
+import groovy.transform.CompileStatic
 
 /**
  * @see DialogTesting
@@ -33,37 +35,38 @@ import com.google.inject.Injector
  * @since 1.0
  */
 @CompileStatic
+@EnabledIfSystemProperty(named = "project.custom.tests.gui", matches = "true")
 class DialogTestingTest {
 
-    @Test
-    void "show dialog"() {
-        def title = "$NAME/show dialog"
-        def testing = factory.create([title: title])()
-        testing.withFixture { DialogFixture fix ->
-            assert fix != null
-        }
-    }
+	@Test
+	void "show dialog"() {
+		def title = "$NAME/show dialog"
+		def testing = factory.create([title: title])()
+		testing.withFixture { DialogFixture fix ->
+			assert fix != null
+		}
+	}
 
-    @Test
-    void "exception dialog"() {
-        def title = "$NAME/exception dialog"
-        def testing = factory.create([title: title])()
-        shouldFailWith NullPointerException, {
-            testing.withFixture { DialogFixture fix ->
-                throw new NullPointerException()
-            }
-        }
-    }
+	@Test
+	void "exception dialog"() {
+		def title = "$NAME/exception dialog"
+		def testing = factory.create([title: title])()
+		shouldFailWith NullPointerException, {
+			testing.withFixture { DialogFixture fix ->
+				throw new NullPointerException()
+			}
+		}
+	}
 
-    static Injector injector
+	static Injector injector
 
-    static DialogTestingFactory factory
+	static DialogTestingFactory factory
 
-    static NAME = DialogTestingTest.class.simpleName
+	static NAME = DialogTestingTest.class.simpleName
 
-    @BeforeClass
-    static void createFactory() {
-        injector = Guice.createInjector(new FrameTestingModule())
-        factory = injector.getInstance DialogTestingFactory
-    }
+	@BeforeAll
+	static void createFactory() {
+		injector = Guice.createInjector(new FrameTestingModule())
+		factory = injector.getInstance DialogTestingFactory
+	}
 }

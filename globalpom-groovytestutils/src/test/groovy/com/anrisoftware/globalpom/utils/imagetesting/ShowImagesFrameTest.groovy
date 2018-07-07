@@ -16,19 +16,21 @@
 package com.anrisoftware.globalpom.utils.imagetesting
 
 import static com.anrisoftware.globalpom.utils.TestUtils.*
-import groovy.transform.CompileStatic
 
 import java.awt.Dimension
 
 import javax.imageio.ImageIO
 import javax.inject.Inject
 
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty
 
 import com.anrisoftware.globalpom.utils.frametesting.FrameTestingModule
 import com.anrisoftware.globalpom.utils.imagetesting.ShowImagesFrame.ShowImagesFrameFactory
 import com.google.inject.Guice
+
+import groovy.transform.CompileStatic
 
 /**
  * @see ShowImagesFrame
@@ -37,35 +39,36 @@ import com.google.inject.Guice
  * @since 2.2
  */
 @CompileStatic
+@EnabledIfSystemProperty(named = "project.custom.tests.gui", matches = "true")
 class ShowImagesFrameTest {
 
-    @Test
-    void "show image"() {
-        def title = "$NAME/show image"
-        def image = ImageIO.read(imageURL)
-        def testing = factory.create image: image, title: title, size: frameSize
-        testing()
-    }
+	@Test
+	void "show image"() {
+		def title = "$NAME/show image"
+		def image = ImageIO.read(imageURL)
+		def testing = factory.create image: image, title: title, size: frameSize
+		testing()
+	}
 
-    @Test
-    void "show images"() {
-        def title = "$NAME/show images"
-        def image = ImageIO.read(imageURL)
-        def testing = factory.create images: [image, image, image, image], title: title, size: frameSize
-        testing()
-    }
+	@Test
+	void "show images"() {
+		def title = "$NAME/show images"
+		def image = ImageIO.read(imageURL)
+		def testing = factory.create images: [image, image, image, image], title: title, size: frameSize
+		testing()
+	}
 
-    @Inject
-    ShowImagesFrameFactory factory
+	@Inject
+	ShowImagesFrameFactory factory
 
-    static NAME = ShowImagesFrameTest.class.simpleName
+	static NAME = ShowImagesFrameTest.class.simpleName
 
-    static Dimension frameSize = new Dimension(171, 171)
+	static Dimension frameSize = new Dimension(171, 171)
 
-    static URL imageURL = ShowImagesFrameTest.class.getResource("x-mail-distribution-list.png")
+	static URL imageURL = ShowImagesFrameTest.class.getResource("x-mail-distribution-list.png")
 
-    @Before
-    void setup() {
-        Guice.createInjector(new FrameTestingModule(), new ImageTestingModule()).injectMembers(this)
-    }
+	@BeforeEach
+	void setup() {
+		Guice.createInjector(new FrameTestingModule(), new ImageTestingModule()).injectMembers(this)
+	}
 }
