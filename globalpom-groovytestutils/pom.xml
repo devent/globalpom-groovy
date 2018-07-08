@@ -1,120 +1,129 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>globalpom-groovy</artifactId>
-        <groupId>com.anrisoftware.globalpom</groupId>
-        <version>2.2</version>
-        <relativePath>../globalpom-groovy</relativePath>
-    </parent>
+	<parent>
+		<artifactId>globalpom-groovy</artifactId>
+		<groupId>com.anrisoftware.globalpom</groupId>
+		<version>4.0.0</version>
+		<relativePath>../globalpom-groovy</relativePath>
+	</parent>
 
-    <artifactId>globalpom-groovytestutils</artifactId>
-    <name>Global POM :: Groovy Test Utilities</name>
-    <description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
-    <url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils</url>
-    <inceptionYear>2011</inceptionYear>
+	<artifactId>globalpom-groovytestutils</artifactId>
+	<name>Global POM :: Groovy Test Utilities</name>
+	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
+	<url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils</url>
+	<inceptionYear>2011</inceptionYear>
 
-    <developers>
-        <developer>
-            <id>EM</id>
-            <name>Erwin Müller</name>
-            <organization>Advanced Natural Research Institute</organization>
-            <email>erwin.mueller@deventm.org</email>
-            <roles>
-                <role>Owner</role>
-                <role>Developer</role>
-            </roles>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
-    </developers>
+	<developers>
+		<developer>
+			<id>EM</id>
+			<name>Erwin Müller</name>
+			<organization>Advanced Natural Research Institute</organization>
+			<email>erwin.mueller@deventm.org</email>
+			<roles>
+				<role>Owner</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>Europe/Berlin</timezone>
+		</developer>
+	</developers>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-    <scm>
-        <connection>scm:git:git@anrisoftware.com:globalpom-groovy.git</connection>
-        <developerConnection>scm:git:git@anrisoftware.com:globalpom-groovy.git</developerConnection>
-        <url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository</url>
-    </scm>
+	<scm>
+		<connection>scm:git:git@anrisoftware.com:globalpom-groovy.git</connection>
+		<developerConnection>scm:git:git@anrisoftware.com:globalpom-groovy.git</developerConnection>
+		<url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils/repository</url>
+	</scm>
 
-    <issueManagement>
-        <system>Redmine</system>
-        <url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils</url>
-    </issueManagement>
+	<issueManagement>
+		<system>Redmine</system>
+		<url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils</url>
+	</issueManagement>
 
-    <distributionManagement>
-        <site>
-            <id>anrisoftware</id>
-            <url>dav:https://anrisoftware.com/javadoc/${project.groupId}/${project.artifactId}</url>
-        </site>
-        <repository>
-            <id>osssonatype</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>osssonatype_snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+	<distributionManagement>
+		<site>
+			<id>anrisoftware</id>
+			<url>dav:https://anrisoftware.com/javadoc/${project.groupId}/${project.artifactId}</url>
+		</site>
+		<repository>
+			<id>osssonatype</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+		<snapshotRepository>
+			<id>osssonatype_snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.easytesting</groupId>
-            <artifactId>fest-swing-junit-4.5</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-swing</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-exec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-assistedinject</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-swing-junit-4.5</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-swing</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-assistedinject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
 
-        <!-- extra look&feels -->
-        <dependency>
-            <groupId>com.github.insubstantial</groupId>
-            <artifactId>substance</artifactId>
-        </dependency>
-    </dependencies>
+		<!-- extra look&feels -->
+		<dependency>
+			<groupId>com.github.insubstantial</groupId>
+			<artifactId>substance</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
