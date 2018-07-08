@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   #%L
-  Global POM Groovy
+  globalpom-groovy-base
   %%
   Copyright (C) 2011 - 2018 Advanced Natural Research Institute
   %%
@@ -60,11 +60,11 @@ xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache
         </links>
         <menu name="Overview">
             <item name="Home" href="/index.html" />
-            <item name="Download" href="https://anrisoftware.com/l/4c" />
-            <item name="Source code" href="https://anrisoftware.com/l/4d" />
+            <item name="Download" href="https://anrisoftware.com/l/5b" />
+            <item name="Source code" href="https://anrisoftware.com/l/5c" />
             <item name="Source code (Github)" href="https://github.com/devent/globalpom-groovy" />
-            <item name="Roadmap" href="https://anrisoftware.com/l/4e" />
-            <item name="Issues" href="https://anrisoftware.com/l/4f" />
+            <item name="Roadmap" href="https://anrisoftware.com/l/5d" />
+            <item name="Issues" href="https://anrisoftware.com/l/5e" />
         </menu>
         <menu ref="parent" />
         <menu ref="modules" />

@@ -18,6 +18,11 @@
     <url>https://anrisoftware.com/projects/projects/globalpom-groovy</url>
     <inceptionYear>2011</inceptionYear>
 
+	<organization>
+		<name>Advanced Natural Research Institute</name>
+		<url>https://anrisoftware.com/</url>
+	</organization>
+
     <developers>
         <developer>
             <id>EM</id>

@@ -1,3 +1,5 @@
+package com.anrisoftware.globalpom.utils.imagetesting;
+
 /*-
  * #%L
  * Global POM :: Groovy Test Utilities
@@ -7,9 +9,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,27 +19,25 @@
  * limitations under the License.
  * #L%
  */
-package com.anrisoftware.globalpom.utils.imagetesting
 
-import com.google.inject.AbstractModule
-import com.google.inject.assistedinject.FactoryModuleBuilder
-
-import groovy.transform.CompileStatic
+import com.google.inject.assistedinject.Assisted
 
 /**
- * Binds the image testing factory.
+ * Factory to create the images frame.
  *
- * @see ShowImagesFrameFactory
- *
- * @author Erwin Mueller, erwin.mueller@deventm.org
+ * @author Erwin Müller, erwin.mueller@deventm.de
  * @since 2.2
  */
-@CompileStatic
-class ImageTestingModule extends AbstractModule {
+interface ShowImagesFrameFactory {
 
-	@Override
-	protected void configure() {
-		install(new FactoryModuleBuilder().implement(ShowImagesFrame.class,
-				ShowImagesFrame.class).build(ShowImagesFrameFactory.class))
-	}
+	/**
+	 * Creates a new images frame.
+	 * @param args
+	 * <ul>
+	 * <li>@{code image} or @{code images}, the image or images to show.
+	 * <li>optional, the arguments from {@link FrameTestingFactory#create(Map)}
+	 * </ul>
+	 */
+	ShowImagesFrame create(@Assisted Map args)
 }
+
