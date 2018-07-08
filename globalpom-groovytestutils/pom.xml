@@ -126,4 +126,42 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>private-repository</id>
+			<distributionManagement>
+				<repository>
+					<id>private_repo_releases</id>
+					<url>https://maven.anrisoftware.com/repository/internal/</url>
+				</repository>
+				<snapshotRepository>
+					<id>private_repo_snapshots</id>
+					<url>https://maven.anrisoftware.com/repository/snapshots/</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
+
+		<profile>
+			<!-- Activate profile with -Psign-artifact -->
+			<id>sign-artifact</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
