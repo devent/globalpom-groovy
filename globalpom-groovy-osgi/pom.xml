@@ -6,13 +6,13 @@
     <parent>
         <artifactId>globalpom-groovy</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>4.0.0</version>
         <relativePath>../globalpom-groovy</relativePath>
     </parent>
 
     <artifactId>globalpom-groovy-osgi</artifactId>
     <packaging>pom</packaging>
-    <name>Global POM Groovy OSGi</name>
+	<name>Global POM :: Groovy OSGi</name>
     <description>Adds Groovy support to compile Groovy sources and test sources as an OSGi bundle</description>
     <url>https://anrisoftware.com/projects/projects/globalpom-groovy-osgi</url>
     <inceptionYear>2016</inceptionYear>
