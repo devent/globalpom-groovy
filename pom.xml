@@ -56,9 +56,9 @@
     </issueManagement>
 
     <scm>
-        <connection>scm:git:git@anrisoftware.com:anrisoftware.com/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:git@anrisoftware.com:anrisoftware.com/${project.artifactId}.git</developerConnection>
-        <url>https://anrisoftware.com/projects/${project.artifactId}/repository</url>
+        <connection>scm:git:git@anrisoftware.com:anrisoftware.com/globalpom-groovy.git</connection>
+        <developerConnection>scm:git:git@anrisoftware.com:anrisoftware.com/globalpom-groovy.git</developerConnection>
+        <url>https://anrisoftware.com/projects/globalpom-groovy/repository</url>
     </scm>
 
     <prerequisites>
