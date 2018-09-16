@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <artifactId>globalpom-groovy</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.0.0</version>
+        <version>4.2.0</version>
         <relativePath>../globalpom-groovy</relativePath>
     </parent>
 
@@ -18,58 +17,9 @@
     <inceptionYear>2016</inceptionYear>
 
     <properties>
-        <project.custom.year>${project.inceptionYear}</project.custom.year>
         <project.custom.bundle.namespace>com.anrisoftware.sscontrol</project.custom.bundle.namespace>
         <project.custom.bundle.namespace.internal>com.anrisoftware.sscontrol.internal</project.custom.bundle.namespace.internal>
     </properties>
-
-    <developers>
-        <developer>
-            <id>EM</id>
-            <name>Erwin Müller</name>
-            <organization>Advanced Natural Research Institute</organization>
-            <email>erwin.mueller@deventm.org</email>
-            <roles>
-                <role>Owner</role>
-                <role>Developer</role>
-            </roles>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
-    </developers>
-
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <scm>
-        <connection>scm:git:git@anrisoftware.com:globalpom-groovy.git</connection>
-        <developerConnection>scm:git:git@anrisoftware.com:globalpom-groovy.git</developerConnection>
-        <url>https://anrisoftware.com/projects/projects/globalpom-groovy/repository</url>
-    </scm>
-
-    <issueManagement>
-        <system>Redmine</system>
-        <url>https://anrisoftware.com/projects/projects/globalpom-groovy-osgi</url>
-    </issueManagement>
-
-    <distributionManagement>
-        <site>
-            <id>anrisoftware</id>
-            <url>dav:https://anrisoftware.com/javadoc/${project.groupId}/${project.artifactId}</url>
-        </site>
-        <repository>
-            <id>osssonatype</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>osssonatype_snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>

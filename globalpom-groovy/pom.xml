@@ -1,172 +1,115 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>globalpom-parent</artifactId>
-        <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.0.1</version>
-        <relativePath />
-    </parent>
+	<parent>
+		<artifactId>globalpom-groovy-base</artifactId>
+		<groupId>com.anrisoftware.globalpom</groupId>
+        <version>4.2.0</version>
+	</parent>
 
-    <artifactId>globalpom-groovy</artifactId>
-    <packaging>pom</packaging>
-    <version>4.0.0</version>
+	<artifactId>globalpom-groovy</artifactId>
+	<packaging>pom</packaging>
 	<name>Global POM :: Groovy</name>
-    <description>Adds Groovy support to compile Groovy sources and test sources.</description>
-    <url>https://anrisoftware.com/projects/projects/globalpom-groovy</url>
-    <inceptionYear>2011</inceptionYear>
+	<description>Adds Groovy support to compile Groovy sources and test sources.</description>
+	<inceptionYear>2011</inceptionYear>
 
-	<organization>
-		<name>Advanced Natural Research Institute</name>
-		<url>https://anrisoftware.com/</url>
-	</organization>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<compilerId>groovy-eclipse-compiler</compilerId>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-eclipse-compiler</artifactId>
+						<version>${project.custom.groovy-eclipse-compiler.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-eclipse-batch</artifactId>
+						<version>${project.custom.groovy-eclipse-batch.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 
-    <developers>
-        <developer>
-            <id>EM</id>
-            <name>Erwin Müller</name>
-            <organization>Advanced Natural Research Institute</organization>
-            <email>erwin.mueller@deventm.org</email>
-            <roles>
-                <role>Owner</role>
-                <role>Developer</role>
-            </roles>
-            <timezone>Europe/Berlin</timezone>
-        </developer>
-    </developers>
+			<plugin>
+				<!-- plugin to recognize src/main/groovy and src/test/groovy if the java
+					source directories are empty -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/groovy</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-test-source</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/test/groovy</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+			<plugin>
+				<groupId>com.bluetrainsoftware.maven</groupId>
+				<artifactId>groovydoc-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-docs</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-docs</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
-    <scm>
-        <connection>scm:git:git@anrisoftware.com:globalpom-groovy.git</connection>
-        <developerConnection>scm:git:git@anrisoftware.com:globalpom-groovy.git</developerConnection>
-        <url>https://anrisoftware.com/projects/projects/globalpom-groovy/repository</url>
-    </scm>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-groovydocs-to-site</id>
+						<phase>site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.reporting.outputDirectory}/groovydocs</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/groovydoc</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-    <issueManagement>
-        <system>Redmine</system>
-        <url>https://anrisoftware.com/projects/projects/globalpom-groovy</url>
-    </issueManagement>
+		</plugins>
 
-    <distributionManagement>
-        <site>
-            <id>anrisoftware</id>
-            <url>dav:https://anrisoftware.com/javadoc/${project.groupId}/${project.artifactId}</url>
-        </site>
-        <repository>
-            <id>osssonatype</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>osssonatype_snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerId>groovy-eclipse-compiler</compilerId>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>${project.custom.groovy-eclipse-compiler.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>${project.custom.groovy-eclipse-batch.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <!-- plugin to recognize src/main/groovy and src/test/groovy
-                    if the java source directories are empty -->
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/main/groovy</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>add-test-source</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>add-test-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/test/groovy</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.bluetrainsoftware.maven</groupId>
-                <artifactId>groovydoc-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-docs</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>attach-docs</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-groovydocs-to-site</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.reporting.outputDirectory}/groovydocs</outputDirectory>
-                            <overwrite>true</overwrite>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/groovydoc</directory>
-                                    <includes>
-                                        <include>**/*</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-        </plugins>
-
-    </build>
+	</build>
 
 </project>
