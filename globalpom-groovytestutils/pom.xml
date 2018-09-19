@@ -12,13 +12,29 @@
 	<artifactId>globalpom-groovytestutils</artifactId>
 	<name>Global POM :: Groovy Test Utilities</name>
 	<description>Various utilities methods to help write more expressive unit tests in Groovy.</description>
-	<url>https://anrisoftware.com/projects/projects/globalpom-groovy-testutils</url>
 	<inceptionYear>2011</inceptionYear>
+    <url>https://javadoc.anrisoftware.com/${project.groupId}/${project.artifactId}/${project.version}/</url>
 
-    <issueManagement>
-        <system>Redmine</system>
-        <url>https://project.anrisoftware.com/projects/globalpom-groovy-testutils</url>
-    </issueManagement>
+    <scm>
+        <connection>${project.custom.scm.pub}</connection>
+        <developerConnection>${project.custom.scm.dev}</developerConnection>
+        <url>${project.custom.scm.url}</url>
+    </scm>
+
+    <distributionManagement>
+        <site>
+            <id>site-ssh</id>
+            <url>${site.ssh.url}</url>
+        </site>
+        <repository>
+            <id>public_releases</id>
+            <url>https://maven.anrisoftware.com/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>public_snapshots</id>
+            <url>https://maven.anrisoftware.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -28,10 +44,6 @@
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.easytesting</groupId>
-			<artifactId>fest-swing-junit-4.5</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -73,6 +85,13 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
+
+        <!-- for swing tests -->
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-swing-junit-4.5</artifactId>
+            <optional>true</optional>
+        </dependency>
 
 		<!-- extra look&feels -->
 		<dependency>
