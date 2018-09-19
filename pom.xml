@@ -58,7 +58,7 @@
 
     <properties>
         <project.custom.home>https://project.anrisoftware.com/projects/globalpom-groovy</project.custom.home>
-        <project.custom.scm.pub>https://gitea.anrisoftware.com/anrisoftware.com/globalpom-groovy.git</project.custom.scm.pub>
+        <project.custom.scm.pub>scm:git:https://gitea.anrisoftware.com/anrisoftware.com/globalpom-groovy.git</project.custom.scm.pub>
         <project.custom.scm.dev>scm:git:git@anrisoftware.com:anrisoftware.com/globalpom-groovy.git</project.custom.scm.dev>
         <project.custom.scm.url>${project.custom.home}/repository</project.custom.scm.url>
     </properties>
