@@ -18,7 +18,7 @@
 
     <properties>
         <project.custom.bundle.namespace>com.anrisoftware.sscontrol</project.custom.bundle.namespace>
-        <project.custom.bundle.namespace.internal>com.anrisoftware.sscontrol.internal</project.custom.bundle.namespace.internal>
+        <project.custom.bundle.namespace.internal>${project.custom.bundle.namespace}.internal</project.custom.bundle.namespace.internal>
     </properties>
 
     <scm>
