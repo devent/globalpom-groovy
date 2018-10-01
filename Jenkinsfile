@@ -54,13 +54,13 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 container('maven') {
-					withSonarQubeEnv('sonarqube') {
-	                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-	                        withMaven() {
-	                            sh '$MVN_CMD -s $MAVEN_SETTINGS sonar:sonar'
-	                        }
-	                    }
-	            	}
+                    withSonarQubeEnv('sonarqube') {
+                        configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
+                            withMaven() {
+                                sh '$MVN_CMD -s $MAVEN_SETTINGS sonar:sonar'
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -68,48 +68,48 @@ pipeline {
         stage('Deploy to Private') {
             steps {
                 container('maven') {
-                	configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                    	withMaven() {
-	                        sh '/setup-ssh.sh'
-                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B deploy'
-                    	}
+                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
+                        withMaven() {
+                            sh '/setup-ssh.sh'
+                            sh '$MVN_CMD -s $MAVEN_SETTINGS -B deploy'
+                        }
                     }
                 }
             }
         } // stage
 
         stage('Release to Private') {
-    		when {
-		        branch 'develop'
-		        expression {
-		        	// skip stage if it is triggered by maven release.
-					return !sh(script: "git --no-pager log -1 --pretty=%B", returnStdout: true).contains('[maven-release-plugin]')
-				}
-			}
+            when {
+                branch 'develop'
+                expression {
+                    // skip stage if it is triggered by maven release.
+                    return !sh(script: "git --no-pager log -1 --pretty=%B", returnStdout: true).contains('[maven-release-plugin]')
+                }
+            }
             steps {
                 container('maven') {
-                	configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                    	withMaven() {
-	                        sh '/setup-ssh.sh'
-                    	    sh 'git checkout develop && git pull origin develop'
-                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:prepare'
-                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:perform'
-                    	}
+                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
+                        withMaven() {
+                            sh '/setup-ssh.sh'
+                            sh 'git checkout develop && git pull origin develop'
+                            sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:prepare'
+                            sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:perform'
+                        }
                     }
                 }
             }
         } // stage
 
         stage('Publish to Public') {
-    		when {
-		        branch 'master'
-			}
+            when {
+                branch 'master'
+            }
             steps {
                 container('maven') {
-                	configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                    	withMaven() {
+                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
+                        withMaven() {
                             sh '$MVN_CMD -s $MAVEN_SETTINGS -Posssonatype -B deploy'
-                    	}
+                        }
                     }
                 }
             }
