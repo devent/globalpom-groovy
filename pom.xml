@@ -111,20 +111,6 @@
 
     <profiles>
         <profile>
-            <id>private-repository</id>
-            <distributionManagement>
-                <repository>
-                    <id>private_repo_releases</id>
-                    <url>https://maven.anrisoftware.com/repository/internal/</url>
-                </repository>
-                <snapshotRepository>
-                    <id>private_repo_snapshots</id>
-                    <url>https://maven.anrisoftware.com/repository/snapshots/</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
-
-        <profile>
             <id>osssonatype</id>
             <distributionManagement>
                 <site>
