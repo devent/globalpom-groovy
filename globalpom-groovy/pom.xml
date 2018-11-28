@@ -20,7 +20,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>globalpom-groovy-base</artifactId>
+        <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
         <version>4.5.1-SNAPSHOT</version>
     </parent>

@@ -25,8 +25,8 @@
         <version>4.5.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>globalpom-groovy-base</artifactId>
-    <name>Global POM :: Groovy Base</name>
+    <artifactId>globalpom-groovy-parent</artifactId>
+    <name>Global POM :: Modules POM</name>
     <version>4.5.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <inceptionYear>2011</inceptionYear>
