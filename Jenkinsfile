@@ -18,7 +18,7 @@
  *
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 4.5.1
- * @version 1.1.0
+ * @version 1.2.0
  */
 pipeline {
 
@@ -29,7 +29,7 @@ pipeline {
     }
 
     agent {
-        label 'maven-3-jdk-8'
+        label 'maven-3-jdk-12'
     }
 
     stages {
