@@ -26,6 +26,7 @@
         <relativePath />
     </parent>
 
+	<groupId>com.anrisoftware.globalpom</groupId>
     <artifactId>globalpom-groovy-parent</artifactId>
     <name>Global POM :: Modules POM</name>
     <version>4.5.1-SNAPSHOT</version>
