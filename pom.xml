@@ -15,7 +15,9 @@
     limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -26,7 +28,7 @@
         <relativePath />
     </parent>
 
-	<groupId>com.anrisoftware.globalpom</groupId>
+    <groupId>com.anrisoftware.globalpom</groupId>
     <artifactId>globalpom-groovy-parent</artifactId>
     <name>Global POM :: Modules POM</name>
     <version>4.5.1-SNAPSHOT</version>
@@ -36,6 +38,7 @@
 
     <modules>
         <module>globalpom-groovy</module>
+        <module>globalpom-groovy-it</module>
         <module>globalpom-groovy-osgi</module>
         <module>globalpom-groovytestutils</module>
     </modules>
