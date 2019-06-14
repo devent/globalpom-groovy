@@ -1,24 +1,20 @@
-package name.fraser.neil.plaintext;
-
-/*-
- * #%L
- * Global POM :: Groovy Test Utilities
- * %%
- * Copyright (C) 2011 - 2018 Advanced Natural Research Institute
- * %%
+/**
+ * Copyright © 2011 Erwin Müller (erwin.mueller@anrisoftware.com)
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * #L%
  */
+package name.fraser.neil.plaintext;
+
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -981,7 +977,7 @@ public class diff_match_patch {
 	/**
 	 * Look for single edits surrounded on both sides by equalities which can be
 	 * shifted sideways to align the edit to a word boundary. e.g: The c<ins>at
-	 * c</ins>ame. -> The <ins>cat </ins>came.
+	 * c</ins>ame. -&gt; The <ins>cat </ins>came.
 	 *
 	 * @param diffs
 	 *            LinkedList of Diff objects.
@@ -1405,7 +1401,7 @@ public class diff_match_patch {
 
 	/**
 	 * loc is a location in text1, compute and return the equivalent location in
-	 * text2. e.g. "The cat" vs "The big cat", 1->1, 5->8
+	 * text2. e.g. "The cat" vs "The big cat", 1-&gt;1, 5-&gt;8
 	 *
 	 * @param diffs
 	 *            LinkedList of Diff objects.
@@ -1541,7 +1537,7 @@ public class diff_match_patch {
 
 	/**
 	 * Crush the diff into an encoded string which describes the operations required
-	 * to transform text1 into text2. E.g. =3\t-2\t+ing -> Keep 3 chars, delete 2
+	 * to transform text1 into text2. E.g. =3\t-2\t+ing -&gt; Keep 3 chars, delete 2
 	 * chars, insert 'ing'. Operations are tab-separated. Inserted text is escaped
 	 * using %xx notation.
 	 *
@@ -1970,7 +1966,7 @@ public class diff_match_patch {
 	 * @param diffs
 	 *            Array of Diff objects for text1 to text2.
 	 * @return LinkedList of Patch objects.
-	 * @deprecated Prefer patch_make(String text1, LinkedList<Diff> diffs).
+	 * @deprecated Prefer patch_make(String text1, LinkedList&lt;Diff&gt; diffs).
 	 */
 	@Deprecated
 	public LinkedList<Patch> patch_make(String text1, String text2,
