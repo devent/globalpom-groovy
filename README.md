@@ -1,8 +1,4 @@
-<a href="https://jenkins.anrisoftware.com/job/globalpom-groovy-public/job/master">![Build Status](https://jenkins.anrisoftware.com/job/globalpom-groovy-public/job/master/badge/icon "Build Status")</a>
-
-<a href="https://sonar.anrisoftware.com/dashboard?id=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent">![Quality Gate](https://sonar.anrisoftware.com/api/project_badges/measure?project=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent&metric=alert_status "Quality Gate")</a>
-
-<a href="http://www.apache.org/licenses/LICENSE-2.0">![Apache License, Version 2.0](https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif "Apache License, Version 2.0")</a> © 2011-2019 Erwin Müller
+<a href="https://jenkins.anrisoftware.com/job/globalpom-groovy-public/job/master">![Build Status](https://jenkins.anrisoftware.com/job/globalpom-groovy-public/job/master/badge/icon "Build Status")</a> <a href="https://sonar.anrisoftware.com/dashboard?id=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent">![Quality Gate](https://sonar.anrisoftware.com/api/project_badges/measure?project=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent&metric=alert_status "Quality Gate")</a> <a href="http://www.apache.org/licenses/LICENSE-2.0">![Apache License, Version 2.0](https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif "Apache License, Version 2.0")</a> © 2011-2019 Erwin Müller
 
 Description
 ===========
