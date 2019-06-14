@@ -22,7 +22,7 @@
     <parent>
         <artifactId>globalpom-groovy</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.5.1-SNAPSHOT</version>
+        <version>4.5.1</version>
         <relativePath>../globalpom-groovy</relativePath>
     </parent>
 
@@ -42,7 +42,7 @@
         <connection>${project.custom.scm.pub}</connection>
         <developerConnection>${project.custom.scm.dev}</developerConnection>
         <url>${project.custom.scm.url}</url>
-      <tag>HEAD</tag>
+      <tag>globalpom-groovy-parent-4.5.1</tag>
   </scm>
 
     <distributionManagement>
