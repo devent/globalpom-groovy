@@ -122,14 +122,16 @@ pipeline {
 				}
 			}
             steps {
-	            timeout(time: 15, unit: 'MINUTES') {
-	                waitForQualityGate abortPipeline: true
-	            }
+            	timeout(time: 5, unit: 'MINUTES') {
+		            sleep 10
+                	waitForQualityGate abortPipeline: true
+            	}
                 container('maven') {
                 	configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
                     	withMaven() {
 	                        sh '/setup-ssh.sh'
                     	    sh 'git checkout develop && git pull origin develop'
+                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:clean'
                         	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:prepare'
                         	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:perform'
                     	}
