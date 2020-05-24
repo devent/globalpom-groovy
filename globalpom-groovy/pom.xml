@@ -110,7 +110,7 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-all</artifactId>
-                        <version>2.4.15</version>
+                        <version>${project.custom.groovy.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
