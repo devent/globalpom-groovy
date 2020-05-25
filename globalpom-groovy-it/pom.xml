@@ -24,7 +24,7 @@
     <parent>
         <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.5.2-SNAPSHOT</version>
+        <version>4.5.2</version>
     </parent>
 
     <artifactId>globalpom-groovy-it</artifactId>
