@@ -26,7 +26,7 @@ Packages Overview
 License
 =======
 
-Copyright ©2011 - 2019 [Advanced Natural Research Institute](https://anrisoftware.com/). All rights reserved.
+Copyright ©2011 - 2020 [Advanced Natural Research Institute](https://anrisoftware.com/). All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
