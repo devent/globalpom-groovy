@@ -36,6 +36,7 @@
     <modules>
         <module>globalpom-groovy</module>
         <module>globalpom-groovy-gmavenplus</module>
+        <module>globalpom-groovy-it</module>
         <module>globalpom-groovytestutils</module>
     </modules>
 
