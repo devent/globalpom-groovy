@@ -1,6 +1,6 @@
 <!--
 
-    Copyright © 2016 Erwin Müller (erwin.mueller@anrisoftware.com)
+    Copyright © 2020 Erwin Müller (erwin.mueller@anrisoftware.com)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -22,22 +22,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>globalpom-groovy</artifactId>
+        <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.5.2</version>
-        <relativePath>../globalpom-groovy</relativePath>
+        <version>4.6.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>globalpom-groovy-osgi</artifactId>
+    <artifactId>globalpom-groovy-gmavenplus</artifactId>
     <packaging>pom</packaging>
-    <name>Global POM :: Groovy OSGi</name>
-    <description>Adds Groovy support to compile Groovy sources and test sources as an OSGi bundle</description>
-    <inceptionYear>2016</inceptionYear>
+    <name>Global POM :: Groovy GMavenPlus</name>
+    <description>Adds Groovy support to compile Groovy sources and test sources using the GMavenPlus plugin.</description>
+    <inceptionYear>2020</inceptionYear>
     <url>https://javadoc.anrisoftware.com/${project.groupId}/${project.artifactId}/${project.version}/</url>
 
     <properties>
-        <project.custom.bundle.namespace>com.anrisoftware.globalpom</project.custom.bundle.namespace>
-        <project.custom.bundle.namespace.internal>${project.custom.bundle.namespace}.internal</project.custom.bundle.namespace.internal>
+        <sonar.groovy.binaries>target/classes</sonar.groovy.binaries>
     </properties>
 
     <scm>
@@ -64,37 +62,47 @@
 
     <build>
         <plugins>
+
             <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.10.0</version>
                 <executions>
-                    <!-- Configure extra execution of 'manifest' in process-classes
-                        phase to make sure SCR metadata is generated before unit test runs -->
                     <execution>
-                        <id>scr-metadata</id>
                         <goals>
-                            <goal>manifest</goal>
+                            <goal>addSources</goal>
+                            <goal>addTestSources</goal>
+                            <goal>generateStubs</goal>
+                            <goal>compile</goal>
+                            <goal>generateTestStubs</goal>
+                            <goal>compileTests</goal>
+                            <goal>removeStubs</goal>
+                            <goal>removeTestStubs</goal>
                         </goals>
-                        <configuration>
-                            <supportIncrementalBuild>true</supportIncrementalBuild>
-                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <Export-Package>!${project.custom.bundle.namespace.internal}.*,${project.custom.bundle.namespace}.*;version="${project.version}"</Export-Package>
-                    <Private-Package>${project.custom.bundle.namespace.internal}.*</Private-Package>
-                    <instructions>
-                        <_include>osgi.bnd</_include>
-                        <_dsannotations>*</_dsannotations>
-                        <_metatypeannotations>*</_metatypeannotations>
-                    </instructions>
-                    <!-- Export SCR metadata to classpath to have them available
-                        in unit tests -->
-                    <exportScr>true</exportScr>
-                </configuration>
             </plugin>
+
+            <plugin>
+                <!-- if including source jars, use the no-fork goals otherwise
+                    both the Groovy sources and Java stub sources will get included in your jar -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <!-- source plugin \> = 2.1 is required to use the no-fork
+                    goals -->
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                            <goal>test-jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
+
     </build>
 
 </project>

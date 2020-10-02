@@ -24,22 +24,18 @@
     <parent>
         <artifactId>globalpom-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.5.2</version>
-        <relativePath />
+        <version>4.6.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.anrisoftware.globalpom</groupId>
     <artifactId>globalpom-groovy-parent</artifactId>
     <name>Global POM :: Modules POM</name>
-    <version>4.5.2</version>
     <packaging>pom</packaging>
     <inceptionYear>2011</inceptionYear>
     <url>https://javadoc.anrisoftware.com/${project.groupId}/${project.artifactId}/${project.version}/</url>
 
     <modules>
         <module>globalpom-groovy</module>
-        <module>globalpom-groovy-it</module>
-        <module>globalpom-groovy-osgi</module>
+        <module>globalpom-groovy-gmavenplus</module>
         <module>globalpom-groovytestutils</module>
     </modules>
 
