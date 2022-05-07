@@ -24,11 +24,11 @@
     <parent>
         <artifactId>globalpom-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.6.0</version>
+        <version>4.6.1</version>
     </parent>
 
     <artifactId>globalpom-groovy-parent</artifactId>
-    <version>4.6.0</version>
+    <version>4.6.1-SNAPSHOT</version>
     <name>Global POM :: Groovy Modules POM</name>
     <packaging>pom</packaging>
     <inceptionYear>2011</inceptionYear>
@@ -77,9 +77,9 @@
         <project.custom.home>https://project.anrisoftware.com/projects/globalpom-groovy</project.custom.home>
         <project.custom.license.image.url>https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif</project.custom.license.image.url>
         <project.custom.central.url>https://search.maven.org/artifact/${project.groupId}/${project.artifactId}/${project.version}/pom</project.custom.central.url>
-        <project.custom.scm.repo>https://gitea.anrisoftware.com/anrisoftware.com/globalpom-groovy.git</project.custom.scm.repo>
+        <project.custom.scm.repo>https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy.git</project.custom.scm.repo>
         <project.custom.scm.github>https://github.com/devent/globalpom-groovy</project.custom.scm.github>
-        <project.custom.scm.pub>scm:git:https://gitea.anrisoftware.com/anrisoftware.com/globalpom-groovy.git</project.custom.scm.pub>
+        <project.custom.scm.pub>scm:git:https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy.git</project.custom.scm.pub>
         <project.custom.scm.dev>scm:git:git@anrisoftware.com:anrisoftware.com/globalpom-groovy.git</project.custom.scm.dev>
         <project.custom.scm.url>${project.custom.home}/repository</project.custom.scm.url>
         <project.custom.jenkins.url>https://jenkins.anrisoftware.com/job/globalpom-groovy-public</project.custom.jenkins.url>
@@ -101,8 +101,8 @@
 
     <distributionManagement>
         <site>
-            <id>site-ssh</id>
-            <url>${site.ssh.url}</url>
+            <id>site-dav</id>
+            <url>${site.dav.url}</url>
         </site>
         <repository>
             <id>public_releases</id>
@@ -119,8 +119,8 @@
             <id>osssonatype</id>
             <distributionManagement>
                 <site>
-                    <id>site-ssh</id>
-                    <url>${site.ssh.url}</url>
+                    <id>site-dav</id>
+                    <url>${site.dav.url}</url>
                 </site>
                 <repository>
                     <id>osssonatype_releases</id>

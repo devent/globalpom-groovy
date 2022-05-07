@@ -16,9 +16,9 @@
 /**
  * Builds and deploys the project.
  *
- * @author Erwin Mueller, erwin.mueller@deventm.org
- * @since 4.5.1
- * @version 1.2.0
+ * @author Erwin Mueller, erwin@muellerpublic.de
+ * @since 4.6.1
+ * @version 1.3.0
  */
 pipeline {
 
@@ -29,131 +29,64 @@ pipeline {
     }
 
     agent {
-        label 'maven-3-jdk-12'
+        label "maven"
     }
 
     stages {
 
-		/**
-		* The stage will checkout the current branch.
-		*/
+        /**
+        * The stage will checkout the current branch.
+        */
         stage("Checkout Build") {
             steps {
-                container('maven') {
+                container("maven") {
                     checkout scm
                 }
             }
-        }
+        } // stage
 
-		/**
-		* The stage will setup the container for the build.
-		*/
-        stage('Setup Build') {
+        /**
+        * The stage will compile, test and deploy on all branches.
+        */
+        stage("Compile, Test and Deploy") {
             steps {
-                container('maven') {
-                    withCredentials([string(credentialsId: 'gpg-key-passphrase', variable: 'GPG_PASSPHRASE')]) {
-                        configFileProvider([configFile(fileId: 'gpg-key', variable: 'GPG_KEY_FILE')]) {
-                            sh '/setup-gpg.sh'
+                container("maven") {
+                    script {
+                        def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                        if (version =~ /(?i)-snapshot$/) {
+                            sh "/setup-gpg.sh; mvn -s /m2/settings.xml -B clean install site:site deploy site:deploy"
+                        } else {
+                            sh "/setup-gpg.sh; mvn -s /m2/settings.xml -B clean install site:site site:deploy"
                         }
-                    }
-                }
-            }
-        }
-
-		/**
-		* The stage will compile, test and deploy on all branches.
-		*/
-        stage('Compile, Test and Deploy') {
-    		when {
-    			allOf {
-					not { branch 'master' }
-				}
-			}
-            steps {
-                container('maven') {
-                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                        withMaven() {
-	                        sh '/setup-ssh.sh'
-                            sh '$MVN_CMD -s $MAVEN_SETTINGS -B clean install site:site deploy'
-                        }
-                    }
-					withSonarQubeEnv('sonarqube') {
-	                    configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-	                        withMaven() {
-	                            sh '$MVN_CMD -s $MAVEN_SETTINGS sonar:sonar'
-	                        }
-	                    }
-	            	}
-                }
-            }
-        }
-
-		/**
-		* The stage will deploy the generated site for feature branches.
-		*/
-        stage('Deploy Site') {
-    		when {
-    			allOf {
-					not { branch 'master' }
-					not { branch 'develop' }
-				}
-			}
-            steps {
-                container('maven') {
-                	configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                    	withMaven() {
-	                        sh '/setup-ssh.sh'
-                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B site:deploy'
-                    	}
                     }
                 }
             }
         } // stage
 
-		/**
-		* The stage will perform a release from the develop branch.
-		*/
-        stage('Release to Private') {
-    		when {
-		        branch 'develop'
-		        expression {
-		        	// skip stage if it is triggered by maven release.
-					return !sh(script: "git --no-pager log -1 --pretty=%B", returnStdout: true).contains('[maven-release-plugin]')
-				}
-			}
+        /**
+        * The stage will deploy the artifacts and the generated site to the public repository from the main branch.
+        */
+        stage("Publish to Private") {
+            when {
+                branch "main"
+            }
             steps {
-            	timeout(time: 5, unit: 'MINUTES') {
-		            sleep 10
-                	waitForQualityGate abortPipeline: true
-            	}
-                container('maven') {
-                	configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                    	withMaven() {
-	                        sh '/setup-ssh.sh'
-                    	    sh 'git checkout develop && git pull origin develop'
-                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:clean'
-                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:prepare'
-                        	sh '$MVN_CMD -s $MAVEN_SETTINGS -B release:perform'
-                    	}
-                    }
+                container("maven") {
+                    sh "/setup-gpg.sh; mvn -s /m2/settings.xml -B deploy"
                 }
             }
         } // stage
 
-		/**
-		* The stage will deploy the artifacts and the generated site to the public repository from the master branch.
-		*/
-        stage('Publish to Public') {
-    		when {
-		        branch 'master'
-			}
+        /**
+        * The stage will deploy the artifacts and the generated site to the public repository from the main branch.
+        */
+        stage("Publish to Public") {
+            when {
+                branch "main"
+            }
             steps {
-                container('maven') {
-                	configFileProvider([configFile(fileId: 'maven-settings-global', variable: 'MAVEN_SETTINGS')]) {
-                    	withMaven() {
-                            sh '$MVN_CMD -s $MAVEN_SETTINGS -Posssonatype -B deploy'
-                    	}
-                    }
+                container("maven") {
+                    sh "/setup-gpg.sh; mvn -s /m2/settings.xml -Posssonatype -B deploy"
                 }
             }
         } // stage
@@ -162,9 +95,12 @@ pipeline {
 
     post {
         success {
-           script {
-               pom = readMavenPom file: 'pom.xml'
-               manager.createSummary("document.png").appendText("<a href='${env.JAVADOC_URL}/${pom.groupId}/${pom.artifactId}/${pom.version}/'>View Maven Site</a>", false)
+            container("maven") {
+                script {
+                    def groupId = sh script: 'mvn help:evaluate -Dexpression=project.groupId -q -DforceStdout', returnStdout: true
+                    def artifactId = sh script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true
+                    manager.createSummary("document.png").appendText("<a href=\"${env.JAVADOC_URL}/${groupId}/${artifactId}/index.html\">View Maven Site</a>", false)
+                }
             }
         }
     } // post
