@@ -24,7 +24,7 @@
     <parent>
         <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.6.0</version>
+        <version>4.6.1</version>
     </parent>
 
     <artifactId>globalpom-groovy</artifactId>
@@ -47,8 +47,8 @@
 
     <distributionManagement>
         <site>
-            <id>site-ssh</id>
-            <url>${site.ssh.url}</url>
+            <id>site-dav</id>
+            <url>${site.dav.url}</url>
         </site>
         <repository>
             <id>public_releases</id>
