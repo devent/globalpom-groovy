@@ -1,6 +1,6 @@
 <!--
 
-    Copyright ${project.custom.year} Erwin Müller <erwin.mueller@anrisoftware.com>
+    Copyright 2011-2022 Erwin Müller <erwin.mueller@anrisoftware.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -74,28 +74,28 @@
     </issueManagement>
 
     <properties>
-        <project.custom.home>https://project.anrisoftware.com/projects/globalpom-groovy</project.custom.home>
-        <project.custom.license.image.url>https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif</project.custom.license.image.url>
-        <project.custom.central.url>https://search.maven.org/artifact/${project.groupId}/${project.artifactId}/${project.version}/pom</project.custom.central.url>
-        <project.custom.scm.repo>https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy.git</project.custom.scm.repo>
-        <project.custom.scm.github>https://github.com/devent/globalpom-groovy</project.custom.scm.github>
-        <project.custom.scm.pub>scm:git:https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy.git</project.custom.scm.pub>
-        <project.custom.scm.dev>scm:git:git@anrisoftware.com:anrisoftware.com/globalpom-groovy.git</project.custom.scm.dev>
-        <project.custom.scm.url>${project.custom.home}/repository</project.custom.scm.url>
-        <project.custom.jenkins.url>https://jenkins.anrisoftware.com/job/globalpom-groovy-public</project.custom.jenkins.url>
-        <project.custom.jenkins.build.badge.master>${project.custom.jenkins.url}/job/master/badge/icon</project.custom.jenkins.build.badge.master>
-        <project.custom.jenkins.build.link.master>${project.custom.jenkins.url}/job/master</project.custom.jenkins.build.link.master>
-        <project.custom.sonarqube.url>https://sonar.anrisoftware.com/dashboard?id=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent</project.custom.sonarqube.url>
-        <project.custom.sonarqube.qualitygate.badge>https://sonar.anrisoftware.com/api/badges/gate?key=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent</project.custom.sonarqube.qualitygate.badge>
-        <project.custom.sonarqube.qualitygate.link>${project.custom.sonarqube.url}</project.custom.sonarqube.qualitygate.link>
+        <globalpom.custom.home>https://project.anrisoftware.com/projects/globalpom-groovy</globalpom.custom.home>
+        <globalpom.custom.license.image.url>https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif</globalpom.custom.license.image.url>
+        <globalpom.custom.central.url>https://search.maven.org/artifact/${project.groupId}/${project.artifactId}/${project.version}/pom</globalpom.custom.central.url>
+        <globalpom.custom.scm.repo>https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy.git</globalpom.custom.scm.repo>
+        <globalpom.custom.scm.github>https://github.com/devent/globalpom-groovy</globalpom.custom.scm.github>
+        <globalpom.custom.scm.pub>scm:git:https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy.git</globalpom.custom.scm.pub>
+        <globalpom.custom.scm.dev>scm:git:git@anrisoftware.com:anrisoftware.com/globalpom-groovy.git</globalpom.custom.scm.dev>
+        <globalpom.custom.scm.url>${globalpom.custom.home}/repository</globalpom.custom.scm.url>
+        <globalpom.custom.jenkins.url>https://jenkins.anrisoftware.com/job/globalpom-groovy-public</globalpom.custom.jenkins.url>
+        <globalpom.custom.jenkins.build.badge.master>${globalpom.custom.jenkins.url}/job/master/badge/icon</globalpom.custom.jenkins.build.badge.master>
+        <globalpom.custom.jenkins.build.link.master>${globalpom.custom.jenkins.url}/job/master</globalpom.custom.jenkins.build.link.master>
+        <globalpom.custom.sonarqube.url>https://sonar.anrisoftware.com/dashboard?id=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent</globalpom.custom.sonarqube.url>
+        <globalpom.custom.sonarqube.qualitygate.badge>https://sonar.anrisoftware.com/api/badges/gate?key=com.anrisoftware.globalpom%3Aglobalpom-groovy-parent</globalpom.custom.sonarqube.qualitygate.badge>
+        <globalpom.custom.sonarqube.qualitygate.link>${globalpom.custom.sonarqube.url}</globalpom.custom.sonarqube.qualitygate.link>
         <!-- sonar -->
         <sonar.coverage.jacoco.xmlReportPaths>../globalpom-groovy-it/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <scm>
-        <connection>${project.custom.scm.pub}</connection>
-        <developerConnection>${project.custom.scm.dev}</developerConnection>
-        <url>${project.custom.scm.url}</url>
+        <connection>${globalpom.custom.scm.pub}</connection>
+        <developerConnection>${globalpom.custom.scm.dev}</developerConnection>
+        <url>${globalpom.custom.scm.url}</url>
         <tag>HEAD</tag>
     </scm>
 

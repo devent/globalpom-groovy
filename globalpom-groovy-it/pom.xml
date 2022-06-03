@@ -1,6 +1,6 @@
 <!--
 
-    Copyright ${project.custom.year} Erwin Müller <erwin.mueller@anrisoftware.com>
+    Copyright 2019-2022 Erwin Müller <erwin.mueller@anrisoftware.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -35,9 +35,9 @@
     <url>https://javadoc.anrisoftware.com/${project.groupId}/${project.artifactId}/${project.version}/</url>
 
     <scm>
-        <connection>${project.custom.scm.pub}</connection>
-        <developerConnection>${project.custom.scm.dev}</developerConnection>
-        <url>${project.custom.scm.url}</url>
+        <connection>${globalpom.custom.scm.pub}</connection>
+        <developerConnection>${globalpom.custom.scm.dev}</developerConnection>
+        <url>${globalpom.custom.scm.url}</url>
         <tag>HEAD</tag>
     </scm>
 
