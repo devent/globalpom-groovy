@@ -1,6 +1,6 @@
 <!--
 
-    Copyright 2020-2021 Erwin Müller <erwin.mueller@anrisoftware.com>
+    Copyright 2020-2022 Erwin Müller <erwin.mueller@anrisoftware.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
     <parent>
         <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.6.1</version>
+        <version>4.6.2</version>
     </parent>
 
     <artifactId>globalpom-groovy-gmavenplus</artifactId>
@@ -39,9 +39,9 @@
     </properties>
 
     <scm>
-        <connection>${project.custom.scm.pub}</connection>
-        <developerConnection>${project.custom.scm.dev}</developerConnection>
-        <url>${project.custom.scm.url}</url>
+        <connection>${globalpom.custom.scm.pub}</connection>
+        <developerConnection>${globalpom.custom.scm.dev}</developerConnection>
+        <url>${globalpom.custom.scm.url}</url>
         <tag>HEAD</tag>
     </scm>
 
