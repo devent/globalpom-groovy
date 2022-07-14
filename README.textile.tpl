@@ -1,4 +1,4 @@
-!https://jenkins.anrisoftware.com/job/com.anrisoftware.globalpom-globalpom-groovy/job/main/badge/icon(Build Status)!:https://jenkins.anrisoftware.com/job/com.anrisoftware.globalpom-globalpom-groovy/job/main !https://sonarcloud.io/api/project_badges/measure?project=devent_globalpom-groovy&metric=alert_status(Gate)!:https://sonarcloud.io/project/overview?id=devent_globalpom-groovy !https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif(Apache License, Version 2.0)!:http://www.apache.org/licenses/LICENSE-2.0 © 2011&#45;2022 Erwin Müller
+!%globalpom.custom.jenkins.build.badge.main%(Build Status)!:%globalpom.custom.jenkins.url%/job/main !%globalpom.custom.sonarqube.qualitygate.badge%(Gate)!:%globalpom.custom.sonarqube.qualitygate.link% !https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif(Apache License, Version 2.0)!:http://www.apache.org/licenses/LICENSE-2.0 © %project.inceptionYear%&#45;%globalpom.custom.current.year% Erwin Müller
 
 h1. Description
 
@@ -6,14 +6,14 @@ Declares all dependencies and all Maven plug-ins needed for a Advanced Natural R
 
 h1. Links
 
-* "Generated Site":https://javadoc.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy-parent/4.6.3/index.html
-* "Download (Central)":https://search.maven.org/artifact/com.anrisoftware.globalpom/globalpom-groovy-base/4.6.3/pom
+* "Generated Site":https://javadoc.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy-parent/%project.version%/index.html
+* "Download (Central)":https://search.maven.org/artifact/com.anrisoftware.globalpom/globalpom-groovy-base/%project.version%/pom
 * "Source code":https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy
 * "Source code (Github)":https://github.com/devent/globalpom-groovy
 * "Project Home":https://project.anrisoftware.com/projects/globalpom-groovy
 * "Project Roadmap":https://project.anrisoftware.com/projects/globalpom-groovy/roadmap
 * "Project Issues":https://project.anrisoftware.com/projects/globalpom-groovy/issues
-* "Jenkins":https://jenkins.anrisoftware.com/job/com.anrisoftware.globalpom-globalpom-groovy
+* "Jenkins":%globalpom.custom.jenkins.url%
 
 h1. Packages Overview
 
@@ -21,7 +21,7 @@ h1. Packages Overview
 
 h1. License
 
-Copyright ©2011 - 2022 "Advanced Natural Research Institute":https://anrisoftware.com/. All rights reserved.
+Copyright ©%project.inceptionYear% - %globalpom.custom.current.year% "Advanced Natural Research Institute":https://anrisoftware.com/. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -42,8 +42,8 @@ pandoc -t markdown -f textile -o README.md README.textile
 </pre>
 
 <pre>
-[![Build Status](https://jenkins.anrisoftware.com/job/com.anrisoftware.globalpom-globalpom-groovy/job/main/badge/icon)](https://jenkins.anrisoftware.com/job/com.anrisoftware.globalpom-globalpom-groovy/job/main)
-[![Gate](https://sonarcloud.io/api/project_badges/measure?project=devent_globalpom-groovy&metric=alert_status)](https://sonarcloud.io/project/overview?id=devent_globalpom-groovy)
+[![Build Status](%globalpom.custom.jenkins.build.badge.main%)](%globalpom.custom.jenkins.url%/job/main)
+[![Gate](%globalpom.custom.sonarqube.qualitygate.badge%)](%globalpom.custom.sonarqube.qualitygate.link%)
 [![Apache License, Version 2.0](https://project.anrisoftware.com/attachments/download/217/apache2.0-small.gif)](http://www.apache.org/licenses/LICENSE-2.0)
-© 2011 - 2022 Erwin Müller
+© %project.inceptionYear% - %globalpom.custom.current.year% Erwin Müller
 </pre>
