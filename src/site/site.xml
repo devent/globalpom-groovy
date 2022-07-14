@@ -50,6 +50,7 @@ xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache
             <item name="Project Home" href="${project.issueManagement.url}" />
             <item name="Project Roadmap" href="${project.issueManagement.url}/roadmap" />
             <item name="Project Issues" href="${project.issueManagement.url}/issues" />
+            <item name="Version 4.6.3" href="${this.globalpom.custom.homepage}/versions/1715" />
             <item name="Version 4.6.2" href="${this.globalpom.custom.homepage}/versions/1700" />
             <item name="Version 4.6.1" href="${this.globalpom.custom.homepage}/versions/1688" />
         </menu>
