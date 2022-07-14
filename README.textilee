@@ -6,8 +6,8 @@ Declares all dependencies and all Maven plug-ins needed for a Advanced Natural R
 
 h1. Links
 
-* "Generated Site":https://javadoc.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy-parent/4.6.3-SNAPSHOT/index.html
-* "Download (Central)":https://search.maven.org/artifact/com.anrisoftware.globalpom/globalpom-groovy-base/4.6.3-SNAPSHOT/pom
+* "Generated Site":https://javadoc.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy-parent/%project.version%/index.html
+* "Download (Central)":https://search.maven.org/artifact/com.anrisoftware.globalpom/globalpom-groovy-base/%project.version%/pom
 * "Source code":https://gitea.anrisoftware.com/com.anrisoftware.globalpom/globalpom-groovy
 * "Source code (Github)":https://github.com/devent/globalpom-groovy
 * "Project Home":https://project.anrisoftware.com/projects/globalpom-groovy
