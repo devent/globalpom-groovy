@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2022 Erwin Müller <erwin.mueller@anrisoftware.com>
+ * Copyright 2011-2023 Erwin Müller <erwin.mueller@anrisoftware.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import java.awt.Dialog
 import java.awt.Dimension
 import java.awt.Frame
 
-import javax.inject.Inject
 import javax.swing.JDialog
 import javax.swing.JPanel
 
@@ -37,6 +36,7 @@ import org.fest.swing.fixture.DialogFixture
 import com.google.inject.assistedinject.Assisted
 
 import groovy.transform.CompileStatic
+import jakarta.inject.Inject
 
 /**
  * Creates a frame fixture to test components in a dialog.
@@ -68,181 +68,181 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class DialogTesting {
 
-	/**
-	 * The current title.
-	 */
-	final String title
+    /**
+     * The current title.
+     */
+    final String title
 
-	/**
-	 * The frame size.
-	 */
-	final Dimension size
+    /**
+     * The frame size.
+     */
+    final Dimension size
 
-	/**
-	 * The dialog.
-	 */
-	JDialog dialog
+    /**
+     * The dialog.
+     */
+    JDialog dialog
 
-	/**
-	 * The component.
-	 */
-	Component component
+    /**
+     * The component.
+     */
+    Component component
 
-	/**
-	 * The current {@link DialogFixture}.
-	 */
-	DialogFixture fixture
+    /**
+     * The current {@link DialogFixture}.
+     */
+    DialogFixture fixture
 
-	private Closure createDialogCallback
+    private Closure createDialogCallback
 
-	private Closure createComponentCallback
+    private Closure createComponentCallback
 
-	private Closure setupDialogCallback
+    private Closure setupDialogCallback
 
-	private Closure createFixtureCallback
+    private Closure createFixtureCallback
 
-	/**
-	 * @see DialogTestingFactory#create(Map)
-	 */
-	@Inject
-	DialogTesting(@Assisted Map args) {
-		args = defaultArgs(args)
-		this.title = args.title
-		this.size = args.size as Dimension
-		this.createDialogCallback = args.createDialog as Closure
-		this.createComponentCallback = args.createComponent as Closure
-		this.setupDialogCallback = args.setupDialog as Closure
-		this.createFixtureCallback = args.createFixture as Closure
-	}
+    /**
+     * @see DialogTestingFactory#create(Map)
+     */
+    @Inject
+    DialogTesting(@Assisted Map args) {
+        args = defaultArgs(args)
+        this.title = args.title
+        this.size = args.size as Dimension
+        this.createDialogCallback = args.createDialog as Closure
+        this.createComponentCallback = args.createComponent as Closure
+        this.setupDialogCallback = args.setupDialog as Closure
+        this.createFixtureCallback = args.createFixture as Closure
+    }
 
-	private Map defaultArgs(Map args) {
-		[
-			title: "Dialog Test",
-			size: new Dimension(680, 480),
-			createDialog: null,
-			createComponent: null,
-			setupDialog: null,
-			createFixture: null
-		] << args
-	}
+    private Map defaultArgs(Map args) {
+        [
+            title: "Dialog Test",
+            size: new Dimension(680, 480),
+            createDialog: null,
+            createComponent: null,
+            setupDialog: null,
+            createFixture: null
+        ] << args
+    }
 
-	/**
-	 * Creates the frame, dock and dialog fixture.
-	 *
-	 * @return this {@link DialogTesting}.
-	 */
-	DialogTesting call() {
-		invokeAndWait {
-			dialog = createDialog()
-			component = createComponent(dialog)
-			setupDialog(dialog, component)
-			fixture = createFixture(dialog)
-		}
-		this
-	}
+    /**
+     * Creates the frame, dock and dialog fixture.
+     *
+     * @return this {@link DialogTesting}.
+     */
+    DialogTesting call() {
+        invokeAndWait {
+            dialog = createDialog()
+            component = createComponent(dialog)
+            setupDialog(dialog, component)
+            fixture = createFixture(dialog)
+        }
+        this
+    }
 
-	/**
-	 * Creates the dialog.
-	 *
-	 * @return the {@link JDialog}.
-	 */
-	@RunsInEDT
-	JDialog createDialog() {
-		if (createDialogCallback != null) {
-			createDialogCallback()
-		} else {
-			def dialog = new JDialog((Frame)null, title)
-			dialog.setDefaultCloseOperation DISPOSE_ON_CLOSE
-			dialog.setSize size
-			dialog.setPreferredSize size
-			dialog
-		}
-	}
+    /**
+     * Creates the dialog.
+     *
+     * @return the {@link JDialog}.
+     */
+    @RunsInEDT
+    JDialog createDialog() {
+        if (createDialogCallback != null) {
+            createDialogCallback()
+        } else {
+            def dialog = new JDialog((Frame)null, title)
+            dialog.setDefaultCloseOperation DISPOSE_ON_CLOSE
+            dialog.setSize size
+            dialog.setPreferredSize size
+            dialog
+        }
+    }
 
-	/**
-	 * Creates the dialog component.
-	 *
-	 * @param dialog
-	 * 			  the {@link JDialog}.
-	 *
-	 * @return the {@link Component}.
-	 */
-	@RunsInEDT
-	Component createComponent(JDialog dialog) {
-		if (createComponentCallback != null) {
-			createComponentCallback(dialog)
-		} else {
-			new JPanel()
-		}
-	}
+    /**
+     * Creates the dialog component.
+     *
+     * @param dialog
+     * 			  the {@link JDialog}.
+     *
+     * @return the {@link Component}.
+     */
+    @RunsInEDT
+    Component createComponent(JDialog dialog) {
+        if (createComponentCallback != null) {
+            createComponentCallback(dialog)
+        } else {
+            new JPanel()
+        }
+    }
 
-	/**
-	 * Setups the dialog.
-	 *
-	 * @param dialog
-	 * 			  the {@link JDialog}.
-	 *
-	 * @param component
-	 * 			  the {@link Component} of the dialog.
-	 */
-	@RunsInEDT
-	void setupDialog(JDialog dialog, Component component) {
-		if (setupDialogCallback != null) {
-			setupDialogCallback(dialog, component)
-		} else {
-			dialog.add component, BorderLayout.CENTER
-		}
-	}
+    /**
+     * Setups the dialog.
+     *
+     * @param dialog
+     * 			  the {@link JDialog}.
+     *
+     * @param component
+     * 			  the {@link Component} of the dialog.
+     */
+    @RunsInEDT
+    void setupDialog(JDialog dialog, Component component) {
+        if (setupDialogCallback != null) {
+            setupDialogCallback(dialog, component)
+        } else {
+            dialog.add component, BorderLayout.CENTER
+        }
+    }
 
-	/**
-	 * Creates the dialog fixture.
-	 *
-	 * @param dialog
-	 * 			  the {@link JDialog}.
-	 *
-	 * @return the {@link FrameFixture}.
-	 */
-	@RunsInEDT
-	DialogFixture createFixture(JDialog dialog) {
-		if (createFixtureCallback != null) {
-			createFixtureCallback(dialog)
-		} else {
-			def result = GuiActionRunner.execute([executeInEDT: { dialog } ] as GuiQuery)
-			new DialogFixture(result as Dialog)
-		}
-	}
+    /**
+     * Creates the dialog fixture.
+     *
+     * @param dialog
+     * 			  the {@link JDialog}.
+     *
+     * @return the {@link FrameFixture}.
+     */
+    @RunsInEDT
+    DialogFixture createFixture(JDialog dialog) {
+        if (createFixtureCallback != null) {
+            createFixtureCallback(dialog)
+        } else {
+            def result = GuiActionRunner.execute([executeInEDT: { dialog } ] as GuiQuery)
+            new DialogFixture(result as Dialog)
+        }
+    }
 
-	/**
-	 * Runs the tests. The {@link DialogFixture} is passed
-	 * to each specified test as the first argument.
-	 *
-	 * @param tests
-	 * 			  the tests to run.
-	 *
-	 * @return this {@link DialogTesting}
-	 */
-	DialogTesting withFixture(Object... tests) {
-		beginFixture()
-		try {
-			sequencedActionsWith(fixture, tests)
-		} finally {
-			endFixture()
-		}
-		this
-	}
+    /**
+     * Runs the tests. The {@link DialogFixture} is passed
+     * to each specified test as the first argument.
+     *
+     * @param tests
+     * 			  the tests to run.
+     *
+     * @return this {@link DialogTesting}
+     */
+    DialogTesting withFixture(Object... tests) {
+        beginFixture()
+        try {
+            sequencedActionsWith(fixture, tests)
+        } finally {
+            endFixture()
+        }
+        this
+    }
 
-	/**
-	 * Creates and show the {@link FrameFixture}.
-	 */
-	void beginFixture() {
-		fixture.show()
-	}
+    /**
+     * Creates and show the {@link FrameFixture}.
+     */
+    void beginFixture() {
+        fixture.show()
+    }
 
-	/**
-	 * End the {@link FrameFixture}.
-	 */
-	void endFixture() {
-		fixture.cleanUp()
-		fixture = null
-	}
+    /**
+     * End the {@link FrameFixture}.
+     */
+    void endFixture() {
+        fixture.cleanUp()
+        fixture = null
+    }
 }

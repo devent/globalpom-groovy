@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2022 Erwin Müller <erwin.mueller@anrisoftware.com>
+ * Copyright 2011-2023 Erwin Müller <erwin.mueller@anrisoftware.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,11 @@
  */
 package com.anrisoftware.globalpom.utils.imagetesting;
 
-
 import java.awt.BorderLayout
 import java.awt.Component
 import java.awt.GridLayout
 import java.awt.Image
 
-import javax.inject.Inject
 import javax.swing.ImageIcon
 import javax.swing.JFrame
 import javax.swing.JLabel
@@ -34,6 +32,7 @@ import com.google.inject.assistedinject.Assisted
 import com.google.inject.assistedinject.AssistedInject
 
 import groovy.transform.CompileStatic
+import jakarta.inject.Inject
 
 
 /**
@@ -64,49 +63,49 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class ShowImagesFrame {
 
-	@Inject
-	private FrameTestingFactory frameTestingFactory
+    @Inject
+    private FrameTestingFactory frameTestingFactory
 
-	private final List<Image> images
+    private final List<Image> images
 
-	private final Map args
+    private final Map args
 
-	@AssistedInject
-	ShowImagesFrame(@Assisted Map args) {
-		if (args.containsKey('image')) {
-			this.images = [args.image] as List<Image>
-		} else if (args.containsKey('images')) {
-			this.images = args.images as List<Image>
-		} else {
-			throw new IllegalArgumentException('Missing image/images argument')
-		}
-		this.args = args
-	}
+    @AssistedInject
+    ShowImagesFrame(@Assisted Map args) {
+        if (args.containsKey('image')) {
+            this.images = [args.image] as List<Image>
+        } else if (args.containsKey('images')) {
+            this.images = args.images as List<Image>
+        } else {
+            throw new IllegalArgumentException('Missing image/images argument')
+        }
+        this.args = args
+    }
 
-	def call() {
-		def testingArgs = new HashMap(args)
-		List<JLabel> imageLabels = []
-		testingArgs.createComponent = { JFrame frame ->
-			def count = Math.ceil((double)images.size() / 2) as int
-			def panel = new JPanel(new GridLayout(count, count, 4, 4))
-			images.eachWithIndex { Image it, int i ->
-				def label = new JLabel(new ImageIcon(it))
-				label.setName "image_$i"
-				imageLabels << label
-				panel.add label
-			}
-			return panel
-		}
-		testingArgs.setupFrame = { JFrame frame, Component component ->
-			frame.layout = new BorderLayout()
-			frame.add component, BorderLayout.CENTER
-		}
-		def testing = frameTestingFactory.create testingArgs
-		testing().withFixture({ FrameFixture fix ->
-			imageLabels.each { JLabel it ->
-				assert fix.label(it.name).target.icon != null
-			}
-			fix.close()
-		})
-	}
+    def call() {
+        def testingArgs = new HashMap(args)
+        List<JLabel> imageLabels = []
+        testingArgs.createComponent = { JFrame frame ->
+            def count = Math.ceil((double)images.size() / 2) as int
+            def panel = new JPanel(new GridLayout(count, count, 4, 4))
+            images.eachWithIndex { Image it, int i ->
+                def label = new JLabel(new ImageIcon(it))
+                label.setName "image_$i"
+                imageLabels << label
+                panel.add label
+            }
+            return panel
+        }
+        testingArgs.setupFrame = { JFrame frame, Component component ->
+            frame.layout = new BorderLayout()
+            frame.add component, BorderLayout.CENTER
+        }
+        def testing = frameTestingFactory.create testingArgs
+        testing().withFixture({ FrameFixture fix ->
+            imageLabels.each { JLabel it ->
+                assert fix.label(it.name).target.icon != null
+            }
+            fix.close()
+        })
+    }
 }

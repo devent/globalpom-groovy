@@ -1,6 +1,6 @@
 <!--
 
-    Copyright 2011-2022 Erwin Müller <erwin.mueller@anrisoftware.com>
+    Copyright 2011-2023 Erwin Müller <erwin.mueller@anrisoftware.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
     <parent>
         <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.6.3</version>
+        <version>4.7.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>globalpom-groovy</artifactId>
