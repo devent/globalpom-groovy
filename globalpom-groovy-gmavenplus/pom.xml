@@ -24,7 +24,7 @@
     <parent>
         <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.8.0</version>
+        <version>4.8.1</version>
     </parent>
 
     <artifactId>globalpom-groovy-gmavenplus</artifactId>
@@ -66,7 +66,7 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>4.0.1</version>
+                <version>4.2.1</version>
                 <executions>
                     <execution>
                         <goals>
