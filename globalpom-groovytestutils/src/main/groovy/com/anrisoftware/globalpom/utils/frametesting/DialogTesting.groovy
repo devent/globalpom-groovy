@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2025 Erwin Müller <erwin.mueller@anrisoftware.com>
+ * Copyright 2011-2026 Erwin Müller <erwin.mueller@anrisoftware.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,6 @@ import jakarta.inject.Inject
  * @author Erwin Mueller, erwin.mueller@deventm.org
  * @since 1.21
  */
-@CompileStatic
 class DialogTesting {
 
     /**

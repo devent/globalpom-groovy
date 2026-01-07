@@ -1,6 +1,6 @@
 <!--
 
-    Copyright 2020-2025 Erwin Müller <erwin.mueller@anrisoftware.com>
+    Copyright 2020-2026 Erwin Müller <erwin.mueller@anrisoftware.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
     <parent>
         <artifactId>globalpom-groovy-parent</artifactId>
         <groupId>com.anrisoftware.globalpom</groupId>
-        <version>4.8.1</version>
+        <version>4.8.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>globalpom-groovy-gmavenplus</artifactId>
@@ -67,6 +67,9 @@
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
                 <version>4.2.1</version>
+                <configuration>
+                    <targetBytecode>${maven.compiler.release}</targetBytecode>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
